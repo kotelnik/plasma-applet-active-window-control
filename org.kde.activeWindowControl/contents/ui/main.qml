@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 import QtQuick 2.2
+import QtGraphicalEffects 1.0
 import QtQuick.Layouts 1.1
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -46,46 +47,11 @@ Item {
     }
 
     //
-    // CLOSE area
-    //
-    MouseArea {
-        id: closeArea
-        anchors.top: parent.top
-        anchors.left: parent.left
-        
-        width: parent.height
-        height: parent.height
-        
-        PlasmaCore.SvgItem {
-            id: closeSvgItem
-            width: parent.height
-            height: parent.height
-            svg: PlasmaCore.Svg {
-                //prefix is: /usr/share/plasma/desktoptheme/default/
-                imagePath: "icons/window"
-            }
-        }
-        
-        onClicked: {
-            var service = tasksSource.serviceForSource("tasks");
-            var operation = service.operationDescription("close");
-            operation.Id = tasksSource.models.tasks.activeTaskId();
-            print('closing window with id: ' + operation.Id);
-            service.startOperationCall(operation);
-        }
-    }
-    
-    //
     // ACTIVE WINDOW INFO
     //
     ListView {
         id: activeWindowListView
-        anchors {
-            top: parent.top
-            left: closeArea.right
-            bottom: parent.bottom
-            right: parent.right
-        }
+        anchors.fill: parent
         width: parent.width - closeSvgItem.width
         focus: true
         spacing: 0
@@ -96,33 +62,67 @@ Item {
             width: parent.width
             height: main.height
             
-            // icon
-            PlasmaCore.IconItem {
-                id: iconItem
+            //
+            // CLOSE area
+            //
+            MouseArea {
+                id: closeArea
+                anchors.top: parent.top
+                anchors.left: parent.left
                 
-                anchors {
-                    top: parent.top
-                    right: parent.right
+                width: parent.height
+                height: parent.height
+                
+                // window icon
+                PlasmaCore.IconItem {
+                    id: iconItem
+                    anchors.fill: parent
+                    source: DecorationRole
                 }
                 
-                width: main.height*0.5
-                height: main.height*0.5
+                // close icon
+                PlasmaCore.SvgItem {
+                    id: closeSvgItem
+                    width: parent.height * 0.4
+                    height: parent.height * 0.4
+                    svg: PlasmaCore.Svg {
+                        //prefix is: /usr/share/plasma/desktoptheme/default/
+                        imagePath: "icons/window"
+                    }
+                }
                 
-                source: DecorationRole
+                // close icon has now better visibility
+                BrightnessContrast {
+                    anchors.fill: closeSvgItem
+                    source: closeSvgItem
+                    brightness: 0.5
+                    contrast: 0.5
+                }
+                
+                // trigger close active window
+                onClicked: {
+                    var service = tasksSource.serviceForSource("tasks");
+                    var operation = service.operationDescription("close");
+                    operation.Id = tasksSource.models.tasks.activeTaskId();
+                    print('closing window with id: ' + operation.Id);
+                    service.startOperationCall(operation);
+                }
             }
+            
+            
             
             // window title
             Text {
                 id: windowTitleText
                 anchors {
-                    left: parent.left
+                    left: closeArea.right
                     verticalCenter: parent.verticalCenter
                 }
                 text: DisplayRole
                 color: theme.textColor
                 wrapMode: Text.WordWrap
                 maximumLineCount: 2
-                width: parent.width
+                width: parent.width - closeArea.width
                 elide: Text.ElideRight
             }
         }
