@@ -53,8 +53,6 @@ Item {
         id: activeWindowListView
         anchors.fill: parent
         width: parent.width - closeSvgItem.width
-        focus: true
-        spacing: 0
         
         model: activeWindowModel
         
