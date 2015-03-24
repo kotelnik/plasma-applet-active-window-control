@@ -23,8 +23,14 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
     id: main
+    
+    property bool vertical: (plasmoid.formFactor == PlasmaCore.Types.Vertical)
+    
     anchors.fill: parent
-    Layout.preferredWidth: Screen.width * 0.12
+    Layout.preferredWidth: vertical ? parent.width : Screen.width * 0.12
+    Layout.preferredHeight: vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
+    Layout.minimumHeight: Layout.preferredHeight
+    Layout.maximumHeight: Layout.preferredHeight
     
     property int cbp: plasmoid.configuration.closeButtonPosition;
     
@@ -35,17 +41,17 @@ MouseArea {
     //
     PlasmaCore.DataSource {
         id: tasksSource
-        engine: "tasks"
+        engine: 'tasks'
         onSourceAdded: {
             connectSource(source);
         }
-        connectedSources: "tasks"
+        connectedSources: 'tasks'
     }
     // should return always one item
     PlasmaCore.SortFilterModel {
         id: activeWindowModel
-        filterRole: "Active"
-        filterRegExp: "true"
+        filterRole: 'Active'
+        filterRegExp: 'true'
         sourceModel: tasksSource.models.tasks
         onCountChanged: {
             var noWindowVisible = count === 0
@@ -113,14 +119,14 @@ MouseArea {
     MouseArea {
         id: closeArea
         
-        //TODO handle changed config - maybe plasmoid/qml bug?
-        anchors.top: (cbp == 0 || cbp == 1) ? parent.top : undefined
-        anchors.bottom: (cbp == 2 || cbp == 3) ? parent.bottom : undefined
-        anchors.left: (cbp == 0 || cbp == 2) ? parent.left : undefined
-        anchors.right: (cbp == 1 || cbp == 3) ? parent.right : undefined
+        anchors.top: parent.top
+        anchors.left: parent.left
         
         width: parent.height * 0.4
         height: width
+        
+        anchors.leftMargin: (cbp === 1 || cbp === 3) ? parent.width - width : 0
+        anchors.topMargin: (cbp === 2 || cbp === 3) ? parent.height - height : 0
         
         // close icon
         PlasmaCore.SvgItem {
@@ -129,26 +135,40 @@ MouseArea {
             height: width
             svg: PlasmaCore.Svg {
                 //prefix is: /usr/share/plasma/desktoptheme/default/
-                imagePath: "icons/window"
+                imagePath: 'widgets/configuration-icons'
             }
+            elementId: 'close'
             visible: false
         }
         
         // close icon has now better visibility
         BrightnessContrast {
+            id: closeSvgItemEffect
             anchors.fill: closeSvgItem
             source: closeSvgItem
             brightness: 0.5
             contrast: 0.5
-            visible: closeSvgItem.visible
+            visible: false
+        }
+        
+        hoverEnabled: true
+        
+        onEntered: {
+            closeSvgItemEffect.visible = true
+        }
+        
+        onExited: {
+            closeSvgItemEffect.visible = false
         }
         
         // trigger close active window
         onClicked: {
-            var service = tasksSource.serviceForSource("tasks");
-            var operation = service.operationDescription("close");
+            if (cbp === 4) {
+                return;
+            }
+            var service = tasksSource.serviceForSource('tasks');
+            var operation = service.operationDescription('close');
             operation.Id = tasksSource.models.tasks.activeTaskId();
-            print('closing window with id: ' + operation.Id);
             service.startOperationCall(operation);
         }
     }
