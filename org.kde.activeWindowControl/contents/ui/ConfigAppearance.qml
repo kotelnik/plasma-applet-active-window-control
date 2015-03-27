@@ -87,9 +87,16 @@ Item {
             enabled: showControlButtons.checked
         }
         
+        Item {
+            width: 2
+            height: 10
+            Layout.columnSpan: 2
+        }
+        
         Label {
-            text: i18n("Horizontal width:")
-            Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+            text: i18n("Width in horizontal panel:")
+            Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
+            Layout.columnSpan: 2
         }
         Slider {
             id: horizontalScreenWidthPercent
@@ -97,6 +104,8 @@ Item {
             minimumValue: 0.08
             value: 0.12
             tickmarksEnabled: true
+            width: parent.width
+            Layout.columnSpan: 2
         }
     }
     
