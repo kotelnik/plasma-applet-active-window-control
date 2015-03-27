@@ -21,18 +21,30 @@ import QtQuick.Window 2.2
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
-MouseArea {
+Item {
     id: main
     
     property bool vertical: (plasmoid.formFactor == PlasmaCore.Types.Vertical)
     
     anchors.fill: parent
     Layout.preferredWidth: vertical ? parent.width : Screen.width * 0.12
+    Layout.minimumWidth: Layout.preferredWidth
+    Layout.maximumWidth: Layout.preferredWidth
     Layout.preferredHeight: vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
     
-    property int cbp: plasmoid.configuration.closeButtonPosition;
+    property bool noWindowVisible: true
+    property int controlButtonsSpacing: 10
+    
+    property int bp: plasmoid.configuration.buttonsPosition;
+    property bool showControlButtons: plasmoid.configuration.showControlButtons
+    property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
+    property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
+    property bool middleClickFullscreen: plasmoid.configuration.middleClickFullscreen
+    property bool wheelUpMaximizes: plasmoid.configuration.wheelUpMaximizes
+    property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
+    property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -54,10 +66,38 @@ MouseArea {
         filterRegExp: 'true'
         sourceModel: tasksSource.models.tasks
         onCountChanged: {
-            var noWindowVisible = count === 0
-            closeArea.visible = !noWindowVisible
-            noWindowText.visible = noWindowVisible
+            noWindowVisible = count === 0
         }
+    }
+    
+    function toggleMaximized() {
+        var service = tasksSource.serviceForSource('tasks')
+        var operation = service.operationDescription('toggleMaximized')
+        operation.Id = tasksSource.models.tasks.activeTaskId()
+        service.startOperationCall(operation)
+    }
+    
+    function toggleFullscreen() {
+        var service = tasksSource.serviceForSource('tasks')
+        var operation = service.operationDescription('toggleFullScreen')
+        operation.Id = tasksSource.models.tasks.activeTaskId()
+        service.startOperationCall(operation)
+    }
+    
+    function setMaximized(maximized) {
+        var service = tasksSource.serviceForSource('tasks')
+        var operation = service.operationDescription('setMaximized')
+        operation.Id = tasksSource.models.tasks.activeTaskId()
+        operation.maximized = maximized
+        service.startOperationCall(operation)
+    }
+    
+    function setMinimized() {
+        var service = tasksSource.serviceForSource('tasks')
+        var operation = service.operationDescription('setMinimized')
+        operation.Id = tasksSource.models.tasks.activeTaskId()
+        operation.minimized = true
+        service.startOperationCall(operation)
     }
     
     Text {
@@ -69,6 +109,8 @@ MouseArea {
         color: theme.textColor
         width: parent.width
         elide: Text.ElideRight
+        
+        visible: noWindowVisible
     }
 
     //
@@ -112,74 +154,86 @@ MouseArea {
         }
     }
 
-
-    //
-    // CLOSE area
-    //
     MouseArea {
-        id: closeArea
+        anchors.fill: parent
+        
+        hoverEnabled: true
+        
+        acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+        
+        onEntered: {
+            controlButtonsArea.mouseInWidget = showControlButtons && !noWindowVisible
+        }
+        
+        onExited: {
+            controlButtonsArea.mouseInWidget = false
+        }
+        
+        onWheel: {
+            if (wheel.angleDelta.y > 0) {
+                if (wheelUpMaximizes) {
+                    setMaximized(true)
+                }
+            } else {
+                if (wheelDownMinimizes) {
+                    setMinimized()
+                } else if (wheelDownUnmaximizes) {
+                    setMaximized(false)
+                }
+            }
+        }
+        
+        onDoubleClicked: {
+            if (mouse.button == Qt.LeftButton && doubleClickMaximizes) {
+                toggleMaximized()
+            }
+        }
+        
+        onClicked: {
+            if (mouse.button == Qt.MiddleButton && middleClickFullscreen) {
+                toggleFullscreen()
+            }
+        }
+        
+    }
+    
+    Item {
+        id: controlButtonsArea
+        
+        visible: showControlButtons
+        
+        height: parent.height * 0.4
+        width: height + (showMinimize ? height + controlButtonsSpacing : 0)
         
         anchors.top: parent.top
         anchors.left: parent.left
         
-        width: parent.height * 0.4
-        height: width
+        anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width : 0
+        anchors.topMargin: (bp === 2 || bp === 3) ? parent.height - height : 0
         
-        anchors.leftMargin: (cbp === 1 || cbp === 3) ? parent.width - width : 0
-        anchors.topMargin: (cbp === 2 || cbp === 3) ? parent.height - height : 0
+        property bool mouseInWidget: false
+        property bool mouseInside: mouseInWidget || closeButton.mouseInside || minimizeButton.mouseInside
         
-        // close icon
-        PlasmaCore.SvgItem {
-            id: closeSvgItem
-            width: parent.width
-            height: width
-            svg: PlasmaCore.Svg {
-                //prefix is: /usr/share/plasma/desktoptheme/default/
-                imagePath: 'widgets/configuration-icons'
-            }
-            elementId: 'close'
-            visible: false
+        ControlButton {
+            id: closeButton
+            iconElementId: 'close'
+            windowOperation: 'close'
+            
+            anchors.leftMargin: parent.anchors.leftMargin > 0 && showMinimize ? parent.height + controlButtonsSpacing : 0
+            
+            visible: true
         }
         
-        // close icon has now better visibility
-        BrightnessContrast {
-            id: closeSvgItemEffect
-            anchors.fill: closeSvgItem
-            source: closeSvgItem
-            brightness: 0.5
-            contrast: 0.5
-            visible: false
+        ControlButton {
+            id: minimizeButton
+            iconElementId: 'remove'
+            windowOperation: 'toggleMinimized'
+            
+            anchors.leftMargin: parent.anchors.leftMargin > 0 && showMinimize ? 0 : parent.height + controlButtonsSpacing
+            
+            visible: showMinimize
         }
         
-        hoverEnabled: true
-        
-        onEntered: {
-            closeSvgItemEffect.visible = true
-        }
-        
-        onExited: {
-            closeSvgItemEffect.visible = false
-        }
-        
-        // trigger close active window
-        onClicked: {
-            if (cbp === 4) {
-                return;
-            }
-            var service = tasksSource.serviceForSource('tasks');
-            var operation = service.operationDescription('close');
-            operation.Id = tasksSource.models.tasks.activeTaskId();
-            service.startOperationCall(operation);
-        }
     }
     
-    hoverEnabled: true
-    
-    onEntered: {
-        closeSvgItem.visible = plasmoid.configuration.closeButtonPosition !== 4
-    }
-    
-    onExited: {
-        closeSvgItem.visible = false
-    }
 }

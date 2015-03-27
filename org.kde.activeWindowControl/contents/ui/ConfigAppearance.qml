@@ -1,85 +1,90 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0 as QtControls
-import QtQuick.Layouts 1.0 as Layouts
+import QtQuick 2.2
+import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.1
 
 Item {
     id: appearancePage
     width: childrenRect.width
     height: childrenRect.height
 
-    property int cfg_closeButtonPosition
+    property alias cfg_showControlButtons: showControlButtons.checked
+    property int cfg_buttonsPosition
+    property alias cfg_showMinimize: showMinimize.checked
 
-    onCfg_closeButtonPositionChanged: {
-        switch (cfg_closeButtonPosition) {
+    onCfg_buttonsPositionChanged: {
+        switch (cfg_buttonsPosition) {
         case 0:
-            closeButtonPositionGroup.current = upperLeftRadio;
+            buttonsPositionGroup.current = upperLeftRadio;
             break;
         case 2:
-            closeButtonPositionGroup.current = bottomLeftRadio;
+            buttonsPositionGroup.current = bottomLeftRadio;
             break;
         case 3:
-            closeButtonPositionGroup.current = bottomRightRadio;
-            break;
-        case 4:
-            closeButtonPositionGroup.current = hideRadio;
+            buttonsPositionGroup.current = bottomRightRadio;
             break;
         case 1:
         default:
-            closeButtonPositionGroup.current = upperRightRadio;
+            buttonsPositionGroup.current = upperRightRadio;
         }
     }
 
-    Component.onCompleted: cfg_currentDesktopSelectedChanged()
-
-    QtControls.ExclusiveGroup {
-        id: closeButtonPositionGroup
+    ExclusiveGroup {
+        id: buttonsPositionGroup
     }
     
-    Layouts.GridLayout {
+    GridLayout {
+        id: displayPosition
         columns: 2
-        QtControls.Label {
-            text: i18n("Display close button:")
-            Layouts.Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+        
+        Label {
+            text: i18n("Control Buttons:")
+            Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
         }
-        QtControls.RadioButton {
+        CheckBox {
+            id: showControlButtons
+            text: i18n("Show control buttons")
+        }
+        
+        Item {
+            width: 2
+            height: 2
+            Layout.rowSpan: 5
+        }
+        
+        CheckBox {
+            id: showMinimize
+            text: i18n("Show minimize button")
+            enabled: showControlButtons.checked
+        }
+        
+        RadioButton {
             id: upperLeftRadio
-            exclusiveGroup: closeButtonPositionGroup
+            exclusiveGroup: buttonsPositionGroup
             text: i18n("Upper left")
-            onCheckedChanged: if (checked) cfg_closeButtonPosition = 0;
+            onCheckedChanged: if (checked) cfg_buttonsPosition = 0;
+            enabled: showControlButtons.checked
         }
-        Item {
-            width: 2
-            height: 2
-            Layouts.Layout.rowSpan: 2
-        }
-        QtControls.RadioButton {
+        RadioButton {
             id: upperRightRadio
-            exclusiveGroup: closeButtonPositionGroup
+            exclusiveGroup: buttonsPositionGroup
             text: i18n("Upper right")
-            onCheckedChanged: if (checked) cfg_closeButtonPosition = 1;
+            onCheckedChanged: if (checked) cfg_buttonsPosition = 1;
+            enabled: showControlButtons.checked
         }
-        QtControls.RadioButton {
+        RadioButton {
             id: bottomLeftRadio
-            exclusiveGroup: closeButtonPositionGroup
+            exclusiveGroup: buttonsPositionGroup
             text: i18n("Bottom left")
-            onCheckedChanged: if (checked) cfg_closeButtonPosition = 2;
+            onCheckedChanged: if (checked) cfg_buttonsPosition = 2;
+            enabled: showControlButtons.checked
         }
-        Item {
-            width: 2
-            height: 2
-            Layouts.Layout.rowSpan: 2
-        }
-        QtControls.RadioButton {
+        RadioButton {
             id: bottomRightRadio
-            exclusiveGroup: closeButtonPositionGroup
+            exclusiveGroup: buttonsPositionGroup
             text: i18n("Bottom right")
-            onCheckedChanged: if (checked) cfg_closeButtonPosition = 3;
-        }
-        QtControls.RadioButton {
-            id: hideRadio
-            exclusiveGroup: closeButtonPositionGroup
-            text: i18n("Hide")
-            onCheckedChanged: if (checked) cfg_closeButtonPosition = 4;
+            onCheckedChanged: if (checked) cfg_buttonsPosition = 3;
+            enabled: showControlButtons.checked
         }
     }
+    
 }

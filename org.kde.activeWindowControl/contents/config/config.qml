@@ -7,4 +7,9 @@ ConfigModel {
          icon: "preferences-desktop-color"
          source: "ConfigAppearance.qml"
     }
+    ConfigCategory {
+         name: i18n("Mouse Control")
+         icon: "preferences-desktop-mouse"
+         source: "ConfigMouseControl.qml"
+    }
 }
