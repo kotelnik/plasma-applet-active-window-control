@@ -26,8 +26,10 @@ Item {
     
     property bool vertical: (plasmoid.formFactor == PlasmaCore.Types.Vertical)
     
+    property double horizontalScreenWidthPercent: plasmoid.configuration.horizontalScreenWidthPercent
+    
     anchors.fill: parent
-    Layout.preferredWidth: vertical ? parent.width : Screen.width * 0.12
+    Layout.preferredWidth: vertical ? parent.width : Screen.width * horizontalScreenWidthPercent
     Layout.minimumWidth: Layout.preferredWidth
     Layout.maximumWidth: Layout.preferredWidth
     Layout.preferredHeight: vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
