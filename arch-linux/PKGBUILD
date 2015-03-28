@@ -1,0 +1,35 @@
+pkgname=kdeplasma-applets-activeWindowControl-git
+_pkgname=org.kde.activeWindowControl
+pkgver=r12.b636ead
+pkgrel=1
+pkgdesc="Plasmoid for Plasma 5. Allowes advanced control of active window."
+arch=('i686' 'x86_64')
+url="https://github.com/kotelnik/plasma-applet-active-window-control"
+license=('GPL')
+depends=('plasma-workspace' 'extra-cmake-modules')
+makedepends=('git')
+conflicts=("${pkgname%-*}")
+provides=("${pkgname%-*}")
+install=${pkgname%-*}.install
+source=('git://github.com/kotelnik/plasma-applet-active-window-control.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_pkgname}"
+  
+  cd build
+  rm -rf *
+  
+  cmake ..
+}
+
+package() {
+  cd "${_pkgname}"
+  
+  make install
+}
