@@ -104,12 +104,12 @@ Item {
     
     Text {
         id: noWindowText
-        anchors {
-            verticalCenter: parent.verticalCenter
-        }
-        text: i18n('No active window')
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 10
+        anchors.left: parent.left
+        text: i18n('Plasma Desktop')
         color: theme.textColor
-        width: parent.width
+        width: parent.width - 10
         elide: Text.ElideRight
         
         visible: noWindowVisible

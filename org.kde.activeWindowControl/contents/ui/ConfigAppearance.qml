@@ -45,25 +45,31 @@ Item {
             id: showControlButtons
             text: i18n("Show control buttons")
         }
-        
         Item {
             width: 2
             height: 2
-            Layout.rowSpan: 5
         }
-        
         CheckBox {
             id: showMinimize
             text: i18n("Show minimize button")
             enabled: showControlButtons.checked
         }
         
+        Label {
+            text: i18n("Position:")
+            Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+        }
         RadioButton {
             id: upperLeftRadio
             exclusiveGroup: buttonsPositionGroup
             text: i18n("Upper left")
             onCheckedChanged: if (checked) cfg_buttonsPosition = 0;
             enabled: showControlButtons.checked
+        }
+        Item {
+            width: 2
+            height: 2
+            Layout.rowSpan: 3
         }
         RadioButton {
             id: upperRightRadio
