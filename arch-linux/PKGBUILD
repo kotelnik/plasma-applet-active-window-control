@@ -2,7 +2,7 @@
 
 pkgname=plasma-applet-active-window-control-git
 _pkgname=plasma-applet-active-window-control
-pkgver=r13.b5f7e16
+pkgver=r15.2d31374
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Allowes advanced control of active window."
 arch=('any')
@@ -12,7 +12,6 @@ depends=('plasma-workspace' 'extra-cmake-modules')
 makedepends=('git')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
-install=${pkgname%-*}.install
 source=('git://github.com/kotelnik/plasma-applet-active-window-control.git')
 md5sums=('SKIP')
 

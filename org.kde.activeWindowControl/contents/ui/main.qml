@@ -27,6 +27,7 @@ Item {
     property bool vertical: (plasmoid.formFactor == PlasmaCore.Types.Vertical)
     
     property double horizontalScreenWidthPercent: plasmoid.configuration.horizontalScreenWidthPercent
+    property double buttonSize: plasmoid.configuration.buttonSize
     
     anchors.fill: parent
     Layout.preferredWidth: vertical ? parent.width : Screen.width * horizontalScreenWidthPercent
@@ -204,7 +205,7 @@ Item {
         
         visible: showControlButtons
         
-        height: parent.height * 0.4
+        height: parent.height * buttonSize
         width: height + (showMinimize ? height + controlButtonsSpacing : 0)
         
         anchors.top: parent.top

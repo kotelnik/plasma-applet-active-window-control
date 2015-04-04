@@ -21,6 +21,9 @@
             </choices>
             <default>1</default>
         </entry>
+        <entry name="buttonSize" type="Double">
+            <default>0.4</default>
+        </entry>
         <entry name="horizontalScreenWidthPercent" type="Double">
             <default>0.12</default>
         </entry>

@@ -11,6 +11,7 @@ Item {
     property int cfg_buttonsPosition
     property alias cfg_showMinimize: showMinimize.checked
     property alias cfg_horizontalScreenWidthPercent: horizontalScreenWidthPercent.value
+    property alias cfg_buttonSize: buttonSize.value
 
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -91,6 +92,26 @@ Item {
             text: i18n("Bottom right")
             onCheckedChanged: if (checked) cfg_buttonsPosition = 3;
             enabled: showControlButtons.checked
+        }
+        
+        Item {
+            width: 2
+            height: 10
+            Layout.columnSpan: 2
+        }
+        
+        Label {
+            text: i18n("Button size:")
+            Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
+            Layout.columnSpan: 2
+        }
+        Slider {
+            id: buttonSize
+            stepSize: 0.1
+            minimumValue: 0.1
+            tickmarksEnabled: true
+            width: parent.width
+            Layout.columnSpan: 2
         }
         
         Item {
