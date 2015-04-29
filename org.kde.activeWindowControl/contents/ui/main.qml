@@ -149,7 +149,7 @@ Item {
                 }
                 text: DisplayRole
                 color: theme.textColor
-                wrapMode: Text.WordWrap
+                wrapMode: Text.Wrap
                 maximumLineCount: parent.height / 20
                 width: parent.width - iconItem.width
                 elide: Text.ElideRight
