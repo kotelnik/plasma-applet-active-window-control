@@ -2,7 +2,7 @@
 
 pkgname=plasma-applet-active-window-control-git
 _pkgname=plasma-applet-active-window-control
-pkgver=r16.ef183eb
+pkgver=r17.76c1b60
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Allowes advanced control of active window."
 arch=('any')

@@ -150,9 +150,10 @@ Item {
                 text: DisplayRole
                 color: theme.textColor
                 wrapMode: Text.Wrap
-                maximumLineCount: parent.height / 20
+                maximumLineCount: Math.max(1, Math.round(parent.height / (theme.defaultFont.pointSize * 2)))
                 width: parent.width - iconItem.width
                 elide: Text.ElideRight
+                font.pointSize: theme.defaultFont.pointSize
             }
         }
     }
