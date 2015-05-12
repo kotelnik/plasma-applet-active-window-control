@@ -21,18 +21,12 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 MouseArea {
     id: controlButton
     
-    property string iconElementId
-    property string windowOperation
-    
-    height: parent.height
+    height: controlButtonsArea.height
     width: height
-    
-    anchors.top: parent.top
-    anchors.left: parent.left
     
     property bool mouseInside: false
     
-    // close icon
+    // icon
     PlasmaCore.SvgItem {
         id: svgItem
         width: parent.width
@@ -42,10 +36,9 @@ MouseArea {
             imagePath: 'widgets/configuration-icons'
         }
         elementId: iconElementId
-        visible: controlButtonsArea.mouseInside
     }
     
-    // close icon has now better visibility
+    // icon has now better visibility
     BrightnessContrast {
         id: svgItemEffect
         anchors.fill: svgItem
@@ -59,16 +52,15 @@ MouseArea {
     
     onEntered: {
         mouseInside = true
-        //svgItemEffect.visible = svgItem.visible
     }
     
     onExited: {
         mouseInside = false
-        //svgItemEffect.visible = false
     }
     
     // trigger close active window
     onClicked: {
+        controlButtonsArea.mouseInWidget = true
         if (bp === 4) {
             return;
         }

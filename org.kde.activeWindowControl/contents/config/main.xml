@@ -9,7 +9,13 @@
         <entry name="showControlButtons" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="doNotHideControlButtons" type="Bool">
+            <default>false</default>
+        </entry>
         <entry name="showMinimize" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="showMaximize" type="Bool">
             <default>false</default>
         </entry>
         <entry name="buttonsPosition" type="Enum">
@@ -24,8 +30,20 @@
         <entry name="buttonSize" type="Double">
             <default>0.4</default>
         </entry>
+        <entry name="controlButtonsSpacing" type="Double">
+            <default>10</default>
+        </entry>
         <entry name="horizontalScreenWidthPercent" type="Double">
             <default>0.12</default>
+        </entry>
+        <entry name="showWindowTitle" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="showWindowIcon" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="windowIconOnTheRight" type="Bool">
+            <default>false</default>
         </entry>
     </group>
     

@@ -5,11 +5,11 @@ ConfigModel {
     ConfigCategory {
          name: i18n("Appearance")
          icon: "preferences-desktop-color"
-         source: "ConfigAppearance.qml"
+         source: "config/ConfigAppearance.qml"
     }
     ConfigCategory {
          name: i18n("Mouse Control")
          icon: "preferences-desktop-mouse"
-         source: "ConfigMouseControl.qml"
+         source: "config/ConfigMouseControl.qml"
     }
 }

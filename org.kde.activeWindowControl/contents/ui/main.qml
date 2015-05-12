@@ -38,16 +38,19 @@ Item {
     Layout.maximumHeight: Layout.preferredHeight
     
     property bool noWindowVisible: true
-    property int controlButtonsSpacing: 10
+    property int controlButtonsSpacing: plasmoid.configuration.controlButtonsSpacing
     
     property int bp: plasmoid.configuration.buttonsPosition;
     property bool showControlButtons: plasmoid.configuration.showControlButtons
     property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
+    property bool showMaximize: showControlButtons && plasmoid.configuration.showMaximize
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
     property bool middleClickFullscreen: plasmoid.configuration.middleClickFullscreen
     property bool wheelUpMaximizes: plasmoid.configuration.wheelUpMaximizes
     property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
     property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
+    
+    property bool doNotHideControlButtons: plasmoid.configuration.doNotHideControlButtons
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -134,19 +137,22 @@ Item {
             PlasmaCore.IconItem {
                 id: iconItem
                 
+                anchors.left: parent.left
+                anchors.leftMargin: plasmoid.configuration.windowIconOnTheRight ? parent.width - iconItem.width : 0
+                
                 width: parent.height
                 height: parent.height
                 
                 source: DecorationRole
+                visible: plasmoid.configuration.showWindowIcon
             }
             
             // window title
             Text {
                 id: windowTitleText
-                anchors {
-                    left: iconItem.right
-                    verticalCenter: parent.verticalCenter
-                }
+                anchors.left: parent.left
+                anchors.leftMargin: plasmoid.configuration.windowIconOnTheRight ? 0 : iconItem.width
+                anchors.verticalCenter: parent.verticalCenter
                 text: DisplayRole
                 color: theme.textColor
                 wrapMode: Text.Wrap
@@ -154,6 +160,7 @@ Item {
                 width: parent.width - iconItem.width
                 elide: Text.ElideRight
                 font.pointSize: theme.defaultFont.pointSize
+                visible: plasmoid.configuration.showWindowTitle
             }
         }
     }
@@ -199,45 +206,83 @@ Item {
             }
         }
         
+        
+        ListView {
+            id: controlButtonsArea
+            
+            property bool mouseInWidget: false
+            
+            orientation: ListView.Horizontal
+            opacity: doNotHideControlButtons || (showControlButtons && mouseInWidget) ? 1 : 0
+            
+            spacing: controlButtonsSpacing
+            
+            height: parent.height * buttonSize
+            width: height + ((controlButtonsModel.count - 1) * (height + controlButtonsSpacing))
+            
+            anchors.top: parent.top
+            anchors.left: parent.left
+            
+            anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width : 0
+            anchors.topMargin: (bp === 2 || bp === 3) ? parent.height - height : 0
+            
+            model: controlButtonsModel
+            
+            delegate: ControlButton {
+            }
+        }
     }
     
-    Item {
-        id: controlButtonsArea
-        
-        visible: showControlButtons
-        
-        height: parent.height * buttonSize
-        width: height + (showMinimize ? height + controlButtonsSpacing : 0)
-        
-        anchors.top: parent.top
-        anchors.left: parent.left
-        
-        anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width : 0
-        anchors.topMargin: (bp === 2 || bp === 3) ? parent.height - height : 0
-        
-        property bool mouseInWidget: false
-        property bool mouseInside: mouseInWidget || closeButton.mouseInside || minimizeButton.mouseInside
-        
-        ControlButton {
-            id: closeButton
-            iconElementId: 'close'
+    ListModel {
+        id: controlButtonsModel
+    }
+    
+    function initializeControlButtonsModel() {
+        var preparedArray = []
+        preparedArray.push({
+            iconElementId: 'close',
             windowOperation: 'close'
-            
-            anchors.leftMargin: parent.anchors.leftMargin > 0 && showMinimize ? parent.height + controlButtonsSpacing : 0
-            
-            visible: true
+        })
+        if (showMaximize) {
+            preparedArray.push({
+                iconElementId: 'maximize',
+                windowOperation: 'toggleMaximized'
+            })
+        }
+        if (showMinimize) {
+            preparedArray.push({
+                iconElementId: 'remove',
+                windowOperation: 'toggleMinimized'
+            })
         }
         
-        ControlButton {
-            id: minimizeButton
-            iconElementId: 'remove'
-            windowOperation: 'toggleMinimized'
-            
-            anchors.leftMargin: parent.anchors.leftMargin > 0 && showMinimize ? 0 : parent.height + controlButtonsSpacing
-            
-            visible: showMinimize
-        }
+        controlButtonsModel.clear()
         
+        if (bp === 1 || bp === 3) {
+            for (var i = preparedArray.length - 1; i >= 0; i--) {
+                controlButtonsModel.append(preparedArray[i])
+            }
+        } else {
+            for (var i = 0; i < preparedArray.length; i++) {
+                controlButtonsModel.append(preparedArray[i])
+            }
+        }
+    }
+    
+    Component.onCompleted: {
+        initializeControlButtonsModel()
+    }
+    
+    onShowMaximizeChanged: {
+        initializeControlButtonsModel()
+    }
+    
+    onShowMinimizeChanged: {
+        initializeControlButtonsModel()
+    }
+    
+    onBpChanged: {
+        initializeControlButtonsModel()
     }
     
 }
