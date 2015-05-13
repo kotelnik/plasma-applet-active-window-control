@@ -8,6 +8,11 @@ ConfigModel {
          source: "config/ConfigAppearance.qml"
     }
     ConfigCategory {
+         name: i18n("Buttons")
+         icon: "preferences-activities"
+         source: "config/ConfigButtons.qml"
+    }
+    ConfigCategory {
          name: i18n("Mouse Control")
          icon: "preferences-desktop-mouse"
          source: "config/ConfigMouseControl.qml"
