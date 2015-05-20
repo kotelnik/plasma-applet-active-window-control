@@ -25,6 +25,10 @@ Item {
             wheelDownActionGroup.current = wheelDownDisabledRadio;
         }
     }
+    
+    Component.onCompleted: {
+        cfg_wheelDownActionChanged()
+    }
 
     ExclusiveGroup {
         id: wheelDownActionGroup

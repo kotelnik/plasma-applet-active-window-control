@@ -20,16 +20,22 @@ Item {
         case 0:
             buttonsPositionGroup.current = upperLeftRadio;
             break;
+        case 1:
+            buttonsPositionGroup.current = upperRightRadio;
+            break;
         case 2:
             buttonsPositionGroup.current = bottomLeftRadio;
             break;
         case 3:
             buttonsPositionGroup.current = bottomRightRadio;
             break;
-        case 1:
         default:
-            buttonsPositionGroup.current = upperRightRadio;
+            buttonsPositionGroup.current = upperLeftRadio;
         }
+    }
+    
+    Component.onCompleted: {
+        cfg_buttonsPositionChanged()
     }
 
     ExclusiveGroup {
