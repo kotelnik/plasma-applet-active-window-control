@@ -34,7 +34,7 @@
             <default>10</default>
         </entry>
         <entry name="horizontalScreenWidthPercent" type="Double">
-            <default>0.12</default>
+            <default>0.2</default>
         </entry>
         <entry name="showWindowTitle" type="Bool">
             <default>true</default>
