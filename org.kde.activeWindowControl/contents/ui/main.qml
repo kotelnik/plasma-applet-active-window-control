@@ -116,7 +116,7 @@ Item {
         width: parent.width - 10
         elide: Text.ElideRight
         
-        visible: noWindowVisible
+        visible: noWindowVisible && plasmoid.configuration.showWindowTitle
     }
 
     //
