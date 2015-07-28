@@ -8,9 +8,29 @@ Item {
     height: childrenRect.height
 
     property alias cfg_doubleClickMaximizes: doubleClickMaximizes.checked
+    property int cfg_leftClickAction
+    
+    
     property alias cfg_middleClickFullscreen: middleClickFullscreen.checked
     property alias cfg_wheelUpMaximizes: wheelUpMaximizes.checked
     property int cfg_wheelDownAction
+    
+    onCfg_leftClickActionChanged: {
+        switch (cfg_leftClickAction) {
+        case 1:
+            leftClickActionGroup.current = leftClickExposeRadio;
+            break;
+        case 2:
+            leftClickActionGroup.current = leftClickExposeAllRadio;
+            break;
+        case 3:
+            leftClickActionGroup.current = leftClickExposeClassRadio;
+            break;
+        case 0:
+        default:
+            leftClickActionGroup.current = leftClickDisabledRadio;
+        }
+    }
 
     onCfg_wheelDownActionChanged: {
         switch (cfg_wheelDownAction) {
@@ -27,7 +47,12 @@ Item {
     }
     
     Component.onCompleted: {
+        cfg_leftClickActionChanged()
         cfg_wheelDownActionChanged()
+    }
+    
+    ExclusiveGroup {
+        id: leftClickActionGroup
     }
 
     ExclusiveGroup {
@@ -45,7 +70,42 @@ Item {
         CheckBox {
             id: doubleClickMaximizes
             text: i18n("Doubleclick to toggle maximizing")
+            onCheckedChanged: if (checked) leftClickDisabledRadio.checked = true
         }
+        Item {
+            width: 2
+            height: 2
+            Layout.rowSpan: 4
+        }
+        RadioButton {
+            id: leftClickDisabledRadio
+            exclusiveGroup: leftClickActionGroup
+            text: i18n("Left click disabled")
+            onCheckedChanged: if (checked) cfg_leftClickAction = 0;
+            enabled: !doubleClickMaximizes.checked
+        }
+        RadioButton {
+            id: leftClickExposeRadio
+            exclusiveGroup: leftClickActionGroup
+            text: i18n("Left click to present windows (Current Desktop)")
+            onCheckedChanged: if (checked) cfg_leftClickAction = 1;
+            enabled: !doubleClickMaximizes.checked
+        }
+        RadioButton {
+            id: leftClickExposeAllRadio
+            exclusiveGroup: leftClickActionGroup
+            text: i18n("Left click to present windows (All Desktops)")
+            onCheckedChanged: if (checked) cfg_leftClickAction = 2;
+            enabled: !doubleClickMaximizes.checked
+        }
+        RadioButton {
+            id: leftClickExposeClassRadio
+            exclusiveGroup: leftClickActionGroup
+            text: i18n("Left click to present windows (Window Class)")
+            onCheckedChanged: if (checked) cfg_leftClickAction = 3;
+            enabled: !doubleClickMaximizes.checked
+        }
+        
         Item {
             width: 2
             height: 2

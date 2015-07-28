@@ -45,6 +45,8 @@ Item {
     property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
     property bool showMaximize: showControlButtons && plasmoid.configuration.showMaximize
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
+    property int leftClickAction: plasmoid.configuration.leftClickAction
+    property string chosenLeftClickSource: leftClickAction === 1 ? shortcutDS.presentWindows : leftClickAction === 2 ? shortcutDS.presentWindowsAll : leftClickAction === 3 ? shortcutDS.presentWindowsClass : ''
     property bool middleClickFullscreen: plasmoid.configuration.middleClickFullscreen
     property bool wheelUpMaximizes: plasmoid.configuration.wheelUpMaximizes
     property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
@@ -195,12 +197,17 @@ Item {
         }
         
         onDoubleClicked: {
-            if (mouse.button == Qt.LeftButton && doubleClickMaximizes) {
+            if (doubleClickMaximizes && mouse.button == Qt.LeftButton) {
                 toggleMaximized()
             }
         }
         
         onClicked: {
+            if (chosenLeftClickSource !== '' && !doubleClickMaximizes && mouse.button == Qt.LeftButton) {
+                shortcutDS.connectedSources.push(chosenLeftClickSource)
+                controlButtonsArea.mouseInWidget = false
+                return
+            }
             if (mouse.button == Qt.MiddleButton && middleClickFullscreen) {
                 toggleFullscreen()
             }
@@ -283,6 +290,21 @@ Item {
     
     onBpChanged: {
         initializeControlButtonsModel()
+    }
+    
+    PlasmaCore.DataSource {
+        id: shortcutDS
+        engine: 'executable'
+        
+        property string presentWindows: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Expose"'
+        property string presentWindowsAll: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "ExposeAll"'
+        property string presentWindowsClass: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "ExposeClass"'
+
+        connectedSources: []
+        
+        onNewData: {
+            connectedSources.length = 0
+        }
     }
     
 }
