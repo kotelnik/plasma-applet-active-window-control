@@ -37,11 +37,20 @@ Item {
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
     
+    property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
+    property bool buttonsStandalone: plasmoid.configuration.buttonsStandalone
+    property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
+    
     property bool noWindowVisible: true
+    property bool currentWindowMaximized: false
+    property bool canShowButtonsAccordingMaximized: showButtonOnlyWhenMaximized ? currentWindowMaximized : true
+    
     property int controlButtonsSpacing: plasmoid.configuration.controlButtonsSpacing
     
     property int bp: plasmoid.configuration.buttonsPosition;
+    property bool buttonsVerticalCenter: plasmoid.configuration.buttonsVerticalCenter
     property bool showControlButtons: plasmoid.configuration.showControlButtons
+    property bool showButtonOnlyWhenMaximized: plasmoid.configuration.showButtonOnlyWhenMaximized
     property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
     property bool showMaximize: showControlButtons && plasmoid.configuration.showMaximize
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
@@ -55,6 +64,8 @@ Item {
     property bool doNotHideControlButtons: plasmoid.configuration.doNotHideControlButtons
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+    
+    
 
     //
     // MODEL
@@ -75,7 +86,15 @@ Item {
         sourceModel: tasksSource.models.tasks
         onCountChanged: {
             noWindowVisible = count === 0
+            updateCurrentWindowMaximized()
         }
+        onDataChanged: {
+            updateCurrentWindowMaximized()
+        }
+    }
+    
+    function updateCurrentWindowMaximized() {
+        currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).Maximized
     }
     
     function toggleMaximized() {
@@ -120,14 +139,36 @@ Item {
         
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
     }
-
+    
+    
     //
     // ACTIVE WINDOW INFO
     //
     ListView {
         id: activeWindowListView
-        anchors.fill: parent
-        width: parent.width
+        
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        
+        anchors.left: parent.left
+        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget) && canShowButtonsAccordingMaximized ? controlButtonsArea.width : 0
+        anchors.right: parent.right
+        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget) && canShowButtonsAccordingMaximized ? controlButtonsArea.width : 0
+        
+        Behavior on anchors.leftMargin {
+            NumberAnimation {
+                duration: 150
+                easing.type: Easing.Linear
+            }
+        }
+        Behavior on anchors.rightMargin {
+            NumberAnimation {
+                duration: 150
+                easing.type: Easing.Linear
+            }
+        }
+        
+        width: parent.width - anchors.leftMargin - anchors.rightMargin
         
         model: activeWindowModel
         
@@ -140,7 +181,7 @@ Item {
                 id: iconItem
                 
                 anchors.left: parent.left
-                anchors.leftMargin: plasmoid.configuration.windowIconOnTheRight ? parent.width - iconItem.width : 0
+                anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width : 0
                 
                 width: parent.height
                 height: parent.height
@@ -153,7 +194,7 @@ Item {
             Text {
                 id: windowTitleText
                 anchors.left: parent.left
-                anchors.leftMargin: plasmoid.configuration.windowIconOnTheRight ? 0 : iconItem.width
+                anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width
                 anchors.verticalCenter: parent.verticalCenter
                 text: DisplayRole
                 color: theme.textColor
@@ -218,14 +259,15 @@ Item {
             id: controlButtonsArea
             
             property bool mouseInWidget: false
+            property double controlButtonsHeight: parent.height * buttonSize
             
             orientation: ListView.Horizontal
-            opacity: doNotHideControlButtons || (showControlButtons && mouseInWidget) ? 1 : 0
+            opacity: (doNotHideControlButtons || (showControlButtons && mouseInWidget)) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) ? 1 : 0
             
             spacing: controlButtonsSpacing
             
-            height: parent.height * buttonSize
-            width: height + ((controlButtonsModel.count - 1) * (height + controlButtonsSpacing))
+            height: buttonsVerticalCenter ? parent.height : controlButtonsHeight
+            width: controlButtonsHeight + ((controlButtonsModel.count - 1) * (controlButtonsHeight + controlButtonsSpacing))
             
             anchors.top: parent.top
             anchors.left: parent.left
@@ -235,8 +277,7 @@ Item {
             
             model: controlButtonsModel
             
-            delegate: ControlButton {
-            }
+            delegate: ControlButton { }
         }
     }
     
@@ -245,20 +286,21 @@ Item {
     }
     
     function initializeControlButtonsModel() {
+        
         var preparedArray = []
         preparedArray.push({
-            iconElementId: 'close',
+            iconName: 'close',
             windowOperation: 'close'
         })
         if (showMaximize) {
             preparedArray.push({
-                iconElementId: 'maximize',
+                iconName: 'maximize',
                 windowOperation: 'toggleMaximized'
             })
         }
         if (showMinimize) {
             preparedArray.push({
-                iconElementId: 'remove',
+                iconName: 'minimize',
                 windowOperation: 'toggleMinimized'
             })
         }

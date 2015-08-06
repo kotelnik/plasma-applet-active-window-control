@@ -24,8 +24,9 @@ Item {
             id: horizontalScreenWidthPercent
             stepSize: 0.001
             minimumValue: 0.001
+            maximumValue: 1
             value: 0.12
-            Layout.preferredWidth: 800
+            Layout.preferredWidth: 500
         }
         
         Item {

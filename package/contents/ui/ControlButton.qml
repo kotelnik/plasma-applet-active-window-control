@@ -15,39 +15,35 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 import QtQuick 2.2
-import QtGraphicalEffects 1.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
     id: controlButton
     
     height: controlButtonsArea.height
-    width: height
+    width: controlButtonsArea.controlButtonsHeight
     
     property bool mouseInside: false
+    property bool mousePressed: false
+    
+    property string themeName: theme.themeName
+    property string buttonImagePath: Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
+    
+    PlasmaCore.Svg {
+        id: buttonSvg
+        imagePath: buttonImagePath
+    }
     
     // icon
     PlasmaCore.SvgItem {
         id: svgItem
         width: parent.width
         height: width
-        svg: PlasmaCore.Svg {
-            //prefix is: /usr/share/plasma/desktoptheme/default/
-            imagePath: 'widgets/configuration-icons'
-        }
-        elementId: iconElementId
+        svg: buttonSvg
+        elementId: mouseInside ? 'pressed-center' : 'active-center';
+        anchors.verticalCenter: parent.verticalCenter
     }
-    
-    // icon has now better visibility
-    BrightnessContrast {
-        id: svgItemEffect
-        anchors.fill: svgItem
-        source: svgItem
-        brightness: 0.5
-        contrast: 0.5
-        visible: mouseInside
-    }
-    
+        
     hoverEnabled: true
     
     onEntered: {
