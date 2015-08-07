@@ -151,9 +151,9 @@ Item {
         anchors.bottom: parent.bottom
         
         anchors.left: parent.left
-        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget) && canShowButtonsAccordingMaximized ? controlButtonsArea.width : 0
+        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
         anchors.right: parent.right
-        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget) && canShowButtonsAccordingMaximized ? controlButtonsArea.width : 0
+        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
         
         Behavior on anchors.leftMargin {
             NumberAnimation {
