@@ -26,7 +26,7 @@ MouseArea {
     property bool mouseInside: false
     property bool mousePressed: false
     
-    property string themeName: theme.themeName
+    property string themeName: theme.themeName === 'breeze-dark' || theme.themeName === 'oxygen' ? 'breeze-dark' : 'default'
     property string buttonImagePath: Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
     
     PlasmaCore.Svg {
