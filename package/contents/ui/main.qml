@@ -38,7 +38,6 @@ Item {
     Layout.maximumHeight: Layout.preferredHeight
     
     property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
-    property bool buttonsStandalone: plasmoid.configuration.buttonsStandalone
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
     
     property bool noWindowVisible: true
@@ -61,7 +60,8 @@ Item {
     property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
     property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
     
-    property bool doNotHideControlButtons: plasmoid.configuration.doNotHideControlButtons
+    property bool buttonsStandalone: showControlButtons && plasmoid.configuration.buttonsStandalone
+    property bool doNotHideControlButtons: showControlButtons && plasmoid.configuration.doNotHideControlButtons
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
     
@@ -205,6 +205,7 @@ Item {
                 font.pointSize: theme.defaultFont.pointSize
                 visible: plasmoid.configuration.showWindowTitle
             }
+            
         }
     }
 
