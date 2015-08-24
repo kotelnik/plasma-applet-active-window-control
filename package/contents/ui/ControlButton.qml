@@ -60,9 +60,6 @@ MouseArea {
         if (bp === 4) {
             return;
         }
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription(windowOperation)
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        service.startOperationCall(operation)
+        main.performActiveWindowAction(windowOperation)
     }
 }

@@ -38,6 +38,7 @@ Item {
     Layout.maximumHeight: Layout.preferredHeight
     
     property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
+    property double iconAndTextSpacing: plasmoid.configuration.iconAndTextSpacing
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
     
     property bool noWindowVisible: true
@@ -194,13 +195,13 @@ Item {
             Text {
                 id: windowTitleText
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width
+                anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width + iconAndTextSpacing
                 anchors.verticalCenter: parent.verticalCenter
                 text: DisplayRole
                 color: theme.textColor
                 wrapMode: Text.Wrap
                 maximumLineCount: Math.max(1, Math.round(parent.height / (theme.defaultFont.pointSize * 2)))
-                width: parent.width - iconItem.width
+                width: parent.width - iconItem.width - iconAndTextSpacing
                 elide: Text.ElideRight
                 font.pointSize: theme.defaultFont.pointSize
                 visible: plasmoid.configuration.showWindowTitle
@@ -319,8 +320,30 @@ Item {
         }
     }
     
+    function performActiveWindowAction(windowOperation) {
+        var service = tasksSource.serviceForSource('tasks')
+        var operation = service.operationDescription(windowOperation)
+        operation.Id = tasksSource.models.tasks.activeTaskId()
+        service.startOperationCall(operation)
+    }
+    
+    function action_close() {
+        performActiveWindowAction('close')
+    }
+    
+    function action_maximise() {
+        performActiveWindowAction('toggleMaximized')
+    }
+    
+    function action_minimise() {
+        performActiveWindowAction('toggleMinimized')
+    }
+    
     Component.onCompleted: {
         initializeControlButtonsModel()
+        plasmoid.setAction("close", i18n("Close"));
+        plasmoid.setAction("maximise", i18n("Toggle Maximise"));
+        plasmoid.setAction("minimise", i18n("Minimise"));
     }
     
     onShowMaximizeChanged: {
@@ -349,5 +372,5 @@ Item {
             connectedSources.length = 0
         }
     }
-    
+
 }
