@@ -341,9 +341,9 @@ Item {
     
     Component.onCompleted: {
         initializeControlButtonsModel()
-        plasmoid.setAction("close", i18n("Close"));
-        plasmoid.setAction("maximise", i18n("Toggle Maximise"));
-        plasmoid.setAction("minimise", i18n("Minimise"));
+        plasmoid.setAction('close', i18n('Close'), 'window-close');
+        plasmoid.setAction('maximise', i18n('Toggle Maximise'), 'arrow-up-double');
+        plasmoid.setAction('minimise', i18n('Minimise'), 'draw-arrow-down');
     }
     
     onShowMaximizeChanged: {
