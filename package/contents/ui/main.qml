@@ -265,6 +265,7 @@ Item {
             
             orientation: ListView.Horizontal
             opacity: (doNotHideControlButtons || (showControlButtons && mouseInWidget)) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) ? 1 : 0
+            visible: showControlButtons
             
             spacing: controlButtonsSpacing
             
