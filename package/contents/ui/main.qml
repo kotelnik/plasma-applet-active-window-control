@@ -33,7 +33,7 @@ Item {
     Layout.preferredWidth: vertical ? parent.width : Screen.width * horizontalScreenWidthPercent
     Layout.minimumWidth: Layout.preferredWidth
     Layout.maximumWidth: Layout.preferredWidth
-    Layout.preferredHeight: vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
+    Layout.preferredHeight: parent === null ? 0 : vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
     
@@ -84,7 +84,7 @@ Item {
         id: activeWindowModel
         filterRole: 'Active'
         filterRegExp: 'true'
-        sourceModel: tasksSource.models.tasks
+        sourceModel: tasksSource.models.tasks === undefined ? null : tasksSource.models.tasks
         onCountChanged: {
             noWindowVisible = count === 0
             updateCurrentWindowMaximized()
