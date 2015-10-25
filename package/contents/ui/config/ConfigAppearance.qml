@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 1.0
+import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
 Item {
@@ -14,6 +14,7 @@ Item {
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
     
     property alias cfg_iconAndTextSpacing: iconAndTextSpacing.value
+    property alias cfg_noWindowTextMargin: noWindowTextMargin.value
 
     GridLayout {
         columns: 2
@@ -69,7 +70,7 @@ Item {
             
             Label {
                 text: i18n("Icon and text spacing:")
-                Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
             }
             SpinBox {
                 id: iconAndTextSpacing
@@ -77,6 +78,24 @@ Item {
                 stepSize: 0.5
                 minimumValue: 0.5
                 maximumValue: 300
+            }
+            
+            Item {
+                width: 2
+                height: 10
+                Layout.columnSpan: 2
+            }
+            
+            Label {
+                text: i18n("'Plasma Desktop' text margin:")
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+            }
+            SpinBox {
+                id: noWindowTextMargin
+                decimals: 1
+                stepSize: 0.5
+                minimumValue: 0
+                maximumValue: 1000
             }
         }
     }

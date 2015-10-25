@@ -20,6 +20,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components 2.0 as PlasmaComponents
 
 Item {
     id: main
@@ -63,6 +64,10 @@ Item {
     
     property bool buttonsStandalone: showControlButtons && plasmoid.configuration.buttonsStandalone
     property bool doNotHideControlButtons: showControlButtons && plasmoid.configuration.doNotHideControlButtons
+    
+    property double noWindowTextMargin: plasmoid.configuration.noWindowTextMargin
+    
+    property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
     
@@ -128,16 +133,14 @@ Item {
         service.startOperationCall(operation)
     }
     
-    Text {
+    PlasmaComponents.Label {
         id: noWindowText
         anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 10
+        anchors.leftMargin: noWindowTextMargin
         anchors.left: parent.left
         text: i18n('Plasma Desktop')
-        color: theme.textColor
-        width: parent.width - 10
+        width: parent.width - noWindowTextMargin
         elide: Text.ElideRight
-        
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
     }
     
@@ -192,18 +195,16 @@ Item {
             }
             
             // window title
-            Text {
+            PlasmaComponents.Label {
                 id: windowTitleText
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width + iconAndTextSpacing
                 anchors.verticalCenter: parent.verticalCenter
                 text: DisplayRole
-                color: theme.textColor
                 wrapMode: Text.Wrap
                 maximumLineCount: Math.max(1, Math.round(parent.height / (theme.defaultFont.pointSize * 2)))
                 width: parent.width - iconItem.width - iconAndTextSpacing
                 elide: Text.ElideRight
-                font.pointSize: theme.defaultFont.pointSize
                 visible: plasmoid.configuration.showWindowTitle
             }
             
