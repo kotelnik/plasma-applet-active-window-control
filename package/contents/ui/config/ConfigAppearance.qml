@@ -14,7 +14,6 @@ Item {
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
     
     property alias cfg_iconAndTextSpacing: iconAndTextSpacing.value
-    property alias cfg_noWindowTextMargin: noWindowTextMargin.value
     
     GridLayout {
         columns: 2
@@ -103,24 +102,6 @@ Item {
                 stepSize: 0.5
                 minimumValue: 0.5
                 maximumValue: 300
-            }
-            
-            Item {
-                width: 2
-                height: 10
-                Layout.columnSpan: 2
-            }
-            
-            Label {
-                text: i18n("'Plasma Desktop' text margin:")
-                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
-            }
-            SpinBox {
-                id: noWindowTextMargin
-                decimals: 1
-                stepSize: 0.5
-                minimumValue: 0
-                maximumValue: 1000
             }
         }
     }

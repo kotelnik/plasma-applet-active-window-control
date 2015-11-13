@@ -67,8 +67,6 @@ Item {
     property bool buttonsStandalone: showControlButtons && plasmoid.configuration.buttonsStandalone
     property bool doNotHideControlButtons: showControlButtons && plasmoid.configuration.doNotHideControlButtons
     
-    property double noWindowTextMargin: plasmoid.configuration.noWindowTextMargin
-    
     property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
     
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
@@ -137,11 +135,12 @@ Item {
     
     PlasmaComponents.Label {
         id: noWindowText
+        property double noWindowTextMargin: (parent.height - implicitHeight) / 2
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: noWindowTextMargin
         anchors.left: parent.left
         text: i18n('Plasma Desktop')
-        width: parent.width - noWindowTextMargin
+        width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
     }
