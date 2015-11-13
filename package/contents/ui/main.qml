@@ -29,9 +29,11 @@ Item {
     
     property double horizontalScreenWidthPercent: plasmoid.configuration.horizontalScreenWidthPercent
     property double buttonSize: plasmoid.configuration.buttonSize
+    property bool autoFillWidth: plasmoid.configuration.autoFillWidth
     
     anchors.fill: parent
-    Layout.preferredWidth: vertical ? parent.width : Screen.width * horizontalScreenWidthPercent
+    Layout.fillWidth: plasmoid.configuration.autoFillWidth
+    Layout.preferredWidth: autoFillWidth ? -1 : (vertical ? parent.width : (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning))
     Layout.minimumWidth: Layout.preferredWidth
     Layout.maximumWidth: Layout.preferredWidth
     Layout.preferredHeight: parent === null ? 0 : vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
