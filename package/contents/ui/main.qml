@@ -200,7 +200,9 @@ Item {
                 id: windowTitleText
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width + iconAndTextSpacing
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                verticalAlignment: Text.AlignVCenter
                 text: DisplayRole
                 wrapMode: Text.Wrap
                 maximumLineCount: Math.max(1, Math.round(parent.height / (theme.defaultFont.pointSize * 2)))
