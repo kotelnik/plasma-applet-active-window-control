@@ -43,6 +43,7 @@ Item {
     property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
     property double iconAndTextSpacing: plasmoid.configuration.iconAndTextSpacing
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
+    property double fontPixelSize: theme.defaultFont.pixelSize * plasmoid.configuration.fontSizeScale
     
     property bool noWindowVisible: true
     property bool currentWindowMaximized: false
@@ -205,10 +206,11 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 text: DisplayRole
                 wrapMode: Text.Wrap
-                maximumLineCount: Math.max(1, Math.round(parent.height / (theme.defaultFont.pointSize * 2)))
+                maximumLineCount: Math.max(1, Math.round(parent.height / (fontPixelSize * 1.5)))
                 width: parent.width - iconItem.width - iconAndTextSpacing
                 elide: Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
+                font.pixelSize: fontPixelSize
             }
             
         }

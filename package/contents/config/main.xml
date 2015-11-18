@@ -67,6 +67,9 @@
         <entry name="iconAndTextSpacing" type="Double">
             <default>5</default>
         </entry>
+        <entry name="fontSizeScale" type="Double">
+            <default>1</default>
+        </entry>
     </group>
     
     <group name="MouseControl">

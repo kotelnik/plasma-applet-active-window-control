@@ -14,6 +14,7 @@ Item {
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
     
     property alias cfg_iconAndTextSpacing: iconAndTextSpacing.value
+    property alias cfg_fontSizeScale: fontSizeScale.value
     
     GridLayout {
         columns: 2
@@ -103,7 +104,20 @@ Item {
                 minimumValue: 0.5
                 maximumValue: 300
             }
+            
+            Label {
+                text: i18n("Font size scale:")
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+            }
+            SpinBox {
+                id: fontSizeScale
+                decimals: 1
+                stepSize: 0.1
+                minimumValue: 0
+                maximumValue: 3
+            }
         }
+        
     }
     
 }
