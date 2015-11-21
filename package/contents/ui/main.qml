@@ -141,6 +141,7 @@ Item {
         anchors.leftMargin: noWindowTextMargin
         anchors.left: parent.left
         text: i18n('Plasma Desktop')
+        font.pixelSize: fontPixelSize
         width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
