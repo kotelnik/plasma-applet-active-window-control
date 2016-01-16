@@ -142,6 +142,7 @@ Item {
         anchors.left: parent.left
         text: i18n('Plasma Desktop')
         font.pixelSize: fontPixelSize
+        font.pointSize: -1
         width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
@@ -212,6 +213,7 @@ Item {
                 elide: Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
+                font.pointSize: -1
             }
             
         }
