@@ -18,6 +18,7 @@ Item {
     property alias cfg_showMaximize: showMaximize.checked
     property alias cfg_buttonSize: buttonSize.value
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
+    property alias cfg_buttonsDynamicWidth: buttonsDynamicWidth.checked
     
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -37,7 +38,7 @@ Item {
             buttonsPositionGroup.current = upperLeftRadio;
         }
     }
-    
+
     Component.onCompleted: {
         cfg_buttonsPositionChanged()
     }
@@ -45,83 +46,88 @@ Item {
     ExclusiveGroup {
         id: buttonsPositionGroup
     }
-        
+
     GroupBox {
         id: showControlButtons
         title: i18n("Enable Control Buttons")
         checkable: true
         flat: true
-        
+
         GridLayout {
             columns: 2
-            
+
             Item {
                 width: 2
                 height: 10
                 Layout.columnSpan: 2
             }
-            
+
             Item {
                 width: 2
                 height: 2
                 Layout.rowSpan: 2
             }
-            
+
             CheckBox {
                 id: showMinimize
                 text: i18n("Show minimize button")
             }
-            
+
             CheckBox {
                 id: showMaximize
                 text: i18n("Show maximize button")
             }
-            
+
             Item {
                 width: 2
                 height: 10
                 Layout.columnSpan: 2
             }
-            
+
             Label {
                 text: i18n("Behaviour:")
                 Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
             }
-            
+
             CheckBox {
                 id: doNotHideControlButtons
                 text: i18n("Do not hide on mouse out")
             }
-            
+
             Item {
                 width: 2
                 height: 2
                 Layout.rowSpan: 3
             }
-            
+
             CheckBox {
                 id: showButtonOnlyWhenMaximized
                 text: i18n("Show only when maximized")
             }
-            
-            CheckBox {
+
+            GroupBox {
                 id: buttonsStandalone
-                text: i18n("Buttons next to icon and text")
+                title: i18n("Buttons next to icon and text")
+                checkable: true
+                flat: true
+                    CheckBox {
+                        id: buttonsDynamicWidth
+                        text: i18n("Dynamic Width")
+                    }
             }
-            
             CheckBox {
                 id: slidingIconAndText
                 text: i18n("Sliding icon and text")
                 enabled: buttonsStandalone.checked
             }
-            
-            
+
+
             Item {
                 width: 2
                 height: 10
                 Layout.columnSpan: 2
             }
-            
+
             Label {
                 text: i18n("Position:")
                 Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
@@ -155,18 +161,18 @@ Item {
                 text: i18n("Bottom right")
                 onCheckedChanged: if (checked) cfg_buttonsPosition = 3;
             }
-            
+
             CheckBox {
                 id: buttonsVerticalCenter
                 text: i18n("Vertical center")
             }
-            
+
             Item {
                 width: 2
                 height: 10
                 Layout.columnSpan: 2
             }
-            
+
             Label {
                 text: i18n("Button size:")
                 Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
@@ -178,7 +184,7 @@ Item {
                 tickmarksEnabled: true
                 width: parent.width
             }
-            
+
             Label {
                 text: i18n("Buttons spacing:")
                 Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
@@ -193,6 +199,6 @@ Item {
             }
         }
     }
-        
-    
+
+
 }
