@@ -12,13 +12,13 @@ Item {
     property int cfg_buttonsPosition
     property alias cfg_buttonsVerticalCenter: buttonsVerticalCenter.checked
     property alias cfg_buttonsStandalone: buttonsStandalone.checked
+    property alias cfg_buttonsDynamicWidth: buttonsDynamicWidth.checked
     property alias cfg_slidingIconAndText: slidingIconAndText.checked
     property alias cfg_showButtonOnlyWhenMaximized: showButtonOnlyWhenMaximized.checked
     property alias cfg_showMinimize: showMinimize.checked
     property alias cfg_showMaximize: showMaximize.checked
     property alias cfg_buttonSize: buttonSize.value
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
-    property alias cfg_buttonsDynamicWidth: buttonsDynamicWidth.checked
 
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -97,7 +97,7 @@ Item {
             Item {
                 width: 2
                 height: 2
-                Layout.rowSpan: 3
+                Layout.rowSpan: 4
             }
 
             CheckBox {
@@ -105,16 +105,17 @@ Item {
                 text: i18n("Show only when maximized")
             }
 
-            GroupBox {
+            CheckBox {
                 id: buttonsStandalone
-                title: i18n("Buttons next to icon and text")
-                checkable: true
-                flat: true
-                    CheckBox {
-                        id: buttonsDynamicWidth
-                        text: i18n("Dynamic Width")
-                    }
+                text: i18n("Buttons next to icon and text")
             }
+
+            CheckBox {
+                id: buttonsDynamicWidth
+                text: i18n("Dynamic width")
+                enabled: buttonsStandalone.checked
+            }
+
             CheckBox {
                 id: slidingIconAndText
                 text: i18n("Sliding icon and text")
