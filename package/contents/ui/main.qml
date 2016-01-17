@@ -24,33 +24,33 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 
 Item {
     id: main
-    
+
     property bool vertical: (plasmoid.formFactor == PlasmaCore.Types.Vertical)
-    
+
     property double horizontalScreenWidthPercent: plasmoid.configuration.horizontalScreenWidthPercent
     property double buttonSize: plasmoid.configuration.buttonSize
     property bool autoFillWidth: plasmoid.configuration.autoFillWidth
-    
+    property double _Width: (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning) - ((!controlButtonsArea.opacity && buttonsStandalone && plasmoid.configuration.buttonsDynamicWidth)? controlButtonsArea.width : 0)
     anchors.fill: parent
     Layout.fillWidth: plasmoid.configuration.autoFillWidth
-    Layout.preferredWidth: autoFillWidth ? -1 : (vertical ? parent.width : (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning))
+    Layout.preferredWidth: autoFillWidth ? -1 : (vertical ? parent.width : (_Width > 0 ? _Width : 0.0001))
     Layout.minimumWidth: Layout.preferredWidth
     Layout.maximumWidth: Layout.preferredWidth
     Layout.preferredHeight: parent === null ? 0 : vertical ? Math.min(theme.defaultFont.pointSize * 4, parent.width) : parent.height
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
-    
+
     property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
     property double iconAndTextSpacing: plasmoid.configuration.iconAndTextSpacing
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
     property double fontPixelSize: theme.defaultFont.pixelSize * plasmoid.configuration.fontSizeScale
-    
+
     property bool noWindowVisible: true
     property bool currentWindowMaximized: false
     property bool canShowButtonsAccordingMaximized: showButtonOnlyWhenMaximized ? currentWindowMaximized : true
-    
+
     property int controlButtonsSpacing: plasmoid.configuration.controlButtonsSpacing
-    
+
     property int bp: plasmoid.configuration.buttonsPosition;
     property bool buttonsVerticalCenter: plasmoid.configuration.buttonsVerticalCenter
     property bool showControlButtons: plasmoid.configuration.showControlButtons
@@ -64,15 +64,15 @@ Item {
     property bool wheelUpMaximizes: plasmoid.configuration.wheelUpMaximizes
     property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
     property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
-    
+
     property bool buttonsStandalone: showControlButtons && plasmoid.configuration.buttonsStandalone
     property bool doNotHideControlButtons: showControlButtons && plasmoid.configuration.doNotHideControlButtons
-    
+
     property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
-    
+
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
-    
-    
+
+
 
     //
     // MODEL
@@ -99,25 +99,25 @@ Item {
             updateCurrentWindowMaximized()
         }
     }
-    
+
     function updateCurrentWindowMaximized() {
         currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).Maximized
     }
-    
+
     function toggleMaximized() {
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription('toggleMaximized')
         operation.Id = tasksSource.models.tasks.activeTaskId()
         service.startOperationCall(operation)
     }
-    
+
     function toggleFullscreen() {
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription('toggleFullScreen')
         operation.Id = tasksSource.models.tasks.activeTaskId()
         service.startOperationCall(operation)
     }
-    
+
     function setMaximized(maximized) {
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription('setMaximized')
@@ -125,7 +125,7 @@ Item {
         operation.maximized = maximized
         service.startOperationCall(operation)
     }
-    
+
     function setMinimized() {
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription('setMinimized')
@@ -133,7 +133,7 @@ Item {
         operation.minimized = true
         service.startOperationCall(operation)
     }
-    
+
     PlasmaComponents.Label {
         id: noWindowText
         property double noWindowTextMargin: (parent.height - implicitHeight) / 2
@@ -147,22 +147,22 @@ Item {
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
     }
-    
-    
+
+
     //
     // ACTIVE WINDOW INFO
     //
     ListView {
         id: activeWindowListView
-        
+
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        
+
         anchors.left: parent.left
         anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
         anchors.right: parent.right
         anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
-        
+
         Behavior on anchors.leftMargin {
             NumberAnimation {
                 duration: 150
@@ -175,29 +175,29 @@ Item {
                 easing.type: Easing.Linear
             }
         }
-        
+
         width: parent.width - anchors.leftMargin - anchors.rightMargin
-        
+
         model: activeWindowModel
-        
+
         delegate: Item {
             width: parent.width
             height: main.height
-            
+
             // window icon
             PlasmaCore.IconItem {
                 id: iconItem
-                
+
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width : 0
-                
+
                 width: parent.height
                 height: parent.height
-                
+
                 source: DecorationRole
                 visible: plasmoid.configuration.showWindowIcon
             }
-            
+
             // window title
             PlasmaComponents.Label {
                 id: windowTitleText
@@ -215,25 +215,25 @@ Item {
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
             }
-            
+
         }
     }
 
     MouseArea {
         anchors.fill: parent
-        
+
         hoverEnabled: true
-        
+
         acceptedButtons: Qt.LeftButton | Qt.MiddleButton
-        
+
         onEntered: {
             controlButtonsArea.mouseInWidget = showControlButtons && !noWindowVisible
         }
-        
+
         onExited: {
             controlButtonsArea.mouseInWidget = false
         }
-        
+
         onWheel: {
             if (wheel.angleDelta.y > 0) {
                 if (wheelUpMaximizes) {
@@ -247,13 +247,13 @@ Item {
                 }
             }
         }
-        
+
         onDoubleClicked: {
             if (doubleClickMaximizes && mouse.button == Qt.LeftButton) {
                 toggleMaximized()
             }
         }
-        
+
         onClicked: {
             if (chosenLeftClickSource !== '' && !doubleClickMaximizes && mouse.button == Qt.LeftButton) {
                 shortcutDS.connectedSources.push(chosenLeftClickSource)
@@ -264,41 +264,41 @@ Item {
                 toggleFullscreen()
             }
         }
-        
-        
+
+
         ListView {
             id: controlButtonsArea
-            
+
             property bool mouseInWidget: false
             property double controlButtonsHeight: parent.height * buttonSize
-            
+
             orientation: ListView.Horizontal
             opacity: (doNotHideControlButtons || (showControlButtons && mouseInWidget)) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) ? 1 : 0
             visible: showControlButtons
-            
+
             spacing: controlButtonsSpacing
-            
+
             height: buttonsVerticalCenter ? parent.height : controlButtonsHeight
             width: controlButtonsHeight + ((controlButtonsModel.count - 1) * (controlButtonsHeight + controlButtonsSpacing))
-            
+
             anchors.top: parent.top
             anchors.left: parent.left
-            
+
             anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width : 0
             anchors.topMargin: (bp === 2 || bp === 3) ? parent.height - height : 0
-            
+
             model: controlButtonsModel
-            
+
             delegate: ControlButton { }
         }
     }
-    
+
     ListModel {
         id: controlButtonsModel
     }
-    
+
     function initializeControlButtonsModel() {
-        
+
         var preparedArray = []
         preparedArray.push({
             iconName: 'close',
@@ -316,9 +316,9 @@ Item {
                 windowOperation: 'toggleMinimized'
             })
         }
-        
+
         controlButtonsModel.clear()
-        
+
         if (bp === 1 || bp === 3) {
             for (var i = preparedArray.length - 1; i >= 0; i--) {
                 controlButtonsModel.append(preparedArray[i])
@@ -329,55 +329,55 @@ Item {
             }
         }
     }
-    
+
     function performActiveWindowAction(windowOperation) {
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription(windowOperation)
         operation.Id = tasksSource.models.tasks.activeTaskId()
         service.startOperationCall(operation)
     }
-    
+
     function action_close() {
         performActiveWindowAction('close')
     }
-    
+
     function action_maximise() {
         performActiveWindowAction('toggleMaximized')
     }
-    
+
     function action_minimise() {
         performActiveWindowAction('toggleMinimized')
     }
-    
+
     Component.onCompleted: {
         initializeControlButtonsModel()
         plasmoid.setAction('close', i18n('Close'), 'window-close');
         plasmoid.setAction('maximise', i18n('Toggle Maximise'), 'arrow-up-double');
         plasmoid.setAction('minimise', i18n('Minimise'), 'draw-arrow-down');
     }
-    
+
     onShowMaximizeChanged: {
         initializeControlButtonsModel()
     }
-    
+
     onShowMinimizeChanged: {
         initializeControlButtonsModel()
     }
-    
+
     onBpChanged: {
         initializeControlButtonsModel()
     }
-    
+
     PlasmaCore.DataSource {
         id: shortcutDS
         engine: 'executable'
-        
+
         property string presentWindows: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "Expose"'
         property string presentWindowsAll: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "ExposeAll"'
         property string presentWindowsClass: 'qdbus org.kde.kglobalaccel /component/kwin invokeShortcut "ExposeClass"'
 
         connectedSources: []
-        
+
         onNewData: {
             connectedSources.length = 0
         }
