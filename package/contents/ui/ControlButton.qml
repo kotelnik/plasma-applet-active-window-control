@@ -57,9 +57,6 @@ MouseArea {
     // trigger close active window
     onClicked: {
         controlButtonsArea.mouseInWidget = true
-        if (bp === 4) {
-            return;
-        }
         main.performActiveWindowAction(windowOperation)
     }
 }

@@ -331,6 +331,9 @@ Item {
     }
 
     function performActiveWindowAction(windowOperation) {
+        if (bp === 4 || controlButtonsArea.opacity === 0) {
+            return;
+        }
         var service = tasksSource.serviceForSource('tasks')
         var operation = service.operationDescription(windowOperation)
         operation.Id = tasksSource.models.tasks.activeTaskId()
