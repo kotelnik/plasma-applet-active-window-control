@@ -98,7 +98,8 @@ Item {
     }
 
     function updateCurrentWindowMaximized() {
-        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsMinimized
+        //TODO this is HACK! When closed or minimized windows stopped being promoted as Active, remove these additional checks
+        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsMinimized || !activeWindowModel.get(0).IsClosable
         currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).IsMaximized === true
     }
 
@@ -276,7 +277,7 @@ Item {
 
             orientation: ListView.Horizontal
             opacity: (doNotHideControlButtons || (showControlButtons && mouseInWidget)) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) ? 1 : 0
-            visible: showControlButtons
+            visible: showControlButtons && !noWindowVisible
 
             spacing: controlButtonsSpacing
 
