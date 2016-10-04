@@ -82,6 +82,10 @@ Item {
         id: tasksModel
         sortMode: TaskManager.TasksModel.SortVirtualDesktop
         groupMode: TaskManager.TasksModel.GroupDisabled
+
+        onActiveTaskChanged: {
+            updateCurrentWindowMaximized()
+        }
     }
     // should return always one item
     PlasmaCore.SortFilterModel {
@@ -92,14 +96,10 @@ Item {
         onDataChanged: {
             updateCurrentWindowMaximized()
         }
-        onCountChanged: {
-            updateCurrentWindowMaximized()
-        }
     }
 
     function updateCurrentWindowMaximized() {
-        //TODO this is HACK! When closed or minimized windows stopped being promoted as Active, remove these additional checks
-        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsMinimized || !activeWindowModel.get(0).IsClosable
+        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsActive !== true
         currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).IsMaximized === true
     }
 
