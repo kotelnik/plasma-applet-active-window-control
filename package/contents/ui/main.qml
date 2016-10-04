@@ -21,6 +21,7 @@ import QtQuick.Window 2.2
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.taskmanager 0.1 as TaskManager
 
 Item {
     id: main
@@ -77,61 +78,58 @@ Item {
     //
     // MODEL
     //
-    PlasmaCore.DataSource {
-        id: tasksSource
-        engine: 'tasks'
-        onSourceAdded: {
-            connectSource(source);
-        }
-        connectedSources: 'tasks'
+    TaskManager.TasksModel {
+        id: tasksModel
+        sortMode: TaskManager.TasksModel.SortVirtualDesktop
+        groupMode: TaskManager.TasksModel.GroupDisabled
     }
     // should return always one item
     PlasmaCore.SortFilterModel {
         id: activeWindowModel
-        filterRole: 'Active'
+        filterRole: 'IsActive'
         filterRegExp: 'true'
-        sourceModel: tasksSource.models.tasks === undefined ? null : tasksSource.models.tasks
-        onCountChanged: {
-            noWindowVisible = count === 0
+        sourceModel: tasksModel
+        onDataChanged: {
             updateCurrentWindowMaximized()
         }
-        onDataChanged: {
+        onCountChanged: {
             updateCurrentWindowMaximized()
         }
     }
 
     function updateCurrentWindowMaximized() {
-        currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).Maximized
+        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsMinimized
+        currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).IsMaximized === true
     }
 
     function toggleMaximized() {
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription('toggleMaximized')
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        service.startOperationCall(operation)
+        tasksModel.requestToggleMaximized(tasksModel.activeTask);
+    }
+
+    function toggleMinimized() {
+        tasksModel.requestToggleMinimized(tasksModel.activeTask);
+    }
+
+    function toggleClose() {
+        tasksModel.requestClose(tasksModel.activeTask);
     }
 
     function toggleFullscreen() {
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription('toggleFullScreen')
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        service.startOperationCall(operation)
+        tasksModel.requestToggleFullScreen(tasksModel.activeTask);
     }
 
     function setMaximized(maximized) {
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription('setMaximized')
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        operation.maximized = maximized
-        service.startOperationCall(operation)
+        if ((maximized && !activeWindowModel.get(0).IsMaximized)
+            || (!maximized && activeWindowModel.get(0).IsMaximized)) {
+            print('toggle maximized')
+            toggleMaximized()
+        }
     }
 
     function setMinimized() {
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription('setMinimized')
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        operation.minimized = true
-        service.startOperationCall(operation)
+        if (!activeWindowModel.get(0).IsMinimized) {
+            toggleMinimized()
+        }
     }
 
     PlasmaComponents.Label {
@@ -178,11 +176,15 @@ Item {
 
         width: parent.width - anchors.leftMargin - anchors.rightMargin
 
+        visible: !noWindowVisible
+
         model: activeWindowModel
 
         delegate: Item {
             width: parent.width
             height: main.height
+
+            property double iconMargin: (plasmoid.configuration.showWindowIcon ? iconItem.width : 0)
 
             // window icon
             PlasmaCore.IconItem {
@@ -194,7 +196,7 @@ Item {
                 width: parent.height
                 height: parent.height
 
-                source: DecorationRole
+                source: model.decoration
                 visible: plasmoid.configuration.showWindowIcon
             }
 
@@ -202,14 +204,14 @@ Item {
             PlasmaComponents.Label {
                 id: windowTitleText
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? 0 : iconItem.width + iconAndTextSpacing
+                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: DisplayRole
+                text: model.display
                 wrapMode: Text.Wrap
                 maximumLineCount: Math.max(1, Math.round(parent.height / (fontPixelSize * 1.5)))
-                width: parent.width - iconItem.width - iconAndTextSpacing
+                width: parent.width - iconMargin - iconAndTextSpacing
                 elide: Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
@@ -334,22 +336,25 @@ Item {
         if (bp === 4 || controlButtonsArea.opacity === 0) {
             return;
         }
-        var service = tasksSource.serviceForSource('tasks')
-        var operation = service.operationDescription(windowOperation)
-        operation.Id = tasksSource.models.tasks.activeTaskId()
-        service.startOperationCall(operation)
+        if (windowOperation === 'close') {
+            toggleClose()
+        } else if (windowOperation === 'toggleMaximized') {
+            toggleMaximized()
+        } else if (windowOperation === 'toggleMinimized') {
+            toggleMinimized()
+        }
     }
 
     function action_close() {
-        performActiveWindowAction('close')
+        toggleClose()
     }
 
     function action_maximise() {
-        performActiveWindowAction('toggleMaximized')
+        toggleMaximized()
     }
 
     function action_minimise() {
-        performActiveWindowAction('toggleMinimized')
+        toggleMinimized()
     }
 
     Component.onCompleted: {

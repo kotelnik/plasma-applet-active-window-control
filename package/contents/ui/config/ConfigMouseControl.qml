@@ -4,17 +4,15 @@ import QtQuick.Layouts 1.1
 
 Item {
     id: appearancePage
-    width: childrenRect.width
-    height: childrenRect.height
 
     property alias cfg_doubleClickMaximizes: doubleClickMaximizes.checked
     property int cfg_leftClickAction
-    
-    
+
+
     property alias cfg_middleClickFullscreen: middleClickFullscreen.checked
     property alias cfg_wheelUpMaximizes: wheelUpMaximizes.checked
     property int cfg_wheelDownAction
-    
+
     onCfg_leftClickActionChanged: {
         switch (cfg_leftClickAction) {
         case 1:
@@ -45,12 +43,12 @@ Item {
             wheelDownActionGroup.current = wheelDownDisabledRadio;
         }
     }
-    
+
     Component.onCompleted: {
         cfg_leftClickActionChanged()
         cfg_wheelDownActionChanged()
     }
-    
+
     ExclusiveGroup {
         id: leftClickActionGroup
     }
@@ -58,11 +56,11 @@ Item {
     ExclusiveGroup {
         id: wheelDownActionGroup
     }
-    
+
     GridLayout {
         id: displayPosition
         columns: 2
-        
+
         Label {
             text: i18n("Mouse Buttons:")
             Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
@@ -105,7 +103,7 @@ Item {
             onCheckedChanged: if (checked) cfg_leftClickAction = 3;
             enabled: !doubleClickMaximizes.checked
         }
-        
+
         Item {
             width: 2
             height: 2
@@ -114,13 +112,13 @@ Item {
             id: middleClickFullscreen
             text: i18n("Middleclick to toggle fullscreen")
         }
-        
+
         Item {
             width: 2
             height: 10
             Layout.columnSpan: 2
         }
-        
+
         Label {
             text: i18n("Mouse Wheel:")
             Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
@@ -153,5 +151,5 @@ Item {
             onCheckedChanged: if (checked) cfg_wheelDownAction = 2;
         }
     }
-    
+
 }

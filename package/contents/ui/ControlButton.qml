@@ -19,21 +19,21 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
     id: controlButton
-    
+
     height: controlButtonsArea.height
     width: controlButtonsArea.controlButtonsHeight
-    
+
     property bool mouseInside: false
     property bool mousePressed: false
-    
+
     property string themeName: textColorLight ? 'breeze-dark' : 'default'
     property string buttonImagePath: Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
-    
+
     PlasmaCore.Svg {
         id: buttonSvg
         imagePath: buttonImagePath
     }
-    
+
     // icon
     PlasmaCore.SvgItem {
         id: svgItem
@@ -43,17 +43,17 @@ MouseArea {
         elementId: mouseInside ? 'pressed-center' : 'active-center';
         anchors.verticalCenter: parent.verticalCenter
     }
-        
+
     hoverEnabled: true
-    
+
     onEntered: {
         mouseInside = true
     }
-    
+
     onExited: {
         mouseInside = false
     }
-    
+
     // trigger close active window
     onClicked: {
         controlButtonsArea.mouseInWidget = true
