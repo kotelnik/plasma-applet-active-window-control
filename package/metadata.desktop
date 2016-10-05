@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Active Window Control
 Comment=Plasmoid for advanced active window control.
 Type=Service
@@ -16,5 +15,3 @@ X-Plasma-MainScript=ui/main.qml
 X-Plasma-RemoteLocation=
 X-KDE-PluginInfo-Category=Windows and Tasks
 Icon=window-close
-#prefix for Icon is: /usr/share/icons/breeze/actions/toolbar/
-#copy this file into ~/.local/share/kservices5

@@ -41,6 +41,11 @@ Item {
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
 
+    property int textType: plasmoid.configuration.textType
+    property int fitText: plasmoid.configuration.fitText
+    property int tooltipTextType: plasmoid.configuration.tooltipTextType
+    property string tooltipText: ''
+
     property bool windowIconOnTheRight: plasmoid.configuration.windowIconOnTheRight
     property double iconAndTextSpacing: plasmoid.configuration.iconAndTextSpacing
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
@@ -71,7 +76,9 @@ Item {
 
     property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
 
-    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+    property bool mouseHover: false
+
+    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentationation
 
 
 
@@ -95,12 +102,29 @@ Item {
         sourceModel: tasksModel
         onDataChanged: {
             updateCurrentWindowMaximized()
+            updateTooltip()
+        }
+    }
+
+    function activeTask() {
+        return activeWindowModel.get(0) || {}
+    }
+
+    onTooltipTextTypeChanged: updateTooltip()
+
+    function updateTooltip() {
+        if (tooltipTextType === 1) {
+            tooltipText = activeTask().display || ''
+        } else if (tooltipTextType === 2) {
+            tooltipText = activeTask().AppName || ''
+        } else {
+            tooltipText = ''
         }
     }
 
     function updateCurrentWindowMaximized() {
-        noWindowVisible = activeWindowModel.count === 0 || activeWindowModel.get(0).IsActive !== true
-        currentWindowMaximized = !noWindowVisible && activeWindowModel.get(0).IsMaximized === true
+        noWindowVisible = activeWindowModel.count === 0 || activeTask().IsActive !== true
+        currentWindowMaximized = !noWindowVisible && activeTask().IsMaximized === true
     }
 
     function toggleMaximized() {
@@ -120,15 +144,15 @@ Item {
     }
 
     function setMaximized(maximized) {
-        if ((maximized && !activeWindowModel.get(0).IsMaximized)
-            || (!maximized && activeWindowModel.get(0).IsMaximized)) {
+        if ((maximized && !activeTask().IsMaximized)
+            || (!maximized && activeTask().IsMaximized)) {
             print('toggle maximized')
             toggleMaximized()
         }
     }
 
     function setMinimized() {
-        if (!activeWindowModel.get(0).IsMinimized) {
+        if (!activeTask().IsMinimized) {
             toggleMinimized()
         }
     }
@@ -204,19 +228,37 @@ Item {
             // window title
             PlasmaComponents.Label {
                 id: windowTitleText
+
+                property double properWidth: parent.width - iconMargin - iconAndTextSpacing
+                property double properHeight: parent.height
+                property bool noElide: fitText === 2 || (fitText === 1 && mouseHover)
+
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: model.display
+                text: textType === 1 ? model.AppName : model.display
                 wrapMode: Text.Wrap
-                maximumLineCount: Math.max(1, Math.round(parent.height / (fontPixelSize * 1.5)))
-                width: parent.width - iconMargin - iconAndTextSpacing
-                elide: Text.ElideRight
+                width: properWidth
+                elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
+
+                onTextChanged: {
+                    font.pixelSize = fontPixelSize
+                }
+
+                onNoElideChanged: {
+                    font.pixelSize = fontPixelSize
+                }
+
+                onPaintedHeightChanged: {
+                    if (noElide && paintedHeight > properHeight) {
+                        font.pixelSize = (properHeight / paintedHeight) * fontPixelSize
+                    }
+                }
             }
 
         }
@@ -230,10 +272,12 @@ Item {
         acceptedButtons: Qt.LeftButton | Qt.MiddleButton
 
         onEntered: {
+            mouseHover = true
             controlButtonsArea.mouseInWidget = showControlButtons && !noWindowVisible
         }
 
         onExited: {
+            mouseHover = false
             controlButtonsArea.mouseInWidget = false
         }
 
@@ -268,6 +312,34 @@ Item {
             }
         }
 
+        PlasmaCore.ToolTipArea {
+
+            anchors.fill: parent
+
+            active: tooltipTextType > 0
+            interactive: true
+            location: plasmoid.location
+
+            mainItem: Row {
+
+                spacing: 0
+
+                Layout.minimumWidth: fullText.width + units.largeSpacing
+                Layout.minimumHeight: childrenRect.height
+                Layout.maximumWidth: Layout.minimumWidth
+                Layout.maximumHeight: Layout.minimumHeight
+
+                Item {
+                    width: units.largeSpacing / 2
+                    height: 2
+                }
+
+                PlasmaComponents.Label {
+                    id: fullText
+                    text: tooltipText
+                }
+            }
+        }
 
         ListView {
             id: controlButtonsArea

@@ -4,8 +4,6 @@ import QtQuick.Layouts 1.1
 
 Item {
     id: appearancePage
-    width: childrenRect.width
-    height: childrenRect.height
 
     property alias cfg_showControlButtons: showControlButtons.checked
     property alias cfg_doNotHideControlButtons: doNotHideControlButtons.checked

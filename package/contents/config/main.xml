@@ -61,6 +61,15 @@
         <entry name="showWindowTitle" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="textType" type="Int">
+            <default>0</default>
+        </entry>
+        <entry name="fitText" type="Int">
+            <default>0</default>
+        </entry>
+        <entry name="tooltipTextType" type="Int">
+            <default>0</default>
+        </entry>
         <entry name="showWindowIcon" type="Bool">
             <default>true</default>
         </entry>

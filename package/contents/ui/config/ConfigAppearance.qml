@@ -11,6 +11,9 @@ Item {
     property alias cfg_widthFineTuning: widthFineTuning.value
 
     property alias cfg_showWindowTitle: showWindowTitle.checked
+    property alias cfg_textType: textTypeCombo.currentIndex
+    property alias cfg_fitText: fitTextCombo.currentIndex
+    property alias cfg_tooltipTextType: tooltipTextTypeCombo.currentIndex
     property alias cfg_showWindowIcon: showWindowIcon.checked
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
 
@@ -108,9 +111,54 @@ Item {
             Layout.columnSpan: 2
         }
 
-        CheckBox {
+        GroupBox {
             id: showWindowTitle
-            text: i18n("Show window title")
+            title: i18n("Show window title")
+            checkable: true
+            flat: true
+            Layout.columnSpan: 2
+
+            GridLayout {
+                columns: 2
+
+                Item {
+                    width: 2
+                    height: 10
+                    Layout.columnSpan: 2
+                }
+
+                Label {
+                    text: i18n('Text type:')
+                    Layout.alignment: Qt.AlignRight
+                }
+                ComboBox {
+                    id: textTypeCombo
+                    model: [i18n('Window title'), i18n('Application name')]
+                }
+
+                Label {
+                    text: i18n('Fit text:')
+                    Layout.alignment: Qt.AlignRight
+                }
+                ComboBox {
+                    id: fitTextCombo
+                    model: [i18n('Just elide'), i18n('Fit on hover'), i18n('Always fit')]
+                }
+
+                Label {
+                    text: i18n('Tooltip text:')
+                    Layout.alignment: Qt.AlignRight
+                }
+                ComboBox {
+                    id: tooltipTextTypeCombo
+                    model: [i18n('No tooltip'), i18n('Window title'), i18n('Application name')]
+                }
+            }
+        }
+
+        Item {
+            width: 2
+            height: 10
             Layout.columnSpan: 2
         }
 
