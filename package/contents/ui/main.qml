@@ -237,6 +237,7 @@ Item {
                 property double properWidth: parent.width - iconMargin - iconAndTextSpacing
                 property double properHeight: parent.height
                 property bool noElide: fitText === 2 || (fitText === 1 && mouseHover)
+                property int allowFontSizeChange: 3
 
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
@@ -253,16 +254,19 @@ Item {
 
                 onTextChanged: {
                     font.pixelSize = fontPixelSize
+                    allowFontSizeChange = 3
                 }
 
                 onNoElideChanged: {
                     font.pixelSize = fontPixelSize
+                    allowFontSizeChange = 3
                 }
 
                 onPaintedHeightChanged: {
-                    if (noElide && paintedHeight > properHeight) {
+                    if (allowFontSizeChange > 0 && noElide && paintedHeight > properHeight) {
                         font.pixelSize = (properHeight / paintedHeight) * fontPixelSize
                     }
+                    allowFontSizeChange--
                 }
             }
 
