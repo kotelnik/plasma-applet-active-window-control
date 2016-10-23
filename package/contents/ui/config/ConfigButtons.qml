@@ -15,6 +15,7 @@ Item {
     property alias cfg_showButtonOnlyWhenMaximized: showButtonOnlyWhenMaximized.checked
     property alias cfg_showMinimize: showMinimize.checked
     property alias cfg_showMaximize: showMaximize.checked
+    property alias cfg_showPinToAllDesktops: showPinToAllDesktops.checked
     property alias cfg_buttonSize: buttonSize.value
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
 
@@ -63,7 +64,7 @@ Item {
             Item {
                 width: 2
                 height: 2
-                Layout.rowSpan: 2
+                Layout.rowSpan: 3
             }
 
             CheckBox {
@@ -74,6 +75,11 @@ Item {
             CheckBox {
                 id: showMaximize
                 text: i18n("Show maximize button")
+            }
+
+            CheckBox {
+                id: showPinToAllDesktops
+                text: i18n("Show pin to all desktops")
             }
 
             Item {

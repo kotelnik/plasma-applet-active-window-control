@@ -16,6 +16,7 @@
  */
 import QtQuick 2.2
 import org.kde.plasma.core 2.0 as PlasmaCore
+//import org.kde.kwin.decoration 0.1
 
 MouseArea {
     id: controlButton
@@ -26,8 +27,10 @@ MouseArea {
     property bool mouseInside: false
     property bool mousePressed: false
 
+    property bool isPin: iconName === 'pinToAllDesktops'
+
     property string themeName: textColorLight ? 'breeze-dark' : 'default'
-    property string buttonImagePath: Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
+    property string buttonImagePath: isPin ? 'window' : Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
 
     PlasmaCore.Svg {
         id: buttonSvg
@@ -40,9 +43,33 @@ MouseArea {
         width: parent.width
         height: width
         svg: buttonSvg
-        elementId: mouseInside ? 'pressed-center' : 'active-center';
+        elementId: mouseInside ? 'pressed-center' : 'active-center'
         anchors.verticalCenter: parent.verticalCenter
+        visible: !isPin
     }
+
+    Rectangle {
+        width: parent.width * 0.8
+        height: width
+        anchors.centerIn: parent
+        color: '#aaaaaa'
+        radius: width * 0.5
+        visible: isPin && mouseInside
+    }
+
+    PlasmaCore.IconItem {
+        width: parent.width * 0.6
+        height: width
+        source: main.isActiveWindowPinned ? 'window-unpin' : 'window-pin'
+        anchors.centerIn: parent
+        visible: isPin
+    }
+
+//     DecorationButton {
+//         buttonType: DecorationOptions.DecorationButtonOnAllDesktops
+//         anchors.fill: parent
+//         visible: isPin
+//     }
 
     hoverEnabled: true
 
@@ -54,7 +81,7 @@ MouseArea {
         mouseInside = false
     }
 
-    // trigger close active window
+    // trigger active window action
     onClicked: {
         controlButtonsArea.mouseInWidget = true
         main.performActiveWindowAction(windowOperation)

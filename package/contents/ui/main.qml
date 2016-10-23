@@ -63,6 +63,7 @@ Item {
     property bool showButtonOnlyWhenMaximized: plasmoid.configuration.showButtonOnlyWhenMaximized
     property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
     property bool showMaximize: showControlButtons && plasmoid.configuration.showMaximize
+    property bool showPinToAllDesktops: showControlButtons && plasmoid.configuration.showPinToAllDesktops
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
     property int leftClickAction: plasmoid.configuration.leftClickAction
     property string chosenLeftClickSource: leftClickAction === 1 ? shortcutDS.presentWindows : leftClickAction === 2 ? shortcutDS.presentWindowsAll : leftClickAction === 3 ? shortcutDS.presentWindowsClass : ''
@@ -79,6 +80,7 @@ Item {
 
     property bool mouseHover: false
     property bool activeWindowModelInitialized: false
+    property bool isActiveWindowPinned: false
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -97,7 +99,7 @@ Item {
                 activeWindowModel.sourceModel = tasksModel
                 activeWindowModelInitialized = true
             }
-            updateCurrentWindowMaximized()
+            updateActiveWindowInfo()
         }
     }
     // should return always one item
@@ -107,7 +109,7 @@ Item {
         filterRegExp: 'true'
         //sourceModel: tasksModel
         onDataChanged: {
-            updateCurrentWindowMaximized()
+            updateActiveWindowInfo()
             updateTooltip()
         }
     }
@@ -128,9 +130,10 @@ Item {
         }
     }
 
-    function updateCurrentWindowMaximized() {
+    function updateActiveWindowInfo() {
         noWindowVisible = activeWindowModel.count === 0 || activeTask().IsActive !== true
         currentWindowMaximized = !noWindowVisible && activeTask().IsMaximized === true
+        isActiveWindowPinned = activeTask().VirtualDesktop === -1;
     }
 
     function toggleMaximized() {
@@ -147,6 +150,10 @@ Item {
 
     function toggleFullscreen() {
         tasksModel.requestToggleFullScreen(tasksModel.activeTask);
+    }
+
+    function togglePinToAllDesktops() {
+        tasksModel.requestVirtualDesktop(tasksModel.activeTask, 0);
     }
 
     function setMaximized(maximized) {
@@ -407,6 +414,12 @@ Item {
                 windowOperation: 'toggleMinimized'
             })
         }
+        if (showPinToAllDesktops) {
+            preparedArray.push({
+                iconName: 'pinToAllDesktops',
+                windowOperation: 'togglePinToAllDesktops'
+            })
+        }
 
         controlButtonsModel.clear()
 
@@ -431,6 +444,8 @@ Item {
             toggleMaximized()
         } else if (windowOperation === 'toggleMinimized') {
             toggleMinimized()
+        } else if (windowOperation === 'togglePinToAllDesktops') {
+            togglePinToAllDesktops()
         }
     }
 
@@ -446,24 +461,22 @@ Item {
         toggleMinimized()
     }
 
+    function action_pinToAllDesktops() {
+        togglePinToAllDesktops()
+    }
+
     Component.onCompleted: {
         initializeControlButtonsModel()
         plasmoid.setAction('close', i18n('Close'), 'window-close');
         plasmoid.setAction('maximise', i18n('Toggle Maximise'), 'arrow-up-double');
         plasmoid.setAction('minimise', i18n('Minimise'), 'draw-arrow-down');
+        plasmoid.setAction('pinToAllDesktops', i18n('Pin To All Desktops'), 'window-pin');
     }
 
-    onShowMaximizeChanged: {
-        initializeControlButtonsModel()
-    }
-
-    onShowMinimizeChanged: {
-        initializeControlButtonsModel()
-    }
-
-    onBpChanged: {
-        initializeControlButtonsModel()
-    }
+    onShowMaximizeChanged: initializeControlButtonsModel()
+    onShowMinimizeChanged: initializeControlButtonsModel()
+    onShowPinToAllDesktopsChanged: initializeControlButtonsModel()
+    onBpChanged: initializeControlButtonsModel()
 
     PlasmaCore.DataSource {
         id: shortcutDS
