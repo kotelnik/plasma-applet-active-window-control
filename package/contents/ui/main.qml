@@ -66,7 +66,8 @@ Item {
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
     property int leftClickAction: plasmoid.configuration.leftClickAction
     property string chosenLeftClickSource: leftClickAction === 1 ? shortcutDS.presentWindows : leftClickAction === 2 ? shortcutDS.presentWindowsAll : leftClickAction === 3 ? shortcutDS.presentWindowsClass : ''
-    property bool middleClickFullscreen: plasmoid.configuration.middleClickFullscreen
+    property bool middleClickClose: plasmoid.configuration.middleClickAction === 1
+    property bool middleClickFullscreen: plasmoid.configuration.middleClickAction === 2
     property bool wheelUpMaximizes: plasmoid.configuration.wheelUpMaximizes
     property bool wheelDownMinimizes: plasmoid.configuration.wheelDownAction === 1
     property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
@@ -318,8 +319,12 @@ Item {
                 controlButtonsArea.mouseInWidget = false
                 return
             }
-            if (mouse.button == Qt.MiddleButton && middleClickFullscreen) {
-                toggleFullscreen()
+            if (mouse.button == Qt.MiddleButton) {
+                if (middleClickFullscreen) {
+                    toggleFullscreen()
+                } else if (middleClickClose) {
+                    toggleClose()
+                }
             }
         }
 
