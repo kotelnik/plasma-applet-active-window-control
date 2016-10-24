@@ -81,6 +81,7 @@ Item {
     property bool mouseHover: false
     property bool activeWindowModelInitialized: false
     property bool isActiveWindowPinned: false
+    property bool isActiveWindowMaximized: false
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -111,6 +112,7 @@ Item {
         onDataChanged: {
             updateActiveWindowInfo()
             updateTooltip()
+            ensureUpdatedTasksModel()
         }
     }
 
@@ -134,6 +136,10 @@ Item {
         noWindowVisible = activeWindowModel.count === 0 || activeTask().IsActive !== true
         currentWindowMaximized = !noWindowVisible && activeTask().IsMaximized === true
         isActiveWindowPinned = activeTask().VirtualDesktop === -1;
+    }
+
+    function ensureUpdatedTasksModel() {
+        //activeWindowModel.sourceModel = tasksModel;
     }
 
     function toggleMaximized() {
@@ -416,7 +422,7 @@ Item {
         }
         if (showPinToAllDesktops) {
             preparedArray.push({
-                iconName: 'pinToAllDesktops',
+                iconName: 'pin',
                 windowOperation: 'togglePinToAllDesktops'
             })
         }
