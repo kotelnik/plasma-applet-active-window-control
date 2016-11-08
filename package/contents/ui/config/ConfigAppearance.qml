@@ -51,6 +51,12 @@ Item {
         columns: 2
 
         Label {
+            text: i18n('Plasmoid version: ') + '1.6.0'
+            Layout.alignment: Qt.AlignRight
+            Layout.columnSpan: 2
+        }
+
+        Label {
             text: i18n("Width in horizontal panel:")
             Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
             Layout.columnSpan: 2
