@@ -79,7 +79,6 @@ Item {
     property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
 
     property bool mouseHover: false
-    property bool activeWindowModelInitialized: false
     property bool isActiveWindowPinned: false
     property bool isActiveWindowMaximized: false
 
@@ -96,10 +95,7 @@ Item {
         groupMode: TaskManager.TasksModel.GroupDisabled
 
         onActiveTaskChanged: {
-            if (!activeWindowModelInitialized) {
-                activeWindowModel.sourceModel = tasksModel
-                activeWindowModelInitialized = true
-            }
+            activeWindowModel.sourceModel = tasksModel
             updateActiveWindowInfo()
         }
     }
@@ -108,16 +104,19 @@ Item {
         id: activeWindowModel
         filterRole: 'IsActive'
         filterRegExp: 'true'
-        //sourceModel: tasksModel
+        sourceModel: tasksModel
         onDataChanged: {
             updateActiveWindowInfo()
             updateTooltip()
-            ensureUpdatedTasksModel()
         }
     }
 
     function activeTask() {
         return activeWindowModel.get(0) || {}
+    }
+
+    function tasksModel() {
+        return tasksSource.models.tasks;
     }
 
     onTooltipTextTypeChanged: updateTooltip()
@@ -138,28 +137,24 @@ Item {
         isActiveWindowPinned = activeTask().VirtualDesktop === -1;
     }
 
-    function ensureUpdatedTasksModel() {
-        //activeWindowModel.sourceModel = tasksModel;
-    }
-
     function toggleMaximized() {
-        tasksModel.requestToggleMaximized(tasksModel.activeTask);
+        tasksModel().requestToggleMaximized(tasksModel().activeTask);
     }
 
     function toggleMinimized() {
-        tasksModel.requestToggleMinimized(tasksModel.activeTask);
+        tasksModel().requestToggleMinimized(tasksModel().activeTask);
     }
 
     function toggleClose() {
-        tasksModel.requestClose(tasksModel.activeTask);
+        tasksModel().requestClose(tasksModel().activeTask);
     }
 
     function toggleFullscreen() {
-        tasksModel.requestToggleFullScreen(tasksModel.activeTask);
+        tasksModel().requestToggleFullScreen(tasksModel().activeTask);
     }
 
     function togglePinToAllDesktops() {
-        tasksModel.requestVirtualDesktop(tasksModel.activeTask, 0);
+        tasksModel().requestVirtualDesktop(tasksModel().activeTask, 0);
     }
 
     function setMaximized(maximized) {
