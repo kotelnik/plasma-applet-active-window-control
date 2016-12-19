@@ -115,10 +115,6 @@ Item {
         return activeWindowModel.get(0) || {}
     }
 
-    function tasksModel() {
-        return tasksSource.models.tasks;
-    }
-
     onTooltipTextTypeChanged: updateTooltip()
 
     function updateTooltip() {
@@ -138,23 +134,23 @@ Item {
     }
 
     function toggleMaximized() {
-        tasksModel().requestToggleMaximized(tasksModel().activeTask);
+        tasksModel.requestToggleMaximized(tasksModel.activeTask);
     }
 
     function toggleMinimized() {
-        tasksModel().requestToggleMinimized(tasksModel().activeTask);
+        tasksModel.requestToggleMinimized(tasksModel.activeTask);
     }
 
     function toggleClose() {
-        tasksModel().requestClose(tasksModel().activeTask);
+        tasksModel.requestClose(tasksModel.activeTask);
     }
 
     function toggleFullscreen() {
-        tasksModel().requestToggleFullScreen(tasksModel().activeTask);
+        tasksModel.requestToggleFullScreen(tasksModel.activeTask);
     }
 
     function togglePinToAllDesktops() {
-        tasksModel().requestVirtualDesktop(tasksModel().activeTask, 0);
+        tasksModel.requestVirtualDesktop(tasksModel.activeTask, 0);
     }
 
     function setMaximized(maximized) {
