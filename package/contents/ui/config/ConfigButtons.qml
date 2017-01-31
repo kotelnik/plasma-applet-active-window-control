@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QtQml.Models 2.1
 
 Item {
     id: appearancePage
@@ -18,6 +19,7 @@ Item {
     property alias cfg_showPinToAllDesktops: showPinToAllDesktops.checked
     property alias cfg_buttonSize: buttonSize.value
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
+    property string cfg_buttonOrder
 
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -40,6 +42,41 @@ Item {
 
     Component.onCompleted: {
         cfg_buttonsPositionChanged()
+        sortButtonOrder()
+    }
+
+    ListModel {
+        id: buttonsToSpend
+        ListElement {
+            text: "close"
+        }
+        ListElement {
+            text: "minimize"
+        }
+        ListElement {
+            text: "maximize"
+        }
+        ListElement {
+            text: "pin"
+        }
+    }
+
+    function sortButtonOrder() {
+        cfg_buttonOrder.split('|').forEach(function (buttonName, index) {
+            if (buttonName === 'close') {
+                print('adding ' + buttonName);
+                buttonOrder.model.insert(index, buttonsToSpend.get(0));
+            } else if (buttonName === 'minimize') {
+                buttonOrder.model.insert(index, buttonsToSpend.get(1));
+                print('adding ' + buttonName);
+            } else if (buttonName === 'maximize') {
+                buttonOrder.model.insert(index, buttonsToSpend.get(2));
+                print('adding ' + buttonName);
+            } else if (buttonName === 'pin') {
+                buttonOrder.model.insert(index, buttonsToSpend.get(3));
+                print('adding ' + buttonName);
+            }
+        });
     }
 
     ExclusiveGroup {
@@ -80,6 +117,42 @@ Item {
             CheckBox {
                 id: showPinToAllDesktops
                 text: i18n("Show pin to all desktops")
+            }
+
+            Item {
+                width: 2
+                height: 10
+                Layout.columnSpan: 2
+            }
+
+            Label {
+                text: i18n("Button order:")
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
+            }
+
+            OrderableListView {
+                id: buttonOrder
+                height: units.gridUnit * 2
+                width: height * 4
+                model: ListModel {
+                    // will be filled initially by sortButtonOrder() method
+                }
+                orientation: ListView.Horizontal
+                itemWidth: width / 4
+                itemHeight: itemWidth
+
+                onModelOrderChanged: {
+                    var orderStr = '';
+                    for (var i = 0; i < model.count; i++) {
+                        var item = model.get(i)
+                        if (orderStr.length > 0) {
+                            orderStr += '|';
+                        }
+                        orderStr += item.text;
+                    }
+                    cfg_buttonOrder = orderStr;
+                    print('written: ' + cfg_buttonOrder);
+                }
             }
 
             Item {

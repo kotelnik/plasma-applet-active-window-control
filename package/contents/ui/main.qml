@@ -64,6 +64,7 @@ Item {
     property bool showMinimize: showControlButtons && plasmoid.configuration.showMinimize
     property bool showMaximize: showControlButtons && plasmoid.configuration.showMaximize
     property bool showPinToAllDesktops: showControlButtons && plasmoid.configuration.showPinToAllDesktops
+    property string buttonOrder: plasmoid.configuration.buttonOrder
     property bool doubleClickMaximizes: plasmoid.configuration.doubleClickMaximizes
     property int leftClickAction: plasmoid.configuration.leftClickAction
     property string chosenLeftClickSource: leftClickAction === 1 ? shortcutDS.presentWindows : leftClickAction === 2 ? shortcutDS.presentWindowsAll : leftClickAction === 3 ? shortcutDS.presentWindowsClass : ''
@@ -392,31 +393,36 @@ Item {
         id: controlButtonsModel
     }
 
-    function initializeControlButtonsModel() {
-
-        var preparedArray = []
-        preparedArray.push({
-            iconName: 'close',
-            windowOperation: 'close'
-        })
-        if (showMaximize) {
+    function addButton(preparedArray, buttonName) {
+        if (buttonName === 'close') {
+            preparedArray.push({
+                iconName: 'close',
+                windowOperation: 'close'
+            });
+        } else if (buttonName === 'maximize' && showMaximize) {
             preparedArray.push({
                 iconName: 'maximize',
                 windowOperation: 'toggleMaximized'
-            })
-        }
-        if (showMinimize) {
+            });
+        } else if (buttonName === 'minimize' && showMinimize) {
             preparedArray.push({
                 iconName: 'minimize',
                 windowOperation: 'toggleMinimized'
-            })
-        }
-        if (showPinToAllDesktops) {
+            });
+        } else if (buttonName === 'pin' && showPinToAllDesktops) {
             preparedArray.push({
                 iconName: 'pin',
                 windowOperation: 'togglePinToAllDesktops'
-            })
+            });
         }
+    }
+
+    function initializeControlButtonsModel() {
+
+        var preparedArray = []
+        buttonOrder.split('|').forEach(function (buttonName) {
+            addButton(preparedArray, buttonName);
+        });
 
         controlButtonsModel.clear()
 
@@ -474,6 +480,7 @@ Item {
     onShowMinimizeChanged: initializeControlButtonsModel()
     onShowPinToAllDesktopsChanged: initializeControlButtonsModel()
     onBpChanged: initializeControlButtonsModel()
+    onButtonOrderChanged: initializeControlButtonsModel()
 
     PlasmaCore.DataSource {
         id: shortcutDS

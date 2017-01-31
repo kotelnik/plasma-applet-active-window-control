@@ -18,6 +18,9 @@
         <entry name="showPinToAllDesktops" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="buttonOrder" type="String">
+            <default>close|maximize|minimize|pin</default>
+        </entry>
         <entry name="doNotHideControlButtons" type="Bool">
             <default>false</default>
         </entry>
