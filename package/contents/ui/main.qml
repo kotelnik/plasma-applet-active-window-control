@@ -50,6 +50,7 @@ Item {
     property double iconAndTextSpacing: plasmoid.configuration.iconAndTextSpacing
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
     property double fontPixelSize: theme.defaultFont.pixelSize * plasmoid.configuration.fontSizeScale
+    property bool fontBold: plasmoid.configuration.boldFontWeight
 
     property bool noWindowVisible: true
     property bool currentWindowMaximized: false
@@ -177,6 +178,7 @@ Item {
         text: i18n('Plasma Desktop')
         font.pixelSize: fontPixelSize
         font.pointSize: -1
+        font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
         width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
@@ -258,6 +260,7 @@ Item {
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
+                font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
 
                 onTextChanged: {
                     font.pixelSize = fontPixelSize
