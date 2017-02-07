@@ -19,6 +19,7 @@ Item {
 
     property alias cfg_iconAndTextSpacing: iconAndTextSpacing.value
     property alias cfg_fontSizeScale: fontSizeScale.value
+    property alias cfg_boldFontWeight: boldFontWeight.checked
 
     PlasmaCore.DataSource {
         id: executableDS
@@ -186,6 +187,11 @@ Item {
             Layout.columnSpan: 2
         }
 
+        CheckBox {
+            id: boldFontWeight
+            text: i18n("Bold text")
+        }
+
         GridLayout {
             columns: 2
 
@@ -214,8 +220,9 @@ Item {
                 minimumValue: 0
                 maximumValue: 3
             }
+
         }
-        
+
     }
-    
+
 }

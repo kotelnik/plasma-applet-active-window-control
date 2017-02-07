@@ -88,6 +88,9 @@
         <entry name="fontSizeScale" type="Double">
             <default>1</default>
         </entry>
+        <entry name="boldFontWeight" type="Bool">
+            <default>true</default>
+        </entry>
     </group>
 
     <group name="MouseControl">
