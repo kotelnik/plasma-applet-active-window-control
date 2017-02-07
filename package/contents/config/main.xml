@@ -82,14 +82,17 @@
         <entry name="windowIconOnTheRight" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="boldFontWeight" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="fontFamily" type="String">
+            <default></default>
+        </entry>
         <entry name="iconAndTextSpacing" type="Double">
             <default>5</default>
         </entry>
         <entry name="fontSizeScale" type="Double">
             <default>1</default>
-        </entry>
-        <entry name="boldFontWeight" type="Bool">
-            <default>false</default>
         </entry>
     </group>
 

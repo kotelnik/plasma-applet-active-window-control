@@ -51,6 +51,7 @@ Item {
     property bool slidingIconAndText: plasmoid.configuration.slidingIconAndText
     property double fontPixelSize: theme.defaultFont.pixelSize * plasmoid.configuration.fontSizeScale
     property bool fontBold: plasmoid.configuration.boldFontWeight
+    property string fontFamily: plasmoid.configuration.fontFamily
 
     property bool noWindowVisible: true
     property bool currentWindowMaximized: false
@@ -179,6 +180,7 @@ Item {
         font.pixelSize: fontPixelSize
         font.pointSize: -1
         font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+        font.family: fontFamily || theme.defaultFont.family
         width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
         visible: noWindowVisible && plasmoid.configuration.showWindowTitle
@@ -261,6 +263,7 @@ Item {
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
                 font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+                font.family: fontFamily || theme.defaultFont.family
 
                 onTextChanged: {
                     font.pixelSize = fontPixelSize

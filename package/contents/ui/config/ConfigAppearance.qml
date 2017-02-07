@@ -6,6 +6,8 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 Item {
     id: appearancePage
 
+    signal configurationChanged
+
     property alias cfg_autoFillWidth: autoFillWidth.checked
     property alias cfg_horizontalScreenWidthPercent: horizontalScreenWidthPercent.value
     property alias cfg_widthFineTuning: widthFineTuning.value
@@ -17,9 +19,10 @@ Item {
     property alias cfg_showWindowIcon: showWindowIcon.checked
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
 
+    property alias cfg_boldFontWeight: boldFontWeight.checked
+    property string cfg_fontFamily
     property alias cfg_iconAndTextSpacing: iconAndTextSpacing.value
     property alias cfg_fontSizeScale: fontSizeScale.value
-    property alias cfg_boldFontWeight: boldFontWeight.checked
 
     PlasmaCore.DataSource {
         id: executableDS
@@ -41,6 +44,31 @@ Item {
             } else if (sourceName.indexOf('kwriteconfig5') === 0) {
                 connectedSources.push(cmdReconfigure)
             }
+        }
+    }
+
+    /* copied from /usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/configAppearance.qml */
+    onCfg_fontFamilyChanged: {
+        // HACK by the time we populate our model and/or the ComboBox is finished the value is still undefined
+        if (cfg_fontFamily) {
+            for (var i = 0, j = fontsModel.count; i < j; ++i) {
+                if (fontsModel.get(i).value == cfg_fontFamily) {
+                    fontFamilyComboBox.currentIndex = i
+                    break
+                }
+            }
+        }
+    }
+
+    ListModel {
+        id: fontsModel
+        Component.onCompleted: {
+            var arr = [ {text: i18nc("Use default font", "Default"), value: ""} ]
+            Qt.fontFamilies().forEach(function (font) {
+                arr.push({text: font, value: font})
+            })
+            append(arr)
+            cfg_fontFamilyChanged();
         }
     }
 
@@ -187,15 +215,40 @@ Item {
             Layout.columnSpan: 2
         }
 
-        CheckBox {
-            id: boldFontWeight
-            text: i18n("Bold text")
-        }
-
         GridLayout {
             columns: 2
 
             Layout.columnSpan: 2
+
+            Item {
+                width: 2
+                height: 10
+            }
+            CheckBox {
+                id: boldFontWeight
+                text: i18n("Bold text")
+            }
+
+            Label {
+                text: i18n('Text font:')
+                Layout.alignment: Qt.AlignRight
+            }
+            ComboBox {
+                id: fontFamilyComboBox
+                // ComboBox's sizing is just utterly broken
+                Layout.minimumWidth: units.gridUnit * 10
+                model: fontsModel
+                // doesn't autodeduce from model because we manually populate it
+                textRole: "text"
+                onCurrentIndexChanged: {
+                    var current = model.get(currentIndex)
+                    if (current) {
+                        cfg_fontFamily = current.value
+                        appearancePage.configurationChanged()
+                        console.log('change: ' + cfg_fontFamily)
+                    }
+                }
+            }
 
             Label {
                 text: i18n("Icon and text spacing:")
