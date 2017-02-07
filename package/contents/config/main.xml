@@ -89,7 +89,7 @@
             <default>1</default>
         </entry>
         <entry name="boldFontWeight" type="Bool">
-            <default>true</default>
+            <default>false</default>
         </entry>
     </group>
 
