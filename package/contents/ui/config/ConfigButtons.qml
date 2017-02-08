@@ -253,7 +253,7 @@ Item {
 
             Label {
                 text: i18n("Button size:")
-                Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
             }
             Slider {
                 id: buttonSize
@@ -265,7 +265,7 @@ Item {
 
             Label {
                 text: i18n("Buttons spacing:")
-                Layout.alignment: Qt.AlignVCenter|Qt.AlignLeft
+                Layout.alignment: Qt.AlignVCenter|Qt.AlignRight
             }
             Slider {
                 id: controlButtonsSpacing

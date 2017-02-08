@@ -31,7 +31,7 @@ Item {
     property double horizontalScreenWidthPercent: plasmoid.configuration.horizontalScreenWidthPercent
     property double buttonSize: plasmoid.configuration.buttonSize
     property bool autoFillWidth: plasmoid.configuration.autoFillWidth
-    property double widthForHorizontalPanel: (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning) - ((!controlButtonsArea.visible&& buttonsStandalone && plasmoid.configuration.buttonsDynamicWidth) ? controlButtonsArea.width : 0)
+    property double widthForHorizontalPanel: (Screen.width * horizontalScreenWidthPercent + plasmoid.configuration.widthFineTuning) - ((!controlButtonsArea.visible && buttonsStandalone && plasmoid.configuration.buttonsDynamicWidth) ? controlButtonsArea.width : 0)
     anchors.fill: parent
     Layout.fillWidth: plasmoid.configuration.autoFillWidth
     Layout.preferredWidth: autoFillWidth ? -1 : (vertical ? parent.width : (widthForHorizontalPanel > 0 ? widthForHorizontalPanel : 0.0001))
@@ -375,8 +375,8 @@ Item {
             property double controlButtonsHeight: parent.height * buttonSize
 
             orientation: ListView.Horizontal
-	    visible:showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowVisible
-			
+            visible:showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowVisible
+
             spacing: controlButtonsSpacing
 
             height: buttonsVerticalCenter ? parent.height : controlButtonsHeight
@@ -443,7 +443,7 @@ Item {
     }
 
     function performActiveWindowAction(windowOperation) {
-        if (bp === 4 || controlButtonsArea.visible=== 0) {
+        if (bp === 4 || !controlButtonsArea.visible) {
             return;
         }
         if (windowOperation === 'close') {
