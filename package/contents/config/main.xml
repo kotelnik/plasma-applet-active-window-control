@@ -76,6 +76,15 @@
         <entry name="tooltipTextType" type="Int">
             <default>0</default>
         </entry>
+        <entry name="useWindowTitleReplace" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="replaceTextRegex" type="String">
+            <default>^(.*)\s+[—–\-:]\s+(Mozilla )?([^—–\-:]+)$</default>
+        </entry>
+        <entry name="replaceTextReplacement" type="String">
+            <default>$3 — $1</default>
+        </entry>
         <entry name="showWindowIcon" type="Bool">
             <default>true</default>
         </entry>

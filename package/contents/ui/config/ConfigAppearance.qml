@@ -18,6 +18,9 @@ Item {
     property alias cfg_tooltipTextType: tooltipTextTypeCombo.currentIndex
     property alias cfg_showWindowIcon: showWindowIcon.checked
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
+    property alias cfg_useWindowTitleReplace: useWindowTitleReplace.checked
+    property alias cfg_replaceTextRegex: replaceTextRegex.text
+    property alias cfg_replaceTextReplacement: replaceTextReplacement.text
 
     property alias cfg_boldFontWeight: boldFontWeight.checked
     property string cfg_fontFamily
@@ -188,6 +191,40 @@ Item {
                     id: tooltipTextTypeCombo
                     model: [i18n('No tooltip'), i18n('Window title'), i18n('Application name')]
                 }
+
+                CheckBox {
+                    id: useWindowTitleReplace
+                    text: '"' + i18n('Window title') + '".replace(/'
+                    Layout.alignment: Qt.AlignRight
+                }
+                GridLayout {
+                    columns: 4
+
+                    TextField {
+                        id: replaceTextRegex
+                        placeholderText: '^(.*)\\s+[—–\\-:]\\s+([^—–\\-:]+)$'
+                        Layout.preferredWidth: 300
+                        onTextChanged: cfg_replaceTextRegex = text
+                        enabled: useWindowTitleReplace.checked
+                    }
+
+                    Label {
+                        text: '/, "'
+                    }
+
+                    TextField {
+                        id: replaceTextReplacement
+                        placeholderText: '$2 — $1'
+                        Layout.preferredWidth: 100
+                        onTextChanged: cfg_replaceTextReplacement = text
+                        enabled: useWindowTitleReplace.checked
+                    }
+
+                    Label {
+                        text: '");'
+                    }
+                }
+
             }
         }
 
@@ -268,8 +305,8 @@ Item {
             }
             SpinBox {
                 id: fontSizeScale
-                decimals: 1
-                stepSize: 0.1
+                decimals: 2
+                stepSize: 0.05
                 minimumValue: 0
                 maximumValue: 3
             }

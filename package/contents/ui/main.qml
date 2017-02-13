@@ -22,6 +22,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.taskmanager 0.1 as TaskManager
+//import org.kde.private.activeWindowControl 1.0 as ActiveWindowControlPrivate
 
 Item {
     id: main
@@ -122,7 +123,7 @@ Item {
 
     function updateTooltip() {
         if (tooltipTextType === 1) {
-            tooltipText = activeTask().display || ''
+            tooltipText = replaceTitle(activeTask().display || '')
         } else if (tooltipTextType === 2) {
             tooltipText = activeTask().AppName || ''
         } else {
@@ -255,7 +256,7 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: textType === 1 ? model.AppName : model.display
+                text:  textType === 1 ? model.AppName : replaceTitle(model.display)
                 wrapMode: Text.Wrap
                 width: properWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
@@ -285,6 +286,13 @@ Item {
             }
 
         }
+    }
+
+    function replaceTitle(title) {
+        if (!plasmoid.configuration.useWindowTitleReplace) {
+            return title
+        }
+        return title.replace(new RegExp(plasmoid.configuration.replaceTextRegex), plasmoid.configuration.replaceTextReplacement);
     }
 
     MouseArea {
@@ -392,7 +400,66 @@ Item {
 
             delegate: ControlButton { }
         }
+        
+        // appmenu
+        /* TODO
+        GridLayout {
+            id: buttonGrid
+            //when we're not enabled set to active to show the configure button
+            //Plasmoid.status: !appletEnabled || buttonRepeater.count > 0 ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+            Layout.minimumWidth: implicitWidth
+            Layout.minimumHeight: implicitHeight
+
+            flow: GridLayout.LeftToRight
+            rowSpacing: units.smallSpacing
+            columnSpacing: units.smallSpacing
+
+            Component.onCompleted: {
+                plasmoid.nativeInterface.buttonGrid = buttonGrid
+            }
+
+            Connections {
+                target: plasmoid.nativeInterface
+                onRequestActivateIndex: {
+                    var idx = Math.max(0, Math.min(buttonRepeater.count - 1, index))
+                    var button = buttonRepeater.itemAt(index)
+                    if (button) {
+                        button.clicked()
+                    }
+                }
+            }
+
+            Repeater {
+                id: buttonRepeater
+                model: appMenuModel
+
+                PlasmaComponents.ToolButton {
+                    readonly property int buttonIndex: index
+
+                    Layout.preferredWidth: minimumWidth
+                    Layout.fillWidth: root.vertical
+                    Layout.fillHeight: !root.vertical
+                    text: activeMenu
+                    // fake highlighted
+                    checkable: plasmoid.nativeInterface.currentIndex === index
+                    checked: checkable
+                    onClicked: {
+                        plasmoid.nativeInterface.trigger(this, index)
+                    }
+                }
+            }
+        }
+        */
     }
+    
+    /*
+    ActiveWindowControlPrivate.AppMenuModel {
+        id: appMenuModel
+        Component.onCompleted: {
+            plasmoid.nativeInterface.model = appMenuModel
+        }
+    }
+    */
 
     ListModel {
         id: controlButtonsModel
