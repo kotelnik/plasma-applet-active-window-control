@@ -255,7 +255,7 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: textType === 1 ? model.AppName : reverseTitleOrder(model.display)
+                text: textType === 1 ? model.AppName : reverseTitleOrder(remMozilla(model.display))
                 wrapMode: Text.Wrap
                 width: properWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
@@ -433,6 +433,10 @@ Item {
         }
       }
       return revTitle;
+    }
+
+    function remMozilla(title) {
+      return title = title.replace("Mozilla ", ""); //  Remove Mozilla prefix from Mozilla Apps
     }
 
     function addButton(preparedArray, buttonName) {
