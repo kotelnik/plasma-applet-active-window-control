@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
+"window-control/issues\n"
+"POT-Creation-Date: 2017-02-12 23:29+0100\n"
+"PO-Revision-Date: 2017-02-12 23:08+0100\n"
+"Last-Translator: Martin Kotelnik <clearmartin@seznam.cz>\n"
+"Language-Team: Martin Kotelnik <clearmartin@seznam.cz>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../package/contents/config/config.qml:6
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: ../package/contents/config/config.qml:11
+msgid "Buttons"
+msgstr "Tlačítka"
+
+#: ../package/contents/config/config.qml:16
+msgid "Mouse Control"
+msgstr "Ovládání myší"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:66
+msgctxt "Use default font"
+msgid "Default"
+msgstr "Výchozí"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:83
+msgid "Plasmoid version: "
+msgstr "Verze apletu: "
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:89
+msgid "Width in horizontal panel:"
+msgstr "Šířka v horizontálním panelu:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:96
+msgid "Fill width"
+msgstr "Vyplnit šířku"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:115
+msgid "Fine tuning:"
+msgstr "Detailní nastavení:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:135
+msgid "Hide titlebar for maximized windows (takes effect immediately)"
+msgstr "Schovávat titlebar u maximalizovaných oken (zafunguje okamžitě)"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:151
+msgid "Show window title"
+msgstr "Zobrazovat titulek okna"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:166
+msgid "Text type:"
+msgstr "Zobrazit:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:171
+#: ../package/contents/ui/config/ConfigAppearance.qml:189
+msgid "Window title"
+msgstr "Titulek okna"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:171
+#: ../package/contents/ui/config/ConfigAppearance.qml:189
+msgid "Application name"
+msgstr "Název aplikace"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:175
+msgid "Fit text:"
+msgstr "Zarovnat text:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:180
+msgid "Just elide"
+msgstr "Elipsa"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:180
+msgid "Fit on hover"
+msgstr "Zarovnat po najetí myši"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:180
+msgid "Always fit"
+msgstr "Vždy zarovnat"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:184
+msgid "Tooltip text:"
+msgstr "Tooltip:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:189
+msgid "No tooltip"
+msgstr "Nezobrazovat"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:202
+msgid "Show window icon"
+msgstr "Zobrazit ikonu okna"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:208
+msgid "Window icon on the right"
+msgstr "Ikona okna napravo"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:229
+msgid "Bold text"
+msgstr "Tučný text"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:233
+msgid "Text font:"
+msgstr "Font:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:254
+msgid "Icon and text spacing:"
+msgstr "Mezera mezi ikonou a textem:"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:266
+msgid "Font size scale:"
+msgstr "Velikost fontu:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:88
+msgid "Enable Control Buttons"
+msgstr "Zobrazovat tlačítka"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:109
+msgid "Show minimize button"
+msgstr "Zobrazit minifikaci"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:114
+msgid "Show maximize button"
+msgstr "Zobrazit maximalizaci"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:119
+msgid "Show pin to all desktops"
+msgstr "Zobrazit připnutí na všechny plochy"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:129
+msgid "Button order:"
+msgstr "Pořadí tlačítek:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:165
+msgid "Behaviour:"
+msgstr "Chování:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:171
+msgid "Do not hide on mouse out"
+msgstr "Neschovávat při odjetí myši"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:182
+msgid "Show only when maximized"
+msgstr "Zobrazovat jen když je okno maximalizované"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:187
+msgid "Buttons next to icon and text"
+msgstr "Tlačítka vedle ikony a textu"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:192
+msgid "Dynamic width"
+msgstr "Dynamická šířka"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:198
+msgid "Sliding icon and text"
+msgstr "Klouzající ikona a text"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:210
+msgid "Position:"
+msgstr "Pozice:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:216
+msgid "Upper left"
+msgstr "Vlevo nahoře"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:227
+msgid "Upper right"
+msgstr "Vpravo nahoře"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:233
+msgid "Bottom left"
+msgstr "Vlevo dole"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:239
+msgid "Bottom right"
+msgstr "Vpravo dole"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:245
+msgid "Vertical center"
+msgstr "Vertikálně vycentrovat"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:255
+msgid "Button size:"
+msgstr "Velikost tlačítek:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:267
+msgid "Buttons spacing:"
+msgstr "Mezery mezi tlačítky:"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:84
+msgid "Mouse Buttons:"
+msgstr "Ovládání myší:"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:89
+msgid "Doubleclick to toggle maximizing"
+msgstr "Dvojitý klik maximalizuje"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:101
+msgid "Left click disabled"
+msgstr "Levý klik nic nedělá"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:108
+msgid "Left click to present windows (Current Desktop)"
+msgstr "Levý klik zobrazí \"present windows\" (aktivní plocha)"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:115
+msgid "Left click to present windows (All Desktops)"
+msgstr "Levý klik zobrazí \"present windows\" (všechny plochy)"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:122
+msgid "Left click to present windows (Window Class)"
+msgstr "Levý klik zobrazí \"present windows\" (aktivní aplikace)"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:140
+msgid "Middle click disabled"
+msgstr "Prostřední klik nic nedělá"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:146
+msgid "Middle click to close active window"
+msgstr "Prostřední klik zavře okno"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:152
+msgid "Middle click to toggle fullscreen"
+msgstr "Prostřední klik přepne fullscreen"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:163
+msgid "Mouse Wheel:"
+msgstr "Kolečko myši:"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:168
+msgid "Mouse wheel up to maximize"
+msgstr "Kolečko myši \"nahoru\" maximalizuje"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:178
+msgid "Mouse wheel down disabled"
+msgstr "Kolečko myši \"dolů\" nic nedělá"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:184
+msgid "Mouse wheel down to minimize"
+msgstr "Kolečko myši \"dolů\" minimalizuje"
+
+#: ../package/contents/ui/config/ConfigMouseControl.qml:190
+msgid "Mouse wheel down to unmaximize"
+msgstr "Kolečko myši \"dolů\" zruší maximalizaci"
+
+#: ../package/contents/ui/main.qml:179
+msgid "Plasma Desktop"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:478
+msgid "Close"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:479
+msgid "Toggle Maximise"
+msgstr "Přepnout maximalizaci"
+
+#: ../package/contents/ui/main.qml:480
+msgid "Minimise"
+msgstr "Minimalizovat"
+
+#: ../package/contents/ui/main.qml:481
+msgid "Pin To All Desktops"
+msgstr "Připnout na všechny plochy"
