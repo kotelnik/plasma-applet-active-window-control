@@ -255,7 +255,7 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: textType === 1 ? model.AppName : model.display
+                text: textType === 1 ? model.AppName : reverseTitleOrder(remMozilla(model.display))
                 wrapMode: Text.Wrap
                 width: properWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
@@ -396,6 +396,47 @@ Item {
 
     ListModel {
         id: controlButtonsModel
+    }
+
+    function reverseTitleOrder(title) {
+      var revTitle;
+      var lastPos = title.lastIndexOf(" — "); //  U+2014 "EM DASH"
+      if (lastPos > -1) {
+        revTitle = title.slice(lastPos+3,title.length);
+        revTitle = revTitle.concat(" — "); //  U+2014 "EM DASH"
+        revTitle = revTitle.concat(title.slice(0, lastPos));
+      }
+      else {
+        lastPos = title.lastIndexOf(" – "); // U+2013 "EN DASH"
+        if (lastPos > -1) {
+          revTitle = title.slice(lastPos+3,title.length);
+          revTitle = revTitle.concat(" — "); //  U+2014 "EM DASH"
+          revTitle = revTitle.concat(title.slice(0, lastPos));
+        }
+        else {
+          lastPos = title.lastIndexOf(" - "); // ASCII Dash
+          if (lastPos > -1) {
+            revTitle = title.slice(lastPos+3,title.length);
+            revTitle = revTitle.concat(" — "); //  U+2014 "EM DASH"
+            revTitle = revTitle.concat(title.slice(0, lastPos));
+          }
+          else {
+            lastPos = title.lastIndexOf(": "); // semicolon (Chromium)
+            if (lastPos > -1) {
+              revTitle = title.slice(lastPos+2,title.length);
+              revTitle = revTitle.concat(" — "); //  U+2014 "EM DASH"
+              revTitle = revTitle.concat(title.slice(0, lastPos));
+            }
+            else
+              revTitle = title;
+          }
+        }
+      }
+      return revTitle;
+    }
+
+    function remMozilla(title) {
+      return title = title.replace("Mozilla ", ""); //  Remove Mozilla prefix from Mozilla Apps
     }
 
     function addButton(preparedArray, buttonName) {

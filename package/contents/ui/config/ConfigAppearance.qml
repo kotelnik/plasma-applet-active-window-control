@@ -268,8 +268,8 @@ Item {
             }
             SpinBox {
                 id: fontSizeScale
-                decimals: 1
-                stepSize: 0.1
+                decimals: 2
+                stepSize: 0.05
                 minimumValue: 0
                 maximumValue: 3
             }
