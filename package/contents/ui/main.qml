@@ -256,7 +256,7 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text:  textType === 1 ? model.AppName : replaceTitle(model.display)
+                text: textType === 1 ? model.AppName : replaceTitle(model.display)
                 wrapMode: Text.Wrap
                 width: properWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
@@ -400,7 +400,7 @@ Item {
 
             delegate: ControlButton { }
         }
-        
+
         // appmenu
         /* TODO
         GridLayout {
@@ -451,7 +451,7 @@ Item {
         }
         */
     }
-    
+
     /*
     ActiveWindowControlPrivate.AppMenuModel {
         id: appMenuModel
