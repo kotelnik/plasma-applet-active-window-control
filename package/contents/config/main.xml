@@ -80,7 +80,7 @@
             <default>false</default>
         </entry>
         <entry name="replaceTextRegex" type="String">
-            <default>^(.*)\s+[—–\-:]\s+(Mozilla )?([^—–\-:]+)$</default>
+            <default>^(.*)\s*[—–\-:]\s*(Mozilla )?([^—–\-:]+)$</default>
         </entry>
         <entry name="replaceTextReplacement" type="String">
             <default>$3 — $1</default>
