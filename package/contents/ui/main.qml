@@ -22,7 +22,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.taskmanager 0.1 as TaskManager
-//import org.kde.private.activeWindowControl 1.0 as ActiveWindowControlPrivate
+import org.kde.private.activeWindowControl 1.0 as ActiveWindowControlPrivate
 
 Item {
     id: main
@@ -85,6 +85,10 @@ Item {
     property bool mouseHover: false
     property bool isActiveWindowPinned: false
     property bool isActiveWindowMaximized: false
+    property bool appmenuEnabled: plasmoid.configuration.appmenuEnabled
+    property bool appmenuNextToButtons: plasmoid.configuration.appmenuNextToButtons
+    property bool appmenuFillHeight: plasmoid.configuration.appmenuFillHeight
+    property bool appmenuOpened: appmenuEnabled && plasmoid.nativeInterface.currentIndex > -1
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -218,6 +222,7 @@ Item {
         width: parent.width - anchors.leftMargin - anchors.rightMargin
 
         visible: !noWindowVisible
+        opacity: appmenuEnabled && (mouseHover || appmenuOpened) ? 0.3 : 1
 
         model: activeWindowModel
 
@@ -402,7 +407,6 @@ Item {
         }
 
         // appmenu
-        /* TODO
         GridLayout {
             id: buttonGrid
             //when we're not enabled set to active to show the configure button
@@ -413,6 +417,16 @@ Item {
             flow: GridLayout.LeftToRight
             rowSpacing: units.smallSpacing
             columnSpacing: units.smallSpacing
+
+            anchors.top: parent.top
+            anchors.left: parent.left
+
+            visible: appmenuEnabled && (mouseHover || appmenuOpened)
+
+            property double placementOffset: appmenuNextToButtons ? controlButtonsArea.width + 5 : 0
+
+            anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width - placementOffset : placementOffset
+            anchors.topMargin: (bp === 2 || bp === 3) ? 0 : parent.height - height
 
             Component.onCompleted: {
                 plasmoid.nativeInterface.buttonGrid = buttonGrid
@@ -437,8 +451,7 @@ Item {
                     readonly property int buttonIndex: index
 
                     Layout.preferredWidth: minimumWidth
-                    Layout.fillWidth: root.vertical
-                    Layout.fillHeight: !root.vertical
+                    Layout.preferredHeight: appmenuFillHeight ? main.height : minimumHeight
                     text: activeMenu
                     // fake highlighted
                     checkable: plasmoid.nativeInterface.currentIndex === index
@@ -449,17 +462,29 @@ Item {
                 }
             }
         }
-        */
+
     }
 
-    /*
     ActiveWindowControlPrivate.AppMenuModel {
         id: appMenuModel
         Component.onCompleted: {
-            plasmoid.nativeInterface.model = appMenuModel
+            onAppmenuEnabledChanged()
         }
     }
-    */
+
+    onAppmenuEnabledChanged: {
+        if (appmenuEnabled) {
+            print('setting model in QML: ' + appMenuModel)
+            for (var key in appMenuModel) {
+                print('  ' + key + ' -> ' + appMenuModel[key])
+            }
+            plasmoid.nativeInterface.model = appMenuModel
+            buttonRepeater.model = appMenuModel
+        } else {
+            plasmoid.nativeInterface.model = null
+            buttonRepeater.model = null
+        }
+    }
 
     ListModel {
         id: controlButtonsModel

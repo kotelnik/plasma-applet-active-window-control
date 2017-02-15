@@ -105,6 +105,18 @@
         </entry>
     </group>
 
+    <group name="AppMenu">
+        <entry name="appmenuEnabled" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="appmenuNextToButtons" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="appmenuFillHeight" type="Bool">
+            <default>false</default>
+        </entry>
+    </group>
+
     <group name="MouseControl">
         <entry name="doubleClickMaximizes" type="Bool">
             <default>true</default>

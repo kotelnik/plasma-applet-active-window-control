@@ -5,8 +5,12 @@ set(activewindowcontrolplugin_SRCS
 
 add_library(activewindowcontrolplugin SHARED ${activewindowcontrolplugin_SRCS})
 
-#find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus)
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS WindowSystem)
+cmake_policy(SET CMP0053 NEW)
+cmake_policy(SET CMP0063 NEW)
+
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus)
+
+add_subdirectory(libdbusmenuqt)
 
 target_link_libraries(activewindowcontrolplugin
                       Qt5::Core
@@ -44,7 +48,10 @@ if(HAVE_X11)
     find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED X11Extras)
     find_package(XCB MODULE REQUIRED COMPONENTS XCB RANDR)
     set_package_properties(XCB PROPERTIES TYPE REQUIRED)
-    target_link_libraries(activewindowcontrolplugin Qt5::X11Extras XCB::XCB)
+    target_link_libraries(activewindowcontrolplugin
+                          Qt5::X11Extras
+                          XCB::XCB
+                          )
 endif()
 
 install(TARGETS activewindowcontrolplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/private/activeWindowControl)

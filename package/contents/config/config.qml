@@ -17,4 +17,9 @@ ConfigModel {
          icon: "preferences-desktop-mouse"
          source: "config/ConfigMouseControl.qml"
     }
+    ConfigCategory {
+         name: i18n("Application Menu")
+         icon: "application-menu"
+         source: "config/ConfigAppMenu.qml"
+    }
 }
