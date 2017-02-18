@@ -88,7 +88,9 @@ Item {
     property bool appmenuEnabled: plasmoid.configuration.appmenuEnabled
     property bool appmenuNextToButtons: plasmoid.configuration.appmenuNextToButtons
     property bool appmenuFillHeight: plasmoid.configuration.appmenuFillHeight
+    property bool appmenuEnabledAndNonEmpty: appmenuEnabled && appMenuModel !== null && appMenuModel.menuAvailable
     property bool appmenuOpened: appmenuEnabled && plasmoid.nativeInterface.currentIndex > -1
+    property var appMenuModel: null
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -222,7 +224,7 @@ Item {
         width: parent.width - anchors.leftMargin - anchors.rightMargin
 
         visible: !noWindowVisible
-        opacity: appmenuEnabled && (mouseHover || appmenuOpened) ? 0.3 : 1
+        opacity: buttonGrid.visible ? 0.3 : 1
 
         model: activeWindowModel
 
@@ -421,7 +423,7 @@ Item {
             anchors.top: parent.top
             anchors.left: parent.left
 
-            visible: appmenuEnabled && (mouseHover || appmenuOpened)
+            visible: appmenuEnabledAndNonEmpty && (mouseHover || appmenuOpened)
 
             property double placementOffset: appmenuNextToButtons ? controlButtonsArea.width + 5 : 0
 
@@ -445,7 +447,7 @@ Item {
 
             Repeater {
                 id: buttonRepeater
-                model: appMenuModel
+                model: null
 
                 PlasmaComponents.ToolButton {
                     readonly property int buttonIndex: index
@@ -465,15 +467,37 @@ Item {
 
     }
 
-    ActiveWindowControlPrivate.AppMenuModel {
-        id: appMenuModel
-        Component.onCompleted: {
-            onAppmenuEnabledChanged()
+    function initializeAppModel() {
+        if (appMenuModel !== null) {
+            return
+        }
+        print('initializing appMenuModel...')
+        try {
+            appMenuModel = Qt.createQmlObject(
+                'import QtQuick 2.2;\
+                 import org.kde.plasma.plasmoid 2.0;\
+                 import org.kde.private.activeWindowControl 1.0 as ActiveWindowControlPrivate;\
+                 ActiveWindowControlPrivate.AppMenuModel {\
+                     id: appMenuModel;\
+                     Component.onCompleted: {\
+                         plasmoid.nativeInterface.model = appMenuModel\
+                     }\
+                 }', main)
+        } catch (e) {
+            print('appMenuModel failed to initialize: ' + e)
+        }
+        print('initializing appmenu...DONE ' + appMenuModel)
+        if (appMenuModel !== null) {
+            resetAppmenuModel()
         }
     }
 
-    onAppmenuEnabledChanged: {
+    function resetAppmenuModel() {
         if (appmenuEnabled) {
+            initializeAppModel()
+            if (appMenuModel === null) {
+                return
+            }
             print('setting model in QML: ' + appMenuModel)
             for (var key in appMenuModel) {
                 print('  ' + key + ' -> ' + appMenuModel[key])
@@ -484,6 +508,10 @@ Item {
             plasmoid.nativeInterface.model = null
             buttonRepeater.model = null
         }
+    }
+
+    onAppmenuEnabledChanged: {
+        resetAppmenuModel()
     }
 
     ListModel {

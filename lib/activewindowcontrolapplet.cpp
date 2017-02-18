@@ -125,6 +125,7 @@ QMenu *ActiveWindowControlApplet::createMenu(int idx) const
     QAction *action = nullptr;
 
     if (!m_model) {
+        qDebug() << "model not available";
         return menu;
     }
 
