@@ -115,6 +115,9 @@
         <entry name="appmenuFillHeight" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="appmenuNextToIconAndText" type="Bool">
+            <default>false</default>
+        </entry>
     </group>
 
     <group name="MouseControl">

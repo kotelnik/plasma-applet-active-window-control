@@ -13,13 +13,17 @@ Item {
     property bool appmenuEnabledAndNonEmpty: appmenuEnabled && appMenuModel !== null && appMenuModel.menuAvailable
     property bool appmenuOpened: appmenuEnabled && plasmoid.nativeInterface.currentIndex > -1
     property var appMenuModel: null
-    
-    visible: appmenuEnabledAndNonEmpty && (mouseHover || appmenuOpened)
+
+    property bool appmenuButtonsOffsetEnabled: !buttonsStandalone && appmenuNextToButtons && childrenRect.width > 0
+    property double appmenuOffsetWidth: appmenuNextToIconAndText
+                                                ? appmenu.childrenRect.width + (appmenuButtonsOffsetEnabled ? controlButtonsArea.width : 0)
+                                                : 0
+
+    visible: appmenuEnabledAndNonEmpty && (appmenuNextToIconAndText || mouseHover || appmenuOpened)
 
     GridLayout {
         id: buttonGrid
-        //when we're not enabled set to active to show the configure button
-        //Plasmoid.status: !appletEnabled || buttonRepeater.count > 0 ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+
         Layout.minimumWidth: implicitWidth
         Layout.minimumHeight: implicitHeight
 
@@ -30,7 +34,7 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
 
-        property double placementOffset: appmenuNextToButtons ? controlButtonsArea.width + 5 : 0
+        property double placementOffset: appmenuNextToButtons && controlButtonsArea.visible ? controlButtonsArea.width + 5 : 0
 
         anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width - placementOffset : placementOffset
         anchors.topMargin: (bp === 2 || bp === 3) ? 0 : parent.height - height
@@ -56,9 +60,11 @@ Item {
 
             PlasmaComponents.ToolButton {
                 readonly property int buttonIndex: index
+                property double heightRatio: appmenu.height < minimumHeight ? appmenu.height / minimumHeight : 1
 
                 Layout.preferredWidth: minimumWidth
-                Layout.preferredHeight: appmenuFillHeight ? main.height : minimumHeight
+                Layout.preferredHeight: appmenuFillHeight ? appmenu.height : minimumHeight
+                font.pixelSize: fontPixelSize * heightRatio
                 text: activeMenu
                 // fake highlighted
                 checkable: plasmoid.nativeInterface.currentIndex === index

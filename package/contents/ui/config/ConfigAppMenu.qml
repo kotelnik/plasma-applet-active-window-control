@@ -8,6 +8,7 @@ Item {
     property alias cfg_appmenuEnabled: appmenuEnabled.checked
     property alias cfg_appmenuNextToButtons: appmenuNextToButtons.checked
     property alias cfg_appmenuFillHeight: appmenuFillHeight.checked
+    property alias cfg_appmenuNextToIconAndText: appmenuNextToIconAndText.checked
 
     GroupBox {
         id: appmenuEnabled
@@ -25,14 +26,20 @@ Item {
             }
 
             CheckBox {
+                id: appmenuFillHeight
+                text: i18n("Fill height")
+                Layout.columnSpan: 2
+            }
+
+            CheckBox {
                 id: appmenuNextToButtons
                 text: i18n("Show next to buttons")
                 Layout.columnSpan: 2
             }
 
             CheckBox {
-                id: appmenuFillHeight
-                text: i18n("Fill height")
+                id: appmenuNextToIconAndText
+                text: i18n("Show next to icon and text")
                 Layout.columnSpan: 2
             }
         }

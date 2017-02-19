@@ -85,6 +85,8 @@ Item {
     property bool isActiveWindowPinned: false
     property bool isActiveWindowMaximized: false
 
+    property bool appmenuNextToIconAndText: plasmoid.configuration.appmenuNextToIconAndText
+
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
 
@@ -183,7 +185,7 @@ Item {
         font.family: fontFamily || theme.defaultFont.family
         width: parent.width - noWindowTextMargin * 2
         elide: Text.ElideRight
-        visible: noWindowVisible && plasmoid.configuration.showWindowTitle
+        visible: noWindowVisible && plasmoid.configuration.showWindowTitle && !appmenu.visible
     }
 
 
@@ -196,10 +198,13 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
+        property double appmenuOffsetLeft: (bp === 0 || bp === 2) ? appmenu.appmenuOffsetWidth : 0
+        property double appmenuOffsetRight: (bp === 1 || bp === 3) ? appmenu.appmenuOffsetWidth : 0
+
         anchors.left: parent.left
-        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
+        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width + appmenuOffsetLeft : 0 + appmenuOffsetLeft
         anchors.right: parent.right
-        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width : 0
+        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsArea.width + appmenuOffsetRight : 0 + appmenuOffsetRight
 
         Behavior on anchors.leftMargin {
             NumberAnimation {
@@ -217,7 +222,7 @@ Item {
         width: parent.width - anchors.leftMargin - anchors.rightMargin
 
         visible: !noWindowVisible
-        opacity: appmenu.visible ? 0.3 : 1
+        opacity: appmenu.visible && !appmenuNextToIconAndText ? 0.2 : 1
 
         model: activeWindowModel
 
@@ -376,6 +381,10 @@ Item {
             }
         }
 
+        AppMenu {
+            id: appmenu
+        }
+
         ListView {
             id: controlButtonsArea
 
@@ -383,7 +392,7 @@ Item {
             property double controlButtonsHeight: parent.height * buttonSize
 
             orientation: ListView.Horizontal
-            visible:showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowVisible
+            visible: showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowVisible
 
             spacing: controlButtonsSpacing
 
@@ -399,10 +408,6 @@ Item {
             model: controlButtonsModel
 
             delegate: ControlButton { }
-        }
-
-        AppMenu {
-            id: appmenu
         }
 
     }
