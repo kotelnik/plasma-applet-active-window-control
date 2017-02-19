@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-02-12 23:29+0100\n"
+"POT-Creation-Date: 2017-02-19 16:50+0100\n"
 "PO-Revision-Date: 2017-02-12 23:08+0100\n"
 "Last-Translator: Martin Kotelnik <clearmartin@seznam.cz>\n"
 "Language-Team: Martin Kotelnik <clearmartin@seznam.cz>\n"
@@ -29,96 +29,117 @@ msgstr "Tlačítka"
 msgid "Mouse Control"
 msgstr "Ovládání myší"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:66
+#: ../package/contents/config/config.qml:21
+msgid "Application Menu"
+msgstr "Aplikační menu"
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:69
 msgctxt "Use default font"
 msgid "Default"
 msgstr "Výchozí"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:83
+#: ../package/contents/ui/config/ConfigAppearance.qml:86
 msgid "Plasmoid version: "
 msgstr "Verze apletu: "
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:89
+#: ../package/contents/ui/config/ConfigAppearance.qml:92
 msgid "Width in horizontal panel:"
 msgstr "Šířka v horizontálním panelu:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:96
+#: ../package/contents/ui/config/ConfigAppearance.qml:99
 msgid "Fill width"
 msgstr "Vyplnit šířku"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:115
+#: ../package/contents/ui/config/ConfigAppearance.qml:118
 msgid "Fine tuning:"
 msgstr "Detailní nastavení:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:135
+#: ../package/contents/ui/config/ConfigAppearance.qml:138
 msgid "Hide titlebar for maximized windows (takes effect immediately)"
 msgstr "Schovávat titlebar u maximalizovaných oken (zafunguje okamžitě)"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:151
+#: ../package/contents/ui/config/ConfigAppearance.qml:154
 msgid "Show window title"
 msgstr "Zobrazovat titulek okna"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:166
+#: ../package/contents/ui/config/ConfigAppearance.qml:169
 msgid "Text type:"
 msgstr "Zobrazit:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:171
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:174
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
+#: ../package/contents/ui/config/ConfigAppearance.qml:197
 msgid "Window title"
 msgstr "Titulek okna"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:171
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:174
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
 msgid "Application name"
 msgstr "Název aplikace"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:175
+#: ../package/contents/ui/config/ConfigAppearance.qml:178
 msgid "Fit text:"
 msgstr "Zarovnat text:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Just elide"
 msgstr "Elipsa"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Fit on hover"
 msgstr "Zarovnat po najetí myši"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Always fit"
 msgstr "Vždy zarovnat"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:184
+#: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Tooltip text:"
 msgstr "Tooltip:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
 msgid "No tooltip"
 msgstr "Nezobrazovat"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:202
+#: ../package/contents/ui/config/ConfigAppearance.qml:239
 msgid "Show window icon"
 msgstr "Zobrazit ikonu okna"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:208
+#: ../package/contents/ui/config/ConfigAppearance.qml:245
 msgid "Window icon on the right"
 msgstr "Ikona okna napravo"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:229
+#: ../package/contents/ui/config/ConfigAppearance.qml:266
 msgid "Bold text"
 msgstr "Tučný text"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:233
+#: ../package/contents/ui/config/ConfigAppearance.qml:270
 msgid "Text font:"
 msgstr "Font:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:254
+#: ../package/contents/ui/config/ConfigAppearance.qml:291
 msgid "Icon and text spacing:"
 msgstr "Mezera mezi ikonou a textem:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:266
+#: ../package/contents/ui/config/ConfigAppearance.qml:303
 msgid "Font size scale:"
 msgstr "Velikost fontu:"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:15
+msgid "Enable application menu"
+msgstr "Zobrazit aplikační menu"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:30
+msgid "Fill height"
+msgstr "Na celou výšku panelu"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+msgid "Show next to buttons"
+msgstr "Zobrazit vedle tlačítek"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+msgid "Show next to icon and text"
+msgstr "Zobrazit vedle ikony a titulku okna"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:88
 msgid "Enable Control Buttons"
@@ -252,22 +273,22 @@ msgstr "Kolečko myši \"dolů\" minimalizuje"
 msgid "Mouse wheel down to unmaximize"
 msgstr "Kolečko myši \"dolů\" zruší maximalizaci"
 
-#: ../package/contents/ui/main.qml:179
+#: ../package/contents/ui/main.qml:181
 msgid "Plasma Desktop"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:478
+#: ../package/contents/ui/main.qml:496
 msgid "Close"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:479
+#: ../package/contents/ui/main.qml:497
 msgid "Toggle Maximise"
 msgstr "Přepnout maximalizaci"
 
-#: ../package/contents/ui/main.qml:480
+#: ../package/contents/ui/main.qml:498
 msgid "Minimise"
 msgstr "Minimalizovat"
 
-#: ../package/contents/ui/main.qml:481
+#: ../package/contents/ui/main.qml:499
 msgid "Pin To All Desktops"
 msgstr "Připnout na všechny plochy"

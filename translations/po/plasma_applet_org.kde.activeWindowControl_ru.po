@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-02-12 23:29+0100\n"
+"POT-Creation-Date: 2017-02-19 16:50+0100\n"
 "PO-Revision-Date: 2017-02-16 23:08+0100\n"
 "Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
@@ -29,96 +29,122 @@ msgstr "Кнопки"
 msgid "Mouse Control"
 msgstr "Поведение мыши"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:66
+#: ../package/contents/config/config.qml:21
+#, fuzzy
+msgid "Application Menu"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:69
 msgctxt "Use default font"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:83
+#: ../package/contents/ui/config/ConfigAppearance.qml:86
 msgid "Plasmoid version: "
 msgstr "Версия виджета: "
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:89
+#: ../package/contents/ui/config/ConfigAppearance.qml:92
 msgid "Width in horizontal panel:"
 msgstr "Заполнение свободного пространства панели:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:96
+#: ../package/contents/ui/config/ConfigAppearance.qml:99
 msgid "Fill width"
 msgstr "По всей ширине"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:115
+#: ../package/contents/ui/config/ConfigAppearance.qml:118
 msgid "Fine tuning:"
 msgstr "Точно по размеру:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:135
+#: ../package/contents/ui/config/ConfigAppearance.qml:138
 msgid "Hide titlebar for maximized windows (takes effect immediately)"
 msgstr "Скрыть рамки развернутых окон (срабатывает сразу)"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:151
+#: ../package/contents/ui/config/ConfigAppearance.qml:154
 msgid "Show window title"
 msgstr "Показывать заголовки окон на панели"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:166
+#: ../package/contents/ui/config/ConfigAppearance.qml:169
 msgid "Text type:"
 msgstr "Отображаемый текст:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:171
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:174
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
+#: ../package/contents/ui/config/ConfigAppearance.qml:197
 msgid "Window title"
 msgstr "Заголовки окон"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:171
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:174
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
 msgid "Application name"
 msgstr "Названия приложений"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:175
+#: ../package/contents/ui/config/ConfigAppearance.qml:178
 msgid "Fit text:"
 msgstr "Способ заполнения:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Just elide"
 msgstr "Обрезать"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Fit on hover"
 msgstr "Разворачивать при наведении"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:180
+#: ../package/contents/ui/config/ConfigAppearance.qml:183
 msgid "Always fit"
 msgstr "Показывать полностью"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:184
+#: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Tooltip text:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:189
+#: ../package/contents/ui/config/ConfigAppearance.qml:192
 msgid "No tooltip"
 msgstr "Отсутствует"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:202
+#: ../package/contents/ui/config/ConfigAppearance.qml:239
 msgid "Show window icon"
 msgstr "Показывать значки приложений"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:208
+#: ../package/contents/ui/config/ConfigAppearance.qml:245
 msgid "Window icon on the right"
 msgstr "Значки справа"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:229
+#: ../package/contents/ui/config/ConfigAppearance.qml:266
 msgid "Bold text"
 msgstr "Жирный"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:233
+#: ../package/contents/ui/config/ConfigAppearance.qml:270
 msgid "Text font:"
 msgstr "Шрифт:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:254
+#: ../package/contents/ui/config/ConfigAppearance.qml:291
 msgid "Icon and text spacing:"
 msgstr "Интервал значков и текста:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:266
+#: ../package/contents/ui/config/ConfigAppearance.qml:303
 msgid "Font size scale:"
 msgstr "Размер шрифта:"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:15
+#, fuzzy
+msgid "Enable application menu"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:30
+#, fuzzy
+msgid "Fill height"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+#, fuzzy
+msgid "Show next to buttons"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+#, fuzzy
+msgid "Show next to icon and text"
+msgstr ""
 
 #: ../package/contents/ui/config/ConfigButtons.qml:88
 msgid "Enable Control Buttons"
@@ -252,22 +278,22 @@ msgstr "Прокрутить \"вниз\", чтобы скрыть"
 msgid "Mouse wheel down to unmaximize"
 msgstr "Прокрутить \"вниз\", чтобы свернуть"
 
-#: ../package/contents/ui/main.qml:179
+#: ../package/contents/ui/main.qml:181
 msgid "Plasma Desktop"
 msgstr "Рабочий стол"
 
-#: ../package/contents/ui/main.qml:478
+#: ../package/contents/ui/main.qml:496
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../package/contents/ui/main.qml:479
+#: ../package/contents/ui/main.qml:497
 msgid "Toggle Maximise"
 msgstr "Развернуть"
 
-#: ../package/contents/ui/main.qml:480
+#: ../package/contents/ui/main.qml:498
 msgid "Minimise"
 msgstr "Свернуть"
 
-#: ../package/contents/ui/main.qml:481
+#: ../package/contents/ui/main.qml:499
 msgid "Pin To All Desktops"
 msgstr "Закрепить на всех рабочих столах"
