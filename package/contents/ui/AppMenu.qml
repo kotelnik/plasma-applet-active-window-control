@@ -15,11 +15,11 @@ Item {
     property var appMenuModel: null
 
     property bool appmenuButtonsOffsetEnabled: !buttonsStandalone && appmenuNextToButtons && childrenRect.width > 0
-    property double appmenuOffsetWidth: appmenuNextToIconAndText
-                                                ? appmenu.childrenRect.width + (appmenuButtonsOffsetEnabled ? controlButtonsArea.width : 0)
+    property double appmenuOffsetWidth: visible && appmenuNextToIconAndText && !appmenuSwitchSidesWithIconAndText
+                                                ? appmenu.childrenRect.width + (appmenuButtonsOffsetEnabled ? controlButtonsArea.width : 0) + appmenuSideMargin*2
                                                 : 0
 
-    visible: appmenuEnabledAndNonEmpty && (appmenuNextToIconAndText || mouseHover || appmenuOpened)
+    visible: appmenuEnabledAndNonEmpty && !noWindowActive && (appmenuNextToIconAndText || mouseHover || appmenuOpened)
 
     GridLayout {
         id: buttonGrid
@@ -34,7 +34,10 @@ Item {
         anchors.top: parent.top
         anchors.left: parent.left
 
-        property double placementOffset: appmenuNextToButtons && controlButtonsArea.visible ? controlButtonsArea.width + 5 : 0
+        property double placementOffsetButtons: appmenuNextToButtons && controlButtonsArea.visible ? controlButtonsArea.width + appmenuSideMargin : 0
+        property double placementOffset: appmenuNextToIconAndText && appmenuSwitchSidesWithIconAndText
+                                            ? activeWindowListView.anchors.leftMargin + windowTitleText.anchors.leftMargin + Math.min(windowTitleText.implicitWidth, windowTitleText.width) + appmenuSideMargin
+                                            : placementOffsetButtons
 
         anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width - placementOffset : placementOffset
         anchors.topMargin: (bp === 2 || bp === 3) ? 0 : parent.height - height

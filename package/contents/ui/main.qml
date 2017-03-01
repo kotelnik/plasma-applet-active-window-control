@@ -53,7 +53,7 @@ Item {
     property bool fontBold: plasmoid.configuration.boldFontWeight
     property string fontFamily: plasmoid.configuration.fontFamily
 
-    property bool noWindowVisible: true
+    property bool noWindowActive: true
     property bool currentWindowMaximized: false
     property bool canShowButtonsAccordingMaximized: showButtonOnlyWhenMaximized ? currentWindowMaximized : true
 
@@ -86,6 +86,8 @@ Item {
     property bool isActiveWindowMaximized: false
 
     property bool appmenuNextToIconAndText: plasmoid.configuration.appmenuNextToIconAndText
+    property double appmenuSideMargin: plasmoid.configuration.appmenuOuterSideMargin
+    property bool appmenuSwitchSidesWithIconAndText: plasmoid.configuration.appmenuSwitchSidesWithIconAndText
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -133,9 +135,17 @@ Item {
     }
 
     function updateActiveWindowInfo() {
-        noWindowVisible = activeWindowModel.count === 0 || activeTask().IsActive !== true
-        currentWindowMaximized = !noWindowVisible && activeTask().IsMaximized === true
-        isActiveWindowPinned = activeTask().VirtualDesktop === -1;
+        var actTask = activeTask()
+        noWindowActive = activeWindowModel.count === 0 || actTask.IsActive !== true
+        currentWindowMaximized = !noWindowActive && actTask.IsMaximized === true
+        isActiveWindowPinned = actTask.VirtualDesktop === -1;
+        if (noWindowActive) {
+            windowTitleText.text = plasmoid.configuration.noWindowText
+            iconItem.source = plasmoid.configuration.noWindowIcon
+        } else {
+            windowTitleText.text = textType === 1 ? actTask.AppName : replaceTitle(actTask.display)
+            iconItem.source = actTask.decoration
+        }
     }
 
     function toggleMaximized() {
@@ -172,27 +182,10 @@ Item {
         }
     }
 
-    PlasmaComponents.Label {
-        id: noWindowText
-        property double noWindowTextMargin: (parent.height - implicitHeight) / 2
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: noWindowTextMargin
-        anchors.left: parent.left
-        text: i18n('Plasma Desktop')
-        font.pixelSize: fontPixelSize
-        font.pointSize: -1
-        font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
-        font.family: fontFamily || theme.defaultFont.family
-        width: parent.width - noWindowTextMargin * 2
-        elide: Text.ElideRight
-        visible: noWindowVisible && plasmoid.configuration.showWindowTitle && !appmenu.visible
-    }
-
-
     //
     // ACTIVE WINDOW INFO
     //
-    ListView {
+    Item {
         id: activeWindowListView
 
         anchors.top: parent.top
@@ -221,16 +214,11 @@ Item {
 
         width: parent.width - anchors.leftMargin - anchors.rightMargin
 
-        visible: !noWindowVisible
-        opacity: appmenu.visible && !appmenuNextToIconAndText ? 0.2 : 1
+        opacity: appmenu.visible && !appmenuNextToIconAndText ? plasmoid.configuration.appmenuIconAndTextOpacity : 1
 
-        model: activeWindowModel
-
-        delegate: Item {
+        Item {
             width: parent.width
             height: main.height
-
-            property double iconMargin: (plasmoid.configuration.showWindowIcon ? iconItem.width : 0)
 
             // window icon
             PlasmaCore.IconItem {
@@ -242,7 +230,7 @@ Item {
                 width: parent.height
                 height: parent.height
 
-                source: model.decoration
+                source: plasmoid.configuration.noWindowIcon
                 visible: plasmoid.configuration.showWindowIcon
             }
 
@@ -250,20 +238,25 @@ Item {
             PlasmaComponents.Label {
                 id: windowTitleText
 
+                property double iconMargin: (plasmoid.configuration.showWindowIcon ? iconItem.width : 0)
                 property double properWidth: parent.width - iconMargin - iconAndTextSpacing
                 property double properHeight: parent.height
                 property bool noElide: fitText === 2 || (fitText === 1 && mouseHover)
                 property int allowFontSizeChange: 3
                 property int minimumPixelSize: 8
+                property double iconMarginForAnchor: noWindowActive && plasmoid.configuration.noWindowIcon === '' ? 0 : iconMargin
+                property bool limitTextWidth: plasmoid.configuration.limitTextWidth
+                property int textWidthLimit: plasmoid.configuration.textWidthLimit
+                property double computedWidth: limitTextWidth ? (implicitWidth > textWidthLimit ? textWidthLimit : implicitWidth) : properWidth
 
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
+                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMarginForAnchor + iconAndTextSpacing
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
-                text: textType === 1 ? model.AppName : replaceTitle(model.display)
+                text: plasmoid.configuration.noWindowText
                 wrapMode: Text.Wrap
-                width: properWidth
+                width: computedWidth
                 elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
@@ -309,7 +302,7 @@ Item {
 
         onEntered: {
             mouseHover = true
-            controlButtonsArea.mouseInWidget = showControlButtons && !noWindowVisible
+            controlButtonsArea.mouseInWidget = showControlButtons && !noWindowActive
         }
 
         onExited: {
@@ -392,7 +385,7 @@ Item {
             property double controlButtonsHeight: parent.height * buttonSize
 
             orientation: ListView.Horizontal
-            visible: showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowVisible
+            visible: showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowActive
 
             spacing: controlButtonsSpacing
 

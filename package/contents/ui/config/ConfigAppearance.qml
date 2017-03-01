@@ -21,6 +21,10 @@ Item {
     property alias cfg_useWindowTitleReplace: useWindowTitleReplace.checked
     property alias cfg_replaceTextRegex: replaceTextRegex.text
     property alias cfg_replaceTextReplacement: replaceTextReplacement.text
+    property alias cfg_noWindowText: noWindowText.text
+    property string cfg_noWindowIcon: plasmoid.configuration.noWindowIcon
+    property alias cfg_limitTextWidth: limitTextWidth.checked
+    property alias cfg_textWidthLimit: textWidthLimit.value
 
     property alias cfg_boldFontWeight: boldFontWeight.checked
     property string cfg_fontFamily
@@ -225,6 +229,41 @@ Item {
                     }
                 }
 
+                Label {
+                    text: i18n('No window text:')
+                    Layout.alignment: Qt.AlignRight
+                }
+                TextField {
+                    id: noWindowText
+                    placeholderText: 'Plasma Desktop'
+                    onTextChanged: cfg_noWindowText = text
+                    Layout.preferredWidth: 300
+                }
+
+                Label {
+                    text: i18n("No window icon:")
+                    Layout.alignment: Qt.AlignRight
+                }
+                IconPicker {
+                    currentIcon: cfg_noWindowIcon
+                    defaultIcon: ''
+                    onIconChanged: cfg_noWindowIcon = iconName
+                }
+
+                CheckBox {
+                    id: limitTextWidth
+                    text: i18n('Limit text width')
+                    Layout.alignment: Qt.AlignRight
+                }
+                SpinBox {
+                    id: textWidthLimit
+                    decimals: 0
+                    stepSize: 10
+                    minimumValue: 0
+                    maximumValue: 10000
+                    enabled: limitTextWidth.checked
+                    suffix: i18nc('Abbreviation for pixels', 'px')
+                }
             }
         }
 

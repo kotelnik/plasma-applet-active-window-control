@@ -85,6 +85,18 @@
         <entry name="replaceTextReplacement" type="String">
             <default>$3 — $1</default>
         </entry>
+        <entry name="noWindowText" type="String">
+            <default>Plasma Desktop</default>
+        </entry>
+        <entry name="noWindowIcon" type="String">
+            <default></default>
+        </entry>
+        <entry name="limitTextWidth" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="textWidthLimit" type="Int">
+            <default>1000</default>
+        </entry>
         <entry name="showWindowIcon" type="Bool">
             <default>true</default>
         </entry>
@@ -117,6 +129,15 @@
         </entry>
         <entry name="appmenuNextToIconAndText" type="Bool">
             <default>false</default>
+        </entry>
+        <entry name="appmenuSwitchSidesWithIconAndText" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="appmenuOuterSideMargin" type="Int">
+            <default>0</default>
+        </entry>
+        <entry name="appmenuIconAndTextOpacity" type="Double">
+            <default>0.1</default>
         </entry>
     </group>
 
