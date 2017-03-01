@@ -7,7 +7,7 @@ Item {
     id: appmenu
     anchors.fill: parent
     // set the left margin to give space to title text
-    anchors.leftMargin: plasmoid.configuration.appmenuAfterText ? titleTextWidth + 20 : 0
+    anchors.leftMargin: plasmoid.configuration.appmenuAfterText ? titleTextWidth + parseInt(plasmoid.configuration.appmenuTextMenuSpacing) : 0
 
     property bool appmenuEnabled: plasmoid.configuration.appmenuEnabled
     property bool appmenuNextToButtons: plasmoid.configuration.appmenuNextToButtons
@@ -40,7 +40,7 @@ Item {
 
         anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width - placementOffset : placementOffset
         anchors.topMargin: (bp === 2 || bp === 3) ? 0 : parent.height - height
-
+        
         Behavior on anchors.leftMargin {
             NumberAnimation {
                 duration: 150

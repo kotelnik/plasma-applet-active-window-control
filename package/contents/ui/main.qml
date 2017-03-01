@@ -269,6 +269,9 @@ Item {
                 property bool noElide: fitText === 2 || (fitText === 1 && mouseHover)
                 property int allowFontSizeChange: 3
                 property int minimumPixelSize: 8
+                
+                // Limit of title width
+                property int titleLimit: parseInt(plasmoid.configuration.appmenuTextMenuLimit)
 
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
@@ -277,7 +280,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 text: textType === 1 ? model.AppName : replaceTitle(model.display)
                 wrapMode: Text.Wrap
-                width: plasmoid.configuration.appmenuAfterText ? (testText.width > 1000 ? 1000 : testText.width) : properWidth // I check here and set the width for my monitor 1000 is perfect as limit but I didnt have time to make in config var to get input from user
+                width: plasmoid.configuration.appmenuAfterText ? (testText.width > titleLimit ? titleLimit : testText.width) : properWidth // I check here and set the width for my monitor 1000 is perfect as limit
                 elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
