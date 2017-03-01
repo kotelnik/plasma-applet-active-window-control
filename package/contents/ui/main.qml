@@ -84,6 +84,8 @@ Item {
     property bool mouseHover: false
     property bool isActiveWindowPinned: false
     property bool isActiveWindowMaximized: false
+    
+    property int titleTextWidth: 0
 
     property bool appmenuNextToIconAndText: plasmoid.configuration.appmenuNextToIconAndText
 
@@ -171,7 +173,7 @@ Item {
             toggleMinimized()
         }
     }
-
+    
     PlasmaComponents.Label {
         id: noWindowText
         property double noWindowTextMargin: (parent.height - implicitHeight) / 2
@@ -198,7 +200,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        property double appmenuOffsetLeft: (bp === 0 || bp === 2) ? appmenu.appmenuOffsetWidth : 0
+        // check for new option AfterText before give the appmenu offset
+        property double appmenuOffsetLeft: (bp === 0 || bp === 2) && !plasmoid.configuration.appmenuAfterText ? appmenu.appmenuOffsetWidth : 0
         property double appmenuOffsetRight: (bp === 1 || bp === 3) ? appmenu.appmenuOffsetWidth : 0
 
         anchors.left: parent.left
@@ -245,7 +248,14 @@ Item {
                 source: model.decoration
                 visible: plasmoid.configuration.showWindowIcon
             }
-
+            
+            // I use this dummy text to calculate the width of title
+            Text {
+                id: testText
+                text: textType === 1 ? model.AppName : replaceTitle(model.display)
+                visible: false
+            }
+            
             // window title
             PlasmaComponents.Label {
                 id: windowTitleText
@@ -263,7 +273,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 text: textType === 1 ? model.AppName : replaceTitle(model.display)
                 wrapMode: Text.Wrap
-                width: properWidth
+                width: plasmoid.configuration.appmenuAfterText ? (testText.width > 1000 ? 1000 : testText.width) : properWidth // I check here and set the width for my monitor 1000 is perfect as limit but I didnt have time to make in config var to get input from user
                 elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
@@ -287,6 +297,11 @@ Item {
                         font.pixelSize = newPixelSize < minimumPixelSize ? minimumPixelSize : newPixelSize
                     }
                     allowFontSizeChange--
+                }
+                
+                // I update the titleTextWidth to pass it in appmenu (Maybe is bad but i dont know about qml... sorry)
+                Component.onCompleted: {
+                    titleTextWidth = windowTitleText.width
                 }
             }
 
@@ -380,7 +395,7 @@ Item {
                 }
             }
         }
-
+        
         AppMenu {
             id: appmenu
         }

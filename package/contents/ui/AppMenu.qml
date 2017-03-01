@@ -6,6 +6,8 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 Item {
     id: appmenu
     anchors.fill: parent
+    // set the left margin to give space to title text
+    anchors.leftMargin: plasmoid.configuration.appmenuAfterText ? titleTextWidth + 20 : 0
 
     property bool appmenuEnabled: plasmoid.configuration.appmenuEnabled
     property bool appmenuNextToButtons: plasmoid.configuration.appmenuNextToButtons
@@ -19,7 +21,7 @@ Item {
                                                 ? appmenu.childrenRect.width + (appmenuButtonsOffsetEnabled ? controlButtonsArea.width : 0)
                                                 : 0
 
-    visible: appmenuEnabledAndNonEmpty && (appmenuNextToIconAndText || mouseHover || appmenuOpened)
+    visible: appmenuEnabledAndNonEmpty && (appmenuNextToIconAndText || mouseHover || appmenuOpened) && !noWindowVisible // this added from other user named kupiqu
 
     GridLayout {
         id: buttonGrid
