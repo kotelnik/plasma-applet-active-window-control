@@ -41,6 +41,19 @@ Item {
         anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width - placementOffset : placementOffset
         anchors.topMargin: (bp === 2 || bp === 3) ? 0 : parent.height - height
 
+        Behavior on anchors.leftMargin {
+            NumberAnimation {
+                duration: 150
+                easing.type: Easing.Linear
+            }
+        }
+        Behavior on anchors.rightMargin {
+            NumberAnimation {
+                duration: 150
+                easing.type: Easing.Linear
+            }
+        }
+
         Component.onCompleted: {
             plasmoid.nativeInterface.buttonGrid = buttonGrid
         }
