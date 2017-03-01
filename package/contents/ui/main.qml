@@ -254,6 +254,10 @@ Item {
                 id: testText
                 text: textType === 1 ? model.AppName : replaceTitle(model.display)
                 visible: false
+                font.pixelSize: fontPixelSize
+                font.pointSize: -1
+                font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+                font.family: fontFamily || theme.defaultFont.family
             }
             
             // window title
