@@ -84,6 +84,8 @@ Item {
     property bool mouseHover: false
     property bool isActiveWindowPinned: false
     property bool isActiveWindowMaximized: false
+    
+    property int titleTextWidth: 0
 
     property bool appmenuNextToIconAndText: plasmoid.configuration.appmenuNextToIconAndText
 
@@ -171,14 +173,14 @@ Item {
             toggleMinimized()
         }
     }
-
+    
     PlasmaComponents.Label {
         id: noWindowText
         property double noWindowTextMargin: (parent.height - implicitHeight) / 2
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: noWindowTextMargin
         anchors.left: parent.left
-        text: i18n('Plasma Desktop')
+        text: plasmoid.configuration.toggleDesktopText ? i18n('Plasma Desktop') : ''
         font.pixelSize: fontPixelSize
         font.pointSize: -1
         font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
@@ -198,7 +200,8 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        property double appmenuOffsetLeft: (bp === 0 || bp === 2) ? appmenu.appmenuOffsetWidth : 0
+        // check for new option AfterText before give the appmenu offset
+        property double appmenuOffsetLeft: (bp === 0 || bp === 2) && !plasmoid.configuration.appmenuAfterText ? appmenu.appmenuOffsetWidth : 0
         property double appmenuOffsetRight: (bp === 1 || bp === 3) ? appmenu.appmenuOffsetWidth : 0
 
         anchors.left: parent.left
@@ -245,7 +248,18 @@ Item {
                 source: model.decoration
                 visible: plasmoid.configuration.showWindowIcon
             }
-
+            
+            // I use this dummy text to calculate the width of title
+            Text {
+                id: testText
+                text: textType === 1 ? model.AppName : replaceTitle(model.display)
+                visible: false
+                font.pixelSize: fontPixelSize
+                font.pointSize: -1
+                font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+                font.family: fontFamily || theme.defaultFont.family
+            }
+            
             // window title
             PlasmaComponents.Label {
                 id: windowTitleText
@@ -255,6 +269,9 @@ Item {
                 property bool noElide: fitText === 2 || (fitText === 1 && mouseHover)
                 property int allowFontSizeChange: 3
                 property int minimumPixelSize: 8
+                
+                // Limit of title width
+                property int titleLimit: parseInt(plasmoid.configuration.appmenuTextMenuLimit)
 
                 anchors.left: parent.left
                 anchors.leftMargin: windowIconOnTheRight ? 0 : iconMargin + iconAndTextSpacing
@@ -263,7 +280,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 text: textType === 1 ? model.AppName : replaceTitle(model.display)
                 wrapMode: Text.Wrap
-                width: properWidth
+                width: plasmoid.configuration.appmenuAfterText ? (testText.width > titleLimit ? titleLimit : testText.width) : properWidth // I check here and set the width for my monitor 1000 is perfect as limit
                 elide: noElide ? Text.ElideNone : Text.ElideRight
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
@@ -287,6 +304,11 @@ Item {
                         font.pixelSize = newPixelSize < minimumPixelSize ? minimumPixelSize : newPixelSize
                     }
                     allowFontSizeChange--
+                }
+                
+                // I update the titleTextWidth to pass it in appmenu (Maybe is bad but i dont know about qml... sorry)
+                Component.onCompleted: {
+                    titleTextWidth = windowTitleText.width
                 }
             }
 
@@ -380,7 +402,7 @@ Item {
                 }
             }
         }
-
+        
         AppMenu {
             id: appmenu
         }
