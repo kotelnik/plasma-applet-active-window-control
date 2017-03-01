@@ -180,7 +180,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.leftMargin: noWindowTextMargin
         anchors.left: parent.left
-        text: i18n('Plasma Desktop')
+        text: plasmoid.configuration.toggleDesktopText ? i18n('Plasma Desktop') : ''
         font.pixelSize: fontPixelSize
         font.pointSize: -1
         font.weight: fontBold ? Font.Bold : theme.defaultFont.weight

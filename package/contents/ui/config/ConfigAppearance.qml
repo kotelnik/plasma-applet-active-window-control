@@ -17,6 +17,7 @@ Item {
     property alias cfg_fitText: fitTextCombo.currentIndex
     property alias cfg_tooltipTextType: tooltipTextTypeCombo.currentIndex
     property alias cfg_showWindowIcon: showWindowIcon.checked
+    property alias cfg_toggleDesktopText: toggleDesktopText.checked 
     property alias cfg_windowIconOnTheRight: windowIconOnTheRight.checked
     property alias cfg_useWindowTitleReplace: useWindowTitleReplace.checked
     property alias cfg_replaceTextRegex: replaceTextRegex.text
@@ -141,6 +142,18 @@ Item {
                 var preparedCmd = executableDS.cmdBorderlessWrite.replace('{borderless}', String(checked))
                 executableDS.connectedSources.push(preparedCmd)
             }
+        }
+        
+        Item {
+            width: 2
+            height: 10
+            Layout.columnSpan: 2
+        }
+
+        CheckBox {
+            id: toggleDesktopText
+            text: i18n("Show Desktop Text")
+            Layout.columnSpan: 2
         }
 
         Item {
