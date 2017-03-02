@@ -105,6 +105,9 @@ Item {
             activeWindowModel.sourceModel = tasksModel
             updateActiveWindowInfo()
         }
+        onDataChanged: {
+            updateActiveWindowInfo()
+        }
     }
     // should return always one item
     PlasmaCore.SortFilterModel {
