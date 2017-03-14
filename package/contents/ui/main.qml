@@ -389,7 +389,7 @@ Item {
             property double controlButtonsHeight: parent.height * buttonSize
 
             orientation: ListView.Horizontal
-            visible: showControlButtons && (doNotHideControlButtons || mouseInWidget) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowActive
+            visible: showControlButtons && (doNotHideControlButtons || mouseInWidget || appmenu.visible) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowActive
 
             spacing: controlButtonsSpacing
 
