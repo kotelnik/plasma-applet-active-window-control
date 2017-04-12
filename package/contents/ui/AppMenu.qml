@@ -31,7 +31,8 @@ Item {
         rowSpacing: units.smallSpacing
         columnSpacing: units.smallSpacing
 
-        anchors.top: parent.top
+        //! better anchor to bottom as it is used more often to top panels
+        anchors.bottom: parent.bottom
         anchors.left: parent.left
 
         property double placementOffsetButtons: appmenuNextToButtons && controlButtonsArea.visible ? controlButtonsArea.width + appmenuSideMargin : 0
@@ -67,7 +68,9 @@ Item {
 
                 Layout.preferredWidth: minimumWidth
                 Layout.preferredHeight: appmenuFillHeight ? appmenu.height : minimumHeight
-                font.pixelSize: fontPixelSize * heightRatio
+                // because of the underscore line, we need a small increase to
+                // feel natural
+                font.pixelSize:  1.05 * windowTitleText.font.pixelSize
                 text: activeMenu
                 // fake highlighted
                 checkable: plasmoid.nativeInterface.currentIndex === index
