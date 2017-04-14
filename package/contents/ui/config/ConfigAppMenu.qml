@@ -10,8 +10,10 @@ Item {
     property alias cfg_appmenuFillHeight: appmenuFillHeight.checked
     property alias cfg_appmenuNextToIconAndText: appmenuNextToIconAndText.checked
     property alias cfg_appmenuSwitchSidesWithIconAndText: appmenuSwitchSidesWithIconAndText.checked
+    property alias cfg_appmenuSeparatorEnabled: appmenuSeparatorEnabled.checked
     property alias cfg_appmenuOuterSideMargin: appmenuOuterSideMargin.value
     property alias cfg_appmenuIconAndTextOpacity: appmenuIconAndTextOpacity.value
+    property alias cfg_appmenuButtonTextSizeScale: appmenuButtonTextSizeScale.value
 
     GroupBox {
         id: appmenuEnabled
@@ -53,6 +55,13 @@ Item {
                 enabled: appmenuNextToIconAndText.checked
             }
 
+            CheckBox {
+                id: appmenuSeparatorEnabled
+                text: i18n("Show separator")
+                Layout.columnSpan: 2
+                enabled: appmenuNextToIconAndText.checked
+            }
+
             Label {
                 text: i18n('Side margin:')
                 Layout.alignment: Qt.AlignRight
@@ -76,6 +85,18 @@ Item {
                 stepSize: 0.1
                 minimumValue: 0
                 maximumValue: 1
+            }
+
+            Label {
+                text: i18n('Menu button text size scale:')
+                Layout.alignment: Qt.AlignRight
+            }
+            SpinBox {
+                id: appmenuButtonTextSizeScale
+                decimals: 2
+                stepSize: 0.1
+                minimumValue: 0.5
+                maximumValue: 5
             }
         }
     }

@@ -63,7 +63,7 @@ Item {
 
             PlasmaComponents.ToolButton {
                 readonly property int buttonIndex: index
-                property double heightRatio: appmenu.height < minimumHeight ? appmenu.height / minimumHeight : 1
+                property double heightRatio: appmenu.height < minimumHeight ? appmenu.height / minimumHeight : 1 * plasmoid.configuration.appmenuButtonTextSizeScale
 
                 Layout.preferredWidth: minimumWidth
                 Layout.preferredHeight: appmenuFillHeight ? appmenu.height : minimumHeight
@@ -77,6 +77,18 @@ Item {
                 }
             }
         }
+    }
+
+    Rectangle {
+        id: separator
+        anchors.left: buttonGrid.left
+        anchors.leftMargin: appmenuSwitchSidesWithIconAndText ? - appmenuSideMargin * 0.5 : buttonGrid.width + appmenuSideMargin * 0.5
+        anchors.verticalCenter: buttonGrid.verticalCenter
+        height: 0.8 * parent.height
+        width: 1
+        visible: appmenuNextToIconAndText && plasmoid.configuration.appmenuSeparatorEnabled
+        color: theme.textColor
+        opacity: 0.4
     }
 
     function initializeAppModel() {
