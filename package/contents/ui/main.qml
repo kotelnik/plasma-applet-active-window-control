@@ -265,7 +265,8 @@ Item {
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
-                font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+                // when an app menu is shown make the title bold to distinguish it from the menu
+                font.weight: fontBold || appmenu.appmenuEnabledAndNonEmpty ? Font.Bold : theme.defaultFont.weight
                 font.family: fontFamily || theme.defaultFont.family
 
                 onTextChanged: {
