@@ -64,10 +64,18 @@ Item {
             PlasmaComponents.ToolButton {
                 readonly property int buttonIndex: index
 
-                property double heightRatio: appmenu.height < implicitHeight ? appmenu.height / implicitHeight : 1 * plasmoid.configuration.appmenuButtonTextSizeScale
+                property double heightRatio: (appmenu.height < implicitHeight ? appmenu.height / implicitHeight : 1) * plasmoid.configuration.appmenuButtonTextSizeScale
+                property bool componentCompleted: false
+
+                onHeightRatioChanged: {
+                    if (componentCompleted) {
+                        font.pixelSize = fontPixelSize * heightRatio
+                    }
+                }
 
                 Component.onCompleted: {
                     font.pixelSize = fontPixelSize * heightRatio
+                    componentCompleted = true
                 }
 
                 Layout.preferredWidth: minimumWidth
