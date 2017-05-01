@@ -117,7 +117,6 @@ Item {
         sourceModel: tasksModel
         onDataChanged: {
             updateActiveWindowInfo()
-            updateTooltip()
         }
     }
 
@@ -149,6 +148,7 @@ Item {
             windowTitleText.text = textType === 1 ? actTask.AppName : replaceTitle(actTask.display)
             iconItem.source = actTask.decoration
         }
+        updateTooltip()
     }
 
     function toggleMaximized() {
