@@ -28,8 +28,8 @@ Item {
         Layout.minimumHeight: implicitHeight
 
         flow: GridLayout.LeftToRight
-        rowSpacing: units.smallSpacing
-        columnSpacing: units.smallSpacing
+        rowSpacing: 0
+        columnSpacing: 0
 
         anchors.top: parent.top
         anchors.left: parent.left
@@ -52,7 +52,7 @@ Item {
                 var idx = Math.max(0, Math.min(buttonRepeater.count - 1, index))
                 var button = buttonRepeater.itemAt(index)
                 if (button) {
-                    button.clicked()
+                    button.clicked(null)
                 }
             }
         }
@@ -61,31 +61,44 @@ Item {
             id: buttonRepeater
             model: null
 
-            PlasmaComponents.ToolButton {
+            MouseArea {
+                id: appmenuButton
+
+                hoverEnabled: true
+
                 readonly property int buttonIndex: index
 
-                property double heightRatio: (appmenu.height < implicitHeight ? appmenu.height / implicitHeight : 1) * plasmoid.configuration.appmenuButtonTextSizeScale
-                property bool componentCompleted: false
+                property bool menuOpened: plasmoid.nativeInterface.currentIndex === index
 
-                onHeightRatioChanged: {
-                    if (componentCompleted) {
-                        font.pixelSize = fontPixelSize * heightRatio
-                    }
+                Layout.preferredWidth: appmenuButtonBackground.width
+                Layout.preferredHeight: appmenuButtonBackground.height
+
+                Rectangle {
+                    id: appmenuButtonBackground
+                    border.color: 'transparent'
+                    width: appmenuButtonTitle.implicitWidth + units.smallSpacing * 2
+                    height: appmenuFillHeight ? appmenu.height : appmenuButtonTitle.implicitHeight + units.smallSpacing
+                    color: menuOpened ? theme.highlightColor : 'transparent'
+                    radius: units.smallSpacing / 2
                 }
 
-                Component.onCompleted: {
-                    font.pixelSize = fontPixelSize * heightRatio
-                    componentCompleted = true
+                PlasmaComponents.Label {
+                    id: appmenuButtonTitle
+                    anchors.centerIn: appmenuButtonBackground
+                    font.pixelSize: fontPixelSize * plasmoid.configuration.appmenuButtonTextSizeScale
+                    text: activeMenu.replace('&', '')
                 }
 
-                Layout.preferredWidth: minimumWidth
-                Layout.preferredHeight: appmenuFillHeight ? appmenu.height : minimumHeight
-                text: activeMenu
-                // fake highlighted
-                checkable: plasmoid.nativeInterface.currentIndex === index
-                checked: checkable
                 onClicked: {
                     plasmoid.nativeInterface.trigger(this, index)
+                }
+
+                onEntered: {
+                    appmenuButtonBackground.border.color = theme.highlightColor
+                }
+
+                onExited: {
+                    appmenuButtonBackground.border.color = 'transparent'
                 }
             }
         }
