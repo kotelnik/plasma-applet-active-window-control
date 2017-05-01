@@ -14,8 +14,12 @@ Item {
     width: itemWidth * (orientation == ListView.Vertical ? 1 : model.count)
     height: itemHeight * (orientation == ListView.Horizontal ? 1 : model.count)
 
+    SystemPalette {
+        id: palette
+    }
+
     // theme + svg
-    property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
+    property bool textColorLight: ((palette.text.r + palette.text.g + palette.text.b) / 3) > 0.5
     property string themeName: textColorLight ? 'breeze-dark' : 'default'
 
     signal modelOrderChanged()
