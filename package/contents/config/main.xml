@@ -136,6 +136,9 @@
         <entry name="appmenuSeparatorEnabled" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="appmenuBoldTitleWhenMenuDisplayed" type="Bool">
+            <default>false</default>
+        </entry>
         <entry name="appmenuOuterSideMargin" type="Int">
             <default>0</default>
         </entry>

@@ -88,6 +88,7 @@ Item {
     property bool appmenuNextToIconAndText: plasmoid.configuration.appmenuNextToIconAndText
     property double appmenuSideMargin: plasmoid.configuration.appmenuOuterSideMargin
     property bool appmenuSwitchSidesWithIconAndText: plasmoid.configuration.appmenuSwitchSidesWithIconAndText
+    property bool appmenuBoldTitleWhenMenuDisplayed: plasmoid.configuration.appmenuBoldTitleWhenMenuDisplayed
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -265,7 +266,7 @@ Item {
                 visible: plasmoid.configuration.showWindowTitle
                 font.pixelSize: fontPixelSize
                 font.pointSize: -1
-                font.weight: fontBold ? Font.Bold : theme.defaultFont.weight
+                font.weight: fontBold || (appmenuBoldTitleWhenMenuDisplayed && appmenu.visible) ? Font.Bold : theme.defaultFont.weight
                 font.family: fontFamily || theme.defaultFont.family
 
                 onTextChanged: {

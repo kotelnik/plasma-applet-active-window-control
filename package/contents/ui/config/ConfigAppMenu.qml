@@ -11,6 +11,7 @@ Item {
     property alias cfg_appmenuNextToIconAndText: appmenuNextToIconAndText.checked
     property alias cfg_appmenuSwitchSidesWithIconAndText: appmenuSwitchSidesWithIconAndText.checked
     property alias cfg_appmenuSeparatorEnabled: appmenuSeparatorEnabled.checked
+    property alias cfg_appmenuBoldTitleWhenMenuDisplayed: appmenuBoldTitleWhenMenuDisplayed.checked
     property alias cfg_appmenuOuterSideMargin: appmenuOuterSideMargin.value
     property alias cfg_appmenuIconAndTextOpacity: appmenuIconAndTextOpacity.value
     property alias cfg_appmenuButtonTextSizeScale: appmenuButtonTextSizeScale.value
@@ -60,6 +61,12 @@ Item {
                 text: i18n("Show separator")
                 Layout.columnSpan: 2
                 enabled: appmenuNextToIconAndText.checked
+            }
+
+            CheckBox {
+                id: appmenuBoldTitleWhenMenuDisplayed
+                text: i18n("Make window title bold when menu is displayed")
+                Layout.columnSpan: 2
             }
 
             Label {
