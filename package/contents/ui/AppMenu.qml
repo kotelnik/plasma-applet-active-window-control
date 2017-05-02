@@ -76,7 +76,7 @@ Item {
                 Rectangle {
                     id: appmenuButtonBackground
                     border.color: 'transparent'
-                    width: appmenuButtonTitle.implicitWidth + units.smallSpacing * 2
+                    width: appmenuButtonTitle.implicitWidth + units.smallSpacing * 3
                     height: appmenuFillHeight ? appmenu.height : appmenuButtonTitle.implicitHeight + units.smallSpacing
                     color: menuOpened ? theme.highlightColor : 'transparent'
                     radius: units.smallSpacing / 2
