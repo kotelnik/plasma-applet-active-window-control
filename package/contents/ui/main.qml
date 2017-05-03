@@ -354,7 +354,7 @@ Item {
 
             anchors.fill: parent
 
-            active: tooltipTextType > 0
+            active: tooltipTextType > 0 && tooltipText !== ''
             interactive: true
             location: plasmoid.location
 
