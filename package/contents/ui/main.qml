@@ -432,7 +432,7 @@ Item {
             });
         } else if (buttonName === 'pin' && showPinToAllDesktops) {
             preparedArray.push({
-                iconName: 'pin',
+                iconName: 'alldesktops',
                 windowOperation: 'togglePinToAllDesktops'
             });
         }
@@ -495,7 +495,7 @@ Item {
         plasmoid.setAction('close', i18n('Close'), 'window-close');
         plasmoid.setAction('maximise', i18n('Toggle Maximise'), 'arrow-up-double');
         plasmoid.setAction('minimise', i18n('Minimise'), 'draw-arrow-down');
-        plasmoid.setAction('pinToAllDesktops', i18n('Pin To All Desktops'), 'window-pin');
+        plasmoid.setAction('pinToAllDesktops', i18n('Toggle Pin To All Desktops'), 'window-pin');
     }
 
     onShowMaximizeChanged: initializeControlButtonsModel()

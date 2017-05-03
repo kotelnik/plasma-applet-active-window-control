@@ -20,6 +20,7 @@ Item {
     property alias cfg_buttonSize: buttonSize.value
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
     property string cfg_buttonOrder
+    property alias cfg_customAuroraeThemePath: customAuroraeThemePath.text
 
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -274,6 +275,23 @@ Item {
                 maximumValue: 20
                 tickmarksEnabled: true
                 width: parent.width
+            }
+
+            Item {
+                width: 2
+                height: 10
+                Layout.columnSpan: 2
+            }
+
+            Label {
+                text: i18n('Path to aurorae theme:')
+                Layout.alignment: Qt.AlignRight
+            }
+            TextField {
+                id: customAuroraeThemePath
+                placeholderText: 'Leave empty to use default Breeze theme.'
+                onTextChanged: cfg_customAuroraeThemePath = text
+                Layout.preferredWidth: 300
             }
         }
     }

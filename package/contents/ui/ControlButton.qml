@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http: //www.gnu.org/licenses/>.
  */
 import QtQuick 2.2
+import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
@@ -24,11 +25,15 @@ MouseArea {
     width: controlButtonsArea.controlButtonsHeight
 
     property bool mouseInside: false
-    property bool mousePressed: false
-    property bool iconActive: (iconName !== 'pin' && iconName !== 'maximize') || (iconName === 'pin' && main.isActiveWindowPinned) || (iconName === 'maximize' && main.currentWindowMaximized)
+    property bool iconActive: (iconName !== 'alldesktops' && iconName !== 'maximize') || (iconName === 'alldesktops' && main.isActiveWindowPinned) || (iconName === 'maximize' && main.currentWindowMaximized)
 
     property string themeName: textColorLight ? 'breeze-dark' : 'default'
-    property string buttonImagePath: Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svgz')
+    property string customAuroraeThemePath: plasmoid.configuration.customAuroraeThemePath
+    property bool usingAuroraeTheme: customAuroraeThemePath ? true : false
+    property string buttonImagePath: customAuroraeThemePath ? customAuroraeThemePath + '/' + iconName + '.svg' : Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svg')
+    property string svgElementId: usingAuroraeTheme
+                                    ? (iconActive && iconName === 'alldesktops') ? (mouseInside ? 'pressed-center' : 'pressed-center') : (mouseInside ? 'hover-center' : 'active-center')
+                                    : iconActive ? (mouseInside ? 'active-hover' : 'active-idle') : (mouseInside ? 'inactive-hover' : 'inactive-idle')
 
     PlasmaCore.Svg {
         id: buttonSvg
@@ -41,7 +46,7 @@ MouseArea {
         width: parent.width
         height: width
         svg: buttonSvg
-        elementId: mouseInside ? (iconActive ? 'active-hover' : 'inactive-hover') : (iconActive ? 'active-idle' : 'inactive-idle')
+        elementId: svgElementId
         anchors.verticalCenter: parent.verticalCenter
     }
 
