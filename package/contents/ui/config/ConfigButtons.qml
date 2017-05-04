@@ -58,7 +58,7 @@ Item {
             text: "maximize"
         }
         ListElement {
-            text: "pin"
+            text: "alldesktops"
         }
     }
 
@@ -73,7 +73,7 @@ Item {
             } else if (buttonName === 'maximize') {
                 buttonOrder.model.insert(index, buttonsToSpend.get(2));
                 print('adding ' + buttonName);
-            } else if (buttonName === 'pin') {
+            } else if (buttonName === 'pin' || buttonName === 'alldesktops') {
                 buttonOrder.model.insert(index, buttonsToSpend.get(3));
                 print('adding ' + buttonName);
             }

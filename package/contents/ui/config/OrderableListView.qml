@@ -39,7 +39,7 @@ Item {
 
                 PlasmaCore.Svg {
                     id: buttonSvg
-                    imagePath: Qt.resolvedUrl('../../icons/' + themeName + '/' + model.text + '.svgz')
+                    imagePath: Qt.resolvedUrl('../../icons/' + themeName + '/' + model.text + '.svg')
                 }
 
                 // icon

@@ -430,7 +430,7 @@ Item {
                 iconName: 'minimize',
                 windowOperation: 'toggleMinimized'
             });
-        } else if (buttonName === 'pin' && showPinToAllDesktops) {
+        } else if ((buttonName === 'pin' || buttonName === 'alldesktops') && showPinToAllDesktops) {
             preparedArray.push({
                 iconName: 'alldesktops',
                 windowOperation: 'togglePinToAllDesktops'
