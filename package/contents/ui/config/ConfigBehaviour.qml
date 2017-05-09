@@ -11,7 +11,7 @@ Item {
 
         CheckBox {
             id: showForCurrentScreenOnly
-            text: i18n("Show active window only for current screen")
+            text: i18n("Show active window only for plasmoid's screen")
             Layout.columnSpan: 2
         }
 
