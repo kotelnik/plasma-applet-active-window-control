@@ -120,6 +120,12 @@
         </entry>
     </group>
 
+    <group name="Behaviour">
+        <entry name="showForCurrentScreenOnly" type="Bool">
+            <default>false</default>
+        </entry>
+    </group>
+
     <group name="AppMenu">
         <entry name="appmenuEnabled" type="Bool">
             <default>false</default>

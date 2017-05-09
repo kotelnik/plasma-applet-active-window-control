@@ -102,6 +102,9 @@ Item {
         sortMode: TaskManager.TasksModel.SortVirtualDesktop
         groupMode: TaskManager.TasksModel.GroupDisabled
 
+        screenGeometry: plasmoid.screenGeometry
+        filterByScreen: plasmoid.configuration.showForCurrentScreenOnly
+
         onActiveTaskChanged: {
             activeWindowModel.sourceModel = tasksModel
             updateActiveWindowInfo()
@@ -117,6 +120,9 @@ Item {
         filterRegExp: 'true'
         sourceModel: tasksModel
         onDataChanged: {
+            updateActiveWindowInfo()
+        }
+        onCountChanged: {
             updateActiveWindowInfo()
         }
     }

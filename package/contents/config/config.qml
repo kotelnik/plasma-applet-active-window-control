@@ -8,6 +8,11 @@ ConfigModel {
          source: "config/ConfigAppearance.qml"
     }
     ConfigCategory {
+         name: i18n("Behaviour")
+         icon: "preferences-desktop"
+         source: "config/ConfigBehaviour.qml"
+    }
+    ConfigCategory {
          name: i18n("Buttons")
          icon: "preferences-activities"
          source: "config/ConfigButtons.qml"
