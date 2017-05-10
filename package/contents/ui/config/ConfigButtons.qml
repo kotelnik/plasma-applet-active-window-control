@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.1
 import QtQml.Models 2.1
 
 Item {
-    id: appearancePage
 
     property alias cfg_showControlButtons: showControlButtons.checked
     property alias cfg_doNotHideControlButtons: doNotHideControlButtons.checked
@@ -21,6 +20,7 @@ Item {
     property alias cfg_controlButtonsSpacing: controlButtonsSpacing.value
     property string cfg_buttonOrder
     property alias cfg_customAuroraeThemePath: customAuroraeThemePath.text
+    property string cfg_customAuroraeThemeImageExtension
 
     onCfg_buttonsPositionChanged: {
         switch (cfg_buttonsPosition) {
@@ -41,9 +41,12 @@ Item {
         }
     }
 
+    property variant extensionModel: ['.svg', '.svgz']
+
     Component.onCompleted: {
         cfg_buttonsPositionChanged()
         sortButtonOrder()
+        customAuroraeThemeImageExtension.currentIndex = extensionModel.indexOf(cfg_customAuroraeThemeImageExtension)
     }
 
     ListModel {
@@ -287,11 +290,21 @@ Item {
                 text: i18n('Path to aurorae theme:')
                 Layout.alignment: Qt.AlignRight
             }
-            TextField {
-                id: customAuroraeThemePath
-                placeholderText: 'Leave empty to use default Breeze theme.'
-                onTextChanged: cfg_customAuroraeThemePath = text
-                Layout.preferredWidth: 300
+            Row {
+                TextField {
+                    id: customAuroraeThemePath
+                    placeholderText: 'Leave empty to use default Breeze theme.'
+                    onTextChanged: cfg_customAuroraeThemePath = text
+                    width: 300
+                }
+                ComboBox {
+                    id: customAuroraeThemeImageExtension
+                    model: extensionModel
+                    onActivated: {
+                        cfg_customAuroraeThemeImageExtension = textAt(index)
+                    }
+                    width: 80
+                }
             }
         }
     }

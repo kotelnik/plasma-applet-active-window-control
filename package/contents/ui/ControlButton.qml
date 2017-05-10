@@ -30,7 +30,8 @@ MouseArea {
     property string themeName: textColorLight ? 'breeze-dark' : 'default'
     property string customAuroraeThemePath: plasmoid.configuration.customAuroraeThemePath
     property bool usingAuroraeTheme: customAuroraeThemePath ? true : false
-    property string buttonImagePath: customAuroraeThemePath ? customAuroraeThemePath + '/' + iconName + '.svg' : Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svg')
+    property string customAuroraeThemeImageExtension: plasmoid.configuration.customAuroraeThemeImageExtension
+    property string buttonImagePath: customAuroraeThemePath ? customAuroraeThemePath + '/' + iconName + customAuroraeThemeImageExtension : Qt.resolvedUrl('../icons/' + themeName + '/' + iconName + '.svg')
     property string svgElementId: usingAuroraeTheme
                                     ? (iconActive && iconName === 'alldesktops') ? (mouseInside ? 'pressed-center' : 'pressed-center') : (mouseInside ? 'hover-center' : 'active-center')
                                     : iconActive ? (mouseInside ? 'active-hover' : 'active-idle') : (mouseInside ? 'inactive-hover' : 'inactive-idle')
