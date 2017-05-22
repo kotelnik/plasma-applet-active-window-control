@@ -22,9 +22,8 @@ msgid "Appearance"
 msgstr "Vzhled"
 
 #: ../package/contents/config/config.qml:11
-#, fuzzy
 msgid "Behaviour"
-msgstr "Chování:"
+msgstr "Chování"
 
 #: ../package/contents/config/config.qml:16
 msgid "Buttons"
@@ -107,18 +106,16 @@ msgid "No tooltip"
 msgstr "Nezobrazovat"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:233
-#, fuzzy
 msgid "No window text:"
-msgstr "Zobrazovat titulek okna"
+msgstr "Text pro 'žádné okno':"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:244
-#, fuzzy
 msgid "No window icon:"
-msgstr "Zobrazit ikonu okna"
+msgstr "Ikona pro 'žádné okno':"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:255
 msgid "Limit text width"
-msgstr ""
+msgstr "Omezit šířku textu"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:265
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
@@ -167,35 +164,32 @@ msgid "Show next to icon and text"
 msgstr "Zobrazit vedle ikony a titulku okna"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:54
-#, fuzzy
 msgid "Switch sides with icon and text"
-msgstr "Zobrazit vedle ikony a titulku okna"
+msgstr "Prohodit s ikonou a titulkem okna"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Show separator"
-msgstr ""
+msgstr "Zobrazit oddělovač"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Make window title bold when menu is displayed"
-msgstr ""
+msgstr "Vytučnit titulek okna při zobrazeném menu"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:73
 msgid "Side margin:"
-msgstr ""
+msgstr "Boční margin:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:86
-#, fuzzy
 msgid "Icon and text opacity:"
-msgstr "Mezera mezi ikonou a textem:"
+msgstr "Viditelnost ikony a textu:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:98
-#, fuzzy
 msgid "Menu button text size scale:"
-msgstr "Velikost fontu:"
+msgstr "Velikost fontu pro menu:"
 
 #: ../package/contents/ui/config/ConfigBehaviour.qml:14
 msgid "Show active window only for plasmoid's screen"
-msgstr ""
+msgstr "Zobrazit informace jen pro obrazovku s appletem"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:92
 msgid "Enable Control Buttons"
@@ -275,7 +269,7 @@ msgstr "Mezery mezi tlačítky:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:290
 msgid "Path to aurorae theme:"
-msgstr ""
+msgstr "Umístění pro aurorae téma:"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
 msgid "Mouse Buttons:"
@@ -336,16 +330,16 @@ msgstr "Kolečko myši \"dolů\" zruší maximalizaci"
 #: ../package/contents/ui/config/IconPicker.qml:84
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr ""
+msgstr "Vyberte..."
 
 #: ../package/contents/ui/config/IconPicker.qml:89
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr ""
+msgstr "Odebrat"
 
 #: ../package/contents/ui/main.qml:501
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: ../package/contents/ui/main.qml:502
 msgid "Toggle Maximise"
@@ -356,6 +350,5 @@ msgid "Minimise"
 msgstr "Minimalizovat"
 
 #: ../package/contents/ui/main.qml:504
-#, fuzzy
 msgid "Toggle Pin To All Desktops"
-msgstr "Připnout na všechny plochy"
+msgstr "Všechny plochy"
