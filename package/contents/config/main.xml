@@ -24,7 +24,7 @@
         <entry name="customAuroraeThemePath" type="String">
             <default></default>
         </entry>
-        <entry name="customAuroraeThemeImageExtension" type="Enum">
+        <entry name="customAuroraeThemeImageExtension" type="String">
             <default>.svg</default>
         </entry>
         <entry name="doNotHideControlButtons" type="Bool">
