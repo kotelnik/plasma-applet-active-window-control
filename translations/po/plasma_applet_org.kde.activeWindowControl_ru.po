@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-02-19 16:50+0100\n"
+"POT-Creation-Date: 2017-05-22 22:49+0200\n"
 "PO-Revision-Date: 2017-02-16 23:08+0100\n"
 "Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
@@ -72,13 +72,13 @@ msgid "Text type:"
 msgstr "Отображаемый текст:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:178
-#: ../package/contents/ui/config/ConfigAppearance.qml:192
-#: ../package/contents/ui/config/ConfigAppearance.qml:197
+#: ../package/contents/ui/config/ConfigAppearance.qml:196
+#: ../package/contents/ui/config/ConfigAppearance.qml:201
 msgid "Window title"
 msgstr "Заголовки окон"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:174
-#: ../package/contents/ui/config/ConfigAppearance.qml:192
+#: ../package/contents/ui/config/ConfigAppearance.qml:178
+#: ../package/contents/ui/config/ConfigAppearance.qml:196
 msgid "Application name"
 msgstr "Названия приложений"
 
@@ -110,10 +110,6 @@ msgstr "Отсутствует"
 msgid "No window text:"
 msgstr "Текст без окон:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:238
-msgid "Plasma Desktop"
-msgstr "Рабочий стол"
-
 #: ../package/contents/ui/config/ConfigAppearance.qml:244
 msgid "No window icon:"
 msgstr "Значок без окон:"
@@ -123,6 +119,9 @@ msgid "Limit text width"
 msgstr "Ограничить ширину текста"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:265
+#: ../package/contents/ui/config/ConfigAppMenu.qml:82
+#, fuzzy
+msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr "пикс"
 
@@ -149,10 +148,6 @@ msgstr "Интервал значков и текста:"
 #: ../package/contents/ui/config/ConfigAppearance.qml:342
 msgid "Font size scale:"
 msgstr "Размер шрифта:"
-
-#: ../package/contents/ui/config/ConfigBehaviour.qml:14
-msgid "Show active window only for plasmoid's screen"
-msgstr "Показывать активное окно только экране плазмоида"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:21
 #, fuzzy
@@ -204,81 +199,89 @@ msgstr "Непрозрачность значка и текста:"
 msgid "Menu button text size scale:"
 msgstr "Размер текста кнопок меню:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:88
+#: ../package/contents/ui/config/ConfigBehaviour.qml:14
+msgid "Show active window only for plasmoid's screen"
+msgstr "Показывать активное окно только экране плазмоида"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:92
 msgid "Enable Control Buttons"
 msgstr "Отображать кнопки"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:109
+#: ../package/contents/ui/config/ConfigButtons.qml:113
 msgid "Show minimize button"
 msgstr "Свернуть"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:114
+#: ../package/contents/ui/config/ConfigButtons.qml:118
 msgid "Show maximize button"
 msgstr "Развернуть"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:119
+#: ../package/contents/ui/config/ConfigButtons.qml:123
 msgid "Show pin to all desktops"
 msgstr "Закрепить"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:129
+#: ../package/contents/ui/config/ConfigButtons.qml:133
 msgid "Button order:"
 msgstr "Упорядочить кнопки:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:165
+#: ../package/contents/ui/config/ConfigButtons.qml:169
 msgid "Behaviour:"
 msgstr "Поведение:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:171
+#: ../package/contents/ui/config/ConfigButtons.qml:175
 msgid "Do not hide on mouse out"
 msgstr "Не скрывать, даже если курсор не наведен"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:182
+#: ../package/contents/ui/config/ConfigButtons.qml:186
 msgid "Show only when maximized"
 msgstr "Отображать только при развернутом окне"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:187
+#: ../package/contents/ui/config/ConfigButtons.qml:191
 msgid "Buttons next to icon and text"
 msgstr "Кнопки, значок и текст друг за другом"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:192
+#: ../package/contents/ui/config/ConfigButtons.qml:196
 msgid "Dynamic width"
 msgstr "Динамический интервал"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:198
+#: ../package/contents/ui/config/ConfigButtons.qml:202
 msgid "Sliding icon and text"
 msgstr "Смещать значки и текст"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:210
+#: ../package/contents/ui/config/ConfigButtons.qml:214
 msgid "Position:"
 msgstr "Положение:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:216
+#: ../package/contents/ui/config/ConfigButtons.qml:220
 msgid "Upper left"
 msgstr "Вверху слева"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:227
+#: ../package/contents/ui/config/ConfigButtons.qml:231
 msgid "Upper right"
 msgstr "Вверху справа"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:233
+#: ../package/contents/ui/config/ConfigButtons.qml:237
 msgid "Bottom left"
 msgstr "Внизу слева"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:239
+#: ../package/contents/ui/config/ConfigButtons.qml:243
 msgid "Bottom right"
 msgstr "Внизу справа"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:245
+#: ../package/contents/ui/config/ConfigButtons.qml:249
 msgid "Vertical center"
 msgstr "Центр по вертикали"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:255
+#: ../package/contents/ui/config/ConfigButtons.qml:259
 msgid "Button size:"
 msgstr "Размер кнопок:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:267
+#: ../package/contents/ui/config/ConfigButtons.qml:271
 msgid "Buttons spacing:"
 msgstr "Интервал между кнопками:"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:290
+msgid "Path to aurorae theme:"
+msgstr ""
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
 msgid "Mouse Buttons:"
@@ -336,18 +339,32 @@ msgstr "Прокрутить \"вниз\", чтобы скрыть"
 msgid "Mouse wheel down to unmaximize"
 msgstr "Прокрутить \"вниз\", чтобы свернуть"
 
-#: ../package/contents/ui/main.qml:496
+#: ../package/contents/ui/config/IconPicker.qml:84
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr ""
+
+#: ../package/contents/ui/config/IconPicker.qml:89
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:501
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../package/contents/ui/main.qml:497
+#: ../package/contents/ui/main.qml:502
 msgid "Toggle Maximise"
 msgstr "Развернуть"
 
-#: ../package/contents/ui/main.qml:498
+#: ../package/contents/ui/main.qml:503
 msgid "Minimise"
 msgstr "Свернуть"
 
-#: ../package/contents/ui/main.qml:499
-msgid "Pin To All Desktops"
+#: ../package/contents/ui/main.qml:504
+#, fuzzy
+msgid "Toggle Pin To All Desktops"
 msgstr "Закрепить на всех рабочих столах"
+
+#~ msgid "Plasma Desktop"
+#~ msgstr "Рабочий стол"

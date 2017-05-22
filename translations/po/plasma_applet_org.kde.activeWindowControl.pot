@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-window-control/issues\n"
-"POT-Creation-Date: 2017-02-19 16:50+0100\n"
+"POT-Creation-Date: 2017-05-22 22:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,199 +22,253 @@ msgid "Appearance"
 msgstr ""
 
 #: ../package/contents/config/config.qml:11
-msgid "Buttons"
+msgid "Behaviour"
 msgstr ""
 
 #: ../package/contents/config/config.qml:16
-msgid "Mouse Control"
+msgid "Buttons"
 msgstr ""
 
 #: ../package/contents/config/config.qml:21
+msgid "Mouse Control"
+msgstr ""
+
+#: ../package/contents/config/config.qml:26
 msgid "Application Menu"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:69
+#: ../package/contents/ui/config/ConfigAppearance.qml:73
 msgctxt "Use default font"
 msgid "Default"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:86
+#: ../package/contents/ui/config/ConfigAppearance.qml:90
 msgid "Plasmoid version: "
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:92
+#: ../package/contents/ui/config/ConfigAppearance.qml:96
 msgid "Width in horizontal panel:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:99
+#: ../package/contents/ui/config/ConfigAppearance.qml:103
 msgid "Fill width"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:118
+#: ../package/contents/ui/config/ConfigAppearance.qml:122
 msgid "Fine tuning:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:138
+#: ../package/contents/ui/config/ConfigAppearance.qml:142
 msgid "Hide titlebar for maximized windows (takes effect immediately)"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:154
+#: ../package/contents/ui/config/ConfigAppearance.qml:158
 msgid "Show window title"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:169
+#: ../package/contents/ui/config/ConfigAppearance.qml:173
 msgid "Text type:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:174
-#: ../package/contents/ui/config/ConfigAppearance.qml:192
-#: ../package/contents/ui/config/ConfigAppearance.qml:197
+#: ../package/contents/ui/config/ConfigAppearance.qml:178
+#: ../package/contents/ui/config/ConfigAppearance.qml:196
+#: ../package/contents/ui/config/ConfigAppearance.qml:201
 msgid "Window title"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:174
-#: ../package/contents/ui/config/ConfigAppearance.qml:192
+#: ../package/contents/ui/config/ConfigAppearance.qml:178
+#: ../package/contents/ui/config/ConfigAppearance.qml:196
 msgid "Application name"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:178
+#: ../package/contents/ui/config/ConfigAppearance.qml:182
 msgid "Fit text:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:183
+#: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Just elide"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:183
+#: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Fit on hover"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:183
+#: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Always fit"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:187
+#: ../package/contents/ui/config/ConfigAppearance.qml:191
 msgid "Tooltip text:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:192
+#: ../package/contents/ui/config/ConfigAppearance.qml:196
 msgid "No tooltip"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:239
+#: ../package/contents/ui/config/ConfigAppearance.qml:233
+msgid "No window text:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:244
+msgid "No window icon:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:255
+msgid "Limit text width"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:265
+#: ../package/contents/ui/config/ConfigAppMenu.qml:82
+msgctxt "Abbreviation for pixels"
+msgid "px"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:278
 msgid "Show window icon"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:245
+#: ../package/contents/ui/config/ConfigAppearance.qml:284
 msgid "Window icon on the right"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:266
+#: ../package/contents/ui/config/ConfigAppearance.qml:305
 msgid "Bold text"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:270
+#: ../package/contents/ui/config/ConfigAppearance.qml:309
 msgid "Text font:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:291
+#: ../package/contents/ui/config/ConfigAppearance.qml:330
 msgid "Icon and text spacing:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:303
+#: ../package/contents/ui/config/ConfigAppearance.qml:342
 msgid "Font size scale:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:15
+#: ../package/contents/ui/config/ConfigAppMenu.qml:21
 msgid "Enable application menu"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:30
+#: ../package/contents/ui/config/ConfigAppMenu.qml:36
 msgid "Fill height"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+#: ../package/contents/ui/config/ConfigAppMenu.qml:42
 msgid "Show next to buttons"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+#: ../package/contents/ui/config/ConfigAppMenu.qml:48
 msgid "Show next to icon and text"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:88
+#: ../package/contents/ui/config/ConfigAppMenu.qml:54
+msgid "Switch sides with icon and text"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:61
+msgid "Show separator"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:68
+msgid "Make window title bold when menu is displayed"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:73
+msgid "Side margin:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:86
+msgid "Icon and text opacity:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:98
+msgid "Menu button text size scale:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigBehaviour.qml:14
+msgid "Show active window only for plasmoid's screen"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigButtons.qml:92
 msgid "Enable Control Buttons"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:109
+#: ../package/contents/ui/config/ConfigButtons.qml:113
 msgid "Show minimize button"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:114
+#: ../package/contents/ui/config/ConfigButtons.qml:118
 msgid "Show maximize button"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:119
+#: ../package/contents/ui/config/ConfigButtons.qml:123
 msgid "Show pin to all desktops"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:129
+#: ../package/contents/ui/config/ConfigButtons.qml:133
 msgid "Button order:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:165
+#: ../package/contents/ui/config/ConfigButtons.qml:169
 msgid "Behaviour:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:171
+#: ../package/contents/ui/config/ConfigButtons.qml:175
 msgid "Do not hide on mouse out"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:182
+#: ../package/contents/ui/config/ConfigButtons.qml:186
 msgid "Show only when maximized"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:187
+#: ../package/contents/ui/config/ConfigButtons.qml:191
 msgid "Buttons next to icon and text"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:192
+#: ../package/contents/ui/config/ConfigButtons.qml:196
 msgid "Dynamic width"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:198
+#: ../package/contents/ui/config/ConfigButtons.qml:202
 msgid "Sliding icon and text"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:210
+#: ../package/contents/ui/config/ConfigButtons.qml:214
 msgid "Position:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:216
+#: ../package/contents/ui/config/ConfigButtons.qml:220
 msgid "Upper left"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:227
+#: ../package/contents/ui/config/ConfigButtons.qml:231
 msgid "Upper right"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:233
+#: ../package/contents/ui/config/ConfigButtons.qml:237
 msgid "Bottom left"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:239
+#: ../package/contents/ui/config/ConfigButtons.qml:243
 msgid "Bottom right"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:245
+#: ../package/contents/ui/config/ConfigButtons.qml:249
 msgid "Vertical center"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:255
+#: ../package/contents/ui/config/ConfigButtons.qml:259
 msgid "Button size:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigButtons.qml:267
+#: ../package/contents/ui/config/ConfigButtons.qml:271
 msgid "Buttons spacing:"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigButtons.qml:290
+msgid "Path to aurorae theme:"
 msgstr ""
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
@@ -273,22 +327,28 @@ msgstr ""
 msgid "Mouse wheel down to unmaximize"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:181
-msgid "Plasma Desktop"
+#: ../package/contents/ui/config/IconPicker.qml:84
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
 msgstr ""
 
-#: ../package/contents/ui/main.qml:496
+#: ../package/contents/ui/config/IconPicker.qml:89
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:501
 msgid "Close"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:497
+#: ../package/contents/ui/main.qml:502
 msgid "Toggle Maximise"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:498
+#: ../package/contents/ui/main.qml:503
 msgid "Minimise"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:499
-msgid "Pin To All Desktops"
+#: ../package/contents/ui/main.qml:504
+msgid "Toggle Pin To All Desktops"
 msgstr ""
