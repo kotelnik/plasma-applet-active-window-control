@@ -336,10 +336,6 @@ msgstr "Прокрутить \"вниз\", чтобы скрыть"
 msgid "Mouse wheel down to unmaximize"
 msgstr "Прокрутить \"вниз\", чтобы свернуть"
 
-#: ../package/contents/ui/main.qml:181
-msgid "Plasma Desktop"
-msgstr "Рабочий стол"
-
 #: ../package/contents/ui/main.qml:496
 msgid "Close"
 msgstr "Закрыть"
