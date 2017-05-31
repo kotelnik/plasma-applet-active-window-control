@@ -107,18 +107,15 @@ Item {
         screenGeometry: plasmoid.screenGeometry
         filterByScreen: plasmoid.configuration.showForCurrentScreenOnly
 
-        //filterRole: 271
-        //filterRegExp: 'true'
-
         onActiveTaskChanged: {
             updateActiveWindowInfo()
         }
         onDataChanged: {
             updateActiveWindowInfo()
         }
-//         onCountChanged: {
-//             updateActiveWindowInfo()
-//         }
+        onCountChanged: {
+            updateActiveWindowInfo()
+        }
     }
 
     function activeTask() {
@@ -145,17 +142,23 @@ Item {
 
         var activeTaskIndex = tasksModel.activeTask
 
-        if (!tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsActive*/271)) {
+        if (!tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.IsActive)) {
             activeTaskLocal = {}
         } else {
             activeTaskLocal = {
                 display: tasksModel.data(activeTaskIndex, Qt.DisplayRole),
                 decoration: tasksModel.data(activeTaskIndex, Qt.DecorationRole),
-                AppName: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.AppName*/258),
-                IsMaximized: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsMaximized*/276),
-                VirtualDesktop: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsMaximized*/286)
+                AppName: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.AppName),
+                IsMaximized: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.IsMaximized),
+                VirtualDesktop: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.VirtualDesktop)
             }
         }
+
+        print('display: ' + activeTaskLocal.display)
+        print('decoration: ' + activeTaskLocal.decoration)
+        print('AppName: ' + activeTaskLocal.AppName)
+        print('IsMaximized: ' + activeTaskLocal.IsMaximized)
+        print('VirtualDesktop: ' + activeTaskLocal.VirtualDesktop)
 
         var actTask = activeTask()
         noWindowActive = !activeTaskExists()
