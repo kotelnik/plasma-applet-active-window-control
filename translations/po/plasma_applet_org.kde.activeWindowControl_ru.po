@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
 "POT-Creation-Date: 2017-05-22 22:49+0200\n"
-"PO-Revision-Date: 2017-02-16 23:08+0100\n"
+"PO-Revision-Date: 2017-05-28 01:04+0300\n"
 "Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language: ru\n"
@@ -281,7 +281,7 @@ msgstr "Интервал между кнопками:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:290
 msgid "Path to aurorae theme:"
-msgstr ""
+msgstr "Путь к теме Aurorae:"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
 msgid "Mouse Buttons:"
@@ -342,12 +342,12 @@ msgstr "Прокрутить \"вниз\", чтобы свернуть"
 #: ../package/contents/ui/config/IconPicker.qml:84
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr ""
+msgstr "Выбрать..."
 
 #: ../package/contents/ui/config/IconPicker.qml:89
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr ""
+msgstr "Очистить"
 
 #: ../package/contents/ui/main.qml:501
 msgid "Close"
