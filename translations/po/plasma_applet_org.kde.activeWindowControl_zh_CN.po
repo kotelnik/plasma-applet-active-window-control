@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
 "POT-Creation-Date: 2017-05-22 22:49+0200\n"
-"PO-Revision-Date: 2017-03-05 16:00+0800\n"
+"PO-Revision-Date: 2017-05-28 23:45+0800\n"
 "Last-Translator: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language-Team: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language: zh_CN\n"
@@ -22,9 +22,8 @@ msgid "Appearance"
 msgstr "外观"
 
 #: ../package/contents/config/config.qml:11
-#, fuzzy
 msgid "Behaviour"
-msgstr "行为:"
+msgstr "行为"
 
 #: ../package/contents/config/config.qml:16
 msgid "Buttons"
@@ -109,16 +108,16 @@ msgstr "不提示"
 #: ../package/contents/ui/config/ConfigAppearance.qml:233
 #, fuzzy
 msgid "No window text:"
-msgstr "显示窗口标题"
+msgstr "无活动窗口时的标题:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:244
 #, fuzzy
 msgid "No window icon:"
-msgstr "显示窗口图标"
+msgstr "无活动窗口时的图标:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:255
 msgid "Limit text width"
-msgstr ""
+msgstr "限制文本长度"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:265
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
@@ -167,35 +166,32 @@ msgid "Show next to icon and text"
 msgstr "在图标和文本旁显示"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:54
-#, fuzzy
 msgid "Switch sides with icon and text"
 msgstr "在图标和文本旁显示"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Show separator"
-msgstr ""
+msgstr "显示分割符"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Make window title bold when menu is displayed"
-msgstr ""
+msgstr "全局菜单显示时窗口标题加粗"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:73
 msgid "Side margin:"
-msgstr ""
+msgstr "边距:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:86
-#, fuzzy
 msgid "Icon and text opacity:"
 msgstr "图标和文本的间距:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:98
-#, fuzzy
 msgid "Menu button text size scale:"
 msgstr "字体大小:"
 
 #: ../package/contents/ui/config/ConfigBehaviour.qml:14
 msgid "Show active window only for plasmoid's screen"
-msgstr ""
+msgstr "仅显示当前屏幕的活动窗口"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:92
 msgid "Enable Control Buttons"
@@ -275,7 +271,7 @@ msgstr "按钮间距:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:290
 msgid "Path to aurorae theme:"
-msgstr ""
+msgstr "Aurorae 主题路径"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
 msgid "Mouse Buttons:"
@@ -336,12 +332,12 @@ msgstr "向下滚动取消最大化"
 #: ../package/contents/ui/config/IconPicker.qml:84
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr ""
+msgstr "选择..."
 
 #: ../package/contents/ui/config/IconPicker.qml:89
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr ""
+msgstr "清除图标"
 
 #: ../package/contents/ui/main.qml:501
 msgid "Close"
@@ -356,7 +352,6 @@ msgid "Minimise"
 msgstr "最小化"
 
 #: ../package/contents/ui/main.qml:504
-#, fuzzy
 msgid "Toggle Pin To All Desktops"
 msgstr "显示在全部桌面"
 
