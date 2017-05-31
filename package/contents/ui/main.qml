@@ -154,12 +154,6 @@ Item {
             }
         }
 
-        print('display: ' + activeTaskLocal.display)
-        print('decoration: ' + activeTaskLocal.decoration)
-        print('AppName: ' + activeTaskLocal.AppName)
-        print('IsMaximized: ' + activeTaskLocal.IsMaximized)
-        print('VirtualDesktop: ' + activeTaskLocal.VirtualDesktop)
-
         var actTask = activeTask()
         noWindowActive = !activeTaskExists()
         currentWindowMaximized = !noWindowActive && actTask.IsMaximized === true
