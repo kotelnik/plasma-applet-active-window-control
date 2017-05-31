@@ -90,6 +90,8 @@ Item {
     property bool appmenuSwitchSidesWithIconAndText: plasmoid.configuration.appmenuSwitchSidesWithIconAndText
     property bool appmenuBoldTitleWhenMenuDisplayed: plasmoid.configuration.appmenuBoldTitleWhenMenuDisplayed
 
+    property var activeTaskLocal: null
+
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
 
@@ -105,30 +107,26 @@ Item {
         screenGeometry: plasmoid.screenGeometry
         filterByScreen: plasmoid.configuration.showForCurrentScreenOnly
 
+        //filterRole: 271
+        //filterRegExp: 'true'
+
         onActiveTaskChanged: {
-            activeWindowModel.sourceModel = tasksModel
             updateActiveWindowInfo()
         }
         onDataChanged: {
             updateActiveWindowInfo()
         }
-    }
-    // should return always one item
-    PlasmaCore.SortFilterModel {
-        id: activeWindowModel
-        filterRole: 'IsActive'
-        filterRegExp: 'true'
-        sourceModel: tasksModel
-        onDataChanged: {
-            updateActiveWindowInfo()
-        }
-        onCountChanged: {
-            updateActiveWindowInfo()
-        }
+//         onCountChanged: {
+//             updateActiveWindowInfo()
+//         }
     }
 
     function activeTask() {
-        return activeWindowModel.get(0) || {}
+        return activeTaskLocal
+    }
+
+    function activeTaskExists() {
+        return activeTaskLocal.display !== undefined
     }
 
     onTooltipTextTypeChanged: updateTooltip()
@@ -144,8 +142,23 @@ Item {
     }
 
     function updateActiveWindowInfo() {
+
+        var activeTaskIndex = tasksModel.activeTask
+
+        if (!tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsActive*/271)) {
+            activeTaskLocal = {}
+        } else {
+            activeTaskLocal = {
+                display: tasksModel.data(activeTaskIndex, Qt.DisplayRole),
+                decoration: tasksModel.data(activeTaskIndex, Qt.DecorationRole),
+                AppName: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.AppName*/258),
+                IsMaximized: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsMaximized*/276),
+                VirtualDesktop: tasksModel.data(activeTaskIndex, /*TaskManager.AdditionalRoles.IsMaximized*/286)
+            }
+        }
+
         var actTask = activeTask()
-        noWindowActive = activeWindowModel.count === 0 || actTask.IsActive !== true
+        noWindowActive = !activeTaskExists()
         currentWindowMaximized = !noWindowActive && actTask.IsMaximized === true
         isActiveWindowPinned = actTask.VirtualDesktop === -1;
         if (noWindowActive) {
