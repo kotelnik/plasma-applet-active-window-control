@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-05-22 22:49+0200\n"
+"POT-Creation-Date: 2017-06-04 16:12+0200\n"
 "PO-Revision-Date: 2017-05-28 01:04+0300\n"
 "Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
@@ -34,7 +34,6 @@ msgid "Mouse Control"
 msgstr "Поведение мыши"
 
 #: ../package/contents/config/config.qml:26
-#, fuzzy
 msgid "Application Menu"
 msgstr "Меню приложений"
 
@@ -120,7 +119,6 @@ msgstr "Ограничить ширину текста"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:265
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
-#, fuzzy
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr "пикс"
@@ -150,52 +148,42 @@ msgid "Font size scale:"
 msgstr "Размер шрифта:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:21
-#, fuzzy
 msgid "Enable application menu"
 msgstr "Активировать меню приложений"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:36
-#, fuzzy
 msgid "Fill height"
 msgstr "Заполнить по высоте"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:42
-#, fuzzy
 msgid "Show next to buttons"
 msgstr "Показывать после кнопок"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:48
-#, fuzzy
 msgid "Show next to icon and text"
 msgstr "Показывать после значка и текста"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:54
-#, fuzzy
 msgid "Switch sides with icon and text"
 msgstr "Поменять местами значок и текст"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:61
-#, fuzzy
 msgid "Show separator"
 msgstr "Показать разделитель"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:68
-#, fuzzy
 msgid "Make window title bold when menu is displayed"
 msgstr "Жирный заголовок окна, если отображается меню"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:73
-#, fuzzy
 msgid "Side margin:"
 msgstr "Отступ:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:86
-#, fuzzy
 msgid "Icon and text opacity:"
 msgstr "Непрозрачность значка и текста:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:98
-#, fuzzy
 msgid "Menu button text size scale:"
 msgstr "Размер текста кнопок меню:"
 
@@ -349,20 +337,19 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Очистить"
 
-#: ../package/contents/ui/main.qml:501
+#: ../package/contents/ui/main.qml:511
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../package/contents/ui/main.qml:502
+#: ../package/contents/ui/main.qml:512
 msgid "Toggle Maximise"
 msgstr "Развернуть"
 
-#: ../package/contents/ui/main.qml:503
+#: ../package/contents/ui/main.qml:513
 msgid "Minimise"
 msgstr "Свернуть"
 
-#: ../package/contents/ui/main.qml:504
-#, fuzzy
+#: ../package/contents/ui/main.qml:514
 msgid "Toggle Pin To All Desktops"
 msgstr "Закрепить на всех рабочих столах"
 

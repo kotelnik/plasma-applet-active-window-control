@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-05-22 22:49+0200\n"
+"POT-Creation-Date: 2017-06-04 16:12+0200\n"
 "PO-Revision-Date: 2017-02-12 23:08+0100\n"
 "Last-Translator: Martin Kotelnik <clearmartin@seznam.cz>\n"
 "Language-Team: Martin Kotelnik <clearmartin@seznam.cz>\n"
@@ -337,18 +337,18 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Odebrat"
 
-#: ../package/contents/ui/main.qml:501
+#: ../package/contents/ui/main.qml:511
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../package/contents/ui/main.qml:502
+#: ../package/contents/ui/main.qml:512
 msgid "Toggle Maximise"
 msgstr "Přepnout maximalizaci"
 
-#: ../package/contents/ui/main.qml:503
+#: ../package/contents/ui/main.qml:513
 msgid "Minimise"
 msgstr "Minimalizovat"
 
-#: ../package/contents/ui/main.qml:504
+#: ../package/contents/ui/main.qml:514
 msgid "Toggle Pin To All Desktops"
 msgstr "Všechny plochy"
