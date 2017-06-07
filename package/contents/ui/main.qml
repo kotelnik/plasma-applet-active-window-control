@@ -142,15 +142,22 @@ Item {
 
         var activeTaskIndex = tasksModel.activeTask
 
-        if (!tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.IsActive)) {
+        // fallback for Plasma 5.8
+        var abstractTasksModel = TaskManager.AbstractTasksModel || {}
+        var isActive = abstractTasksModel.IsActive || 271
+        var appName = abstractTasksModel.AppName || 258
+        var isMaximized = abstractTasksModel.IsMaximized || 276
+        var virtualDesktop = abstractTasksModel.VirtualDesktop || 286
+
+        if (!tasksModel.data(activeTaskIndex, isActive)) {
             activeTaskLocal = {}
         } else {
             activeTaskLocal = {
                 display: tasksModel.data(activeTaskIndex, Qt.DisplayRole),
                 decoration: tasksModel.data(activeTaskIndex, Qt.DecorationRole),
-                AppName: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.AppName),
-                IsMaximized: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.IsMaximized),
-                VirtualDesktop: tasksModel.data(activeTaskIndex, TaskManager.AbstractTasksModel.VirtualDesktop)
+                AppName: tasksModel.data(activeTaskIndex, appName),
+                IsMaximized: tasksModel.data(activeTaskIndex, isMaximized),
+                VirtualDesktop: tasksModel.data(activeTaskIndex, virtualDesktop)
             }
         }
 
