@@ -106,12 +106,10 @@ msgid "No tooltip"
 msgstr "不提示"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:233
-#, fuzzy
 msgid "No window text:"
 msgstr "无活动窗口时的标题:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:244
-#, fuzzy
 msgid "No window icon:"
 msgstr "无活动窗口时的图标:"
 
