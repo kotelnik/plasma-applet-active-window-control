@@ -22,7 +22,6 @@ Item {
     property alias cfg_replaceTextRegex: replaceTextRegex.text
     property alias cfg_replaceTextReplacement: replaceTextReplacement.text
     property alias cfg_noWindowText: noWindowText.text
-    property alias cfg_noWindowTextActivityName: noWindowTextActivityName.checked
     property string cfg_noWindowIcon: plasmoid.configuration.noWindowIcon
     property alias cfg_limitTextWidth: limitTextWidth.checked
     property alias cfg_textWidthLimit: textWidthLimit.value
@@ -234,23 +233,21 @@ Item {
                     text: i18n('No window text:')
                     Layout.alignment: Qt.AlignRight
                 }
-                TextField {
-                    id: noWindowText
-                    enabled: !noWindowTextActivityName.checked
-                    placeholderText: 'Plasma Desktop'
-                    onTextChanged: cfg_noWindowText = text
-                    Layout.preferredWidth: 300
-                }
+                GridLayout {
+                    columns: 2
 
-                Label {
-                    text: " "
-                }
+                    TextField {
+                        id: noWindowText
+                        placeholderText: 'Plasma Desktop :: %activity%'
+                        onTextChanged: cfg_noWindowText = text
+                        Layout.preferredWidth: 300
+                    }
 
-                CheckBox {
-                    id: noWindowTextActivityName
-                    text: ("Show activity name")
-                    Layout.leftMargin: 16
-                    Layout.alignment: Qt.AlignLeft
+                    Label {
+                        text: 'Use %activity% placeholder to show current activity name.'
+                        Layout.preferredWidth: 200
+                        wrapMode: Text.Wrap
+                    }
                 }
 
                 Label {

@@ -92,11 +92,8 @@
             <default>$3 — $1</default>
         </entry>
         <entry name="noWindowText" type="String">
-            <default>Plasma Desktop</default>
+            <default>Plasma Desktop :: %activity%</default>
         </entry>
-        <entry name="noWindowTextActivityName" type="Bool">
-            <default>false</default>
-        </entry>        
         <entry name="noWindowIcon" type="String">
             <default></default>
         </entry>
