@@ -118,6 +118,16 @@ Item {
         }
     }
 
+    TaskManager.ActivityInfo {
+        id: activityInfo
+
+        onCurrentActivityChanged: {
+            if (noWindowActive) {
+                updateActiveWindowInfo();
+            }
+        }
+    }
+
     function activeTask() {
         return activeTaskLocal
     }
@@ -136,6 +146,10 @@ Item {
         } else {
             tooltipText = ''
         }
+    }
+
+    function composeNoWindowText() {
+        return plasmoid.configuration.noWindowText.replace('%activity%', activityInfo.activityName(activityInfo.currentActivity))
     }
 
     function updateActiveWindowInfo() {
@@ -166,7 +180,7 @@ Item {
         currentWindowMaximized = !noWindowActive && actTask.IsMaximized === true
         isActiveWindowPinned = actTask.VirtualDesktop === -1;
         if (noWindowActive) {
-            windowTitleText.text = plasmoid.configuration.noWindowText
+            windowTitleText.text = composeNoWindowText()
             iconItem.source = plasmoid.configuration.noWindowIcon
         } else {
             windowTitleText.text = textType === 1 ? actTask.AppName : replaceTitle(actTask.display)

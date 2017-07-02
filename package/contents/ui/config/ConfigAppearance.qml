@@ -233,11 +233,21 @@ Item {
                     text: i18n('No window text:')
                     Layout.alignment: Qt.AlignRight
                 }
-                TextField {
-                    id: noWindowText
-                    placeholderText: 'Plasma Desktop'
-                    onTextChanged: cfg_noWindowText = text
-                    Layout.preferredWidth: 300
+                GridLayout {
+                    columns: 2
+
+                    TextField {
+                        id: noWindowText
+                        placeholderText: 'Plasma Desktop :: %activity%'
+                        onTextChanged: cfg_noWindowText = text
+                        Layout.preferredWidth: 300
+                    }
+
+                    Label {
+                        text: 'Use %activity% placeholder to show current activity name.'
+                        Layout.preferredWidth: 200
+                        wrapMode: Text.Wrap
+                    }
                 }
 
                 Label {
