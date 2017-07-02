@@ -244,7 +244,7 @@ Item {
                     }
 
                     Label {
-                        text: 'Use %activity% placeholder to show current activity name.'
+                        text: i18n('Use %activity% placeholder to show current activity name.')
                         Layout.preferredWidth: 200
                         wrapMode: Text.Wrap
                     }
