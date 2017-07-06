@@ -22,6 +22,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.taskmanager 0.1 as TaskManager
+import org.kde.activities 0.1 as Activities
 
 Item {
     id: main
@@ -91,6 +92,7 @@ Item {
     property bool appmenuBoldTitleWhenMenuDisplayed: plasmoid.configuration.appmenuBoldTitleWhenMenuDisplayed
 
     property var activeTaskLocal: null
+    property int activityActionCount: 0
 
     Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
 
@@ -125,7 +127,15 @@ Item {
             if (noWindowActive) {
                 updateActiveWindowInfo();
             }
+            reAddActivityActions()
         }
+        onNumberOfRunningActivitiesChanged: {
+            reAddActivityActions()
+        }
+    }
+
+    Activities.ActivityModel {
+        id: activityModel
     }
 
     function activeTask() {
@@ -526,6 +536,37 @@ Item {
         togglePinToAllDesktops()
     }
 
+    function actionTriggered(actionName) {
+        if (actionName.indexOf("switchToActivity_") == 0) {
+            var activityIndex = actionName.replace("switchToActivity_", "")
+            var activityId = activityInfo.runningActivities()[activityIndex]
+            activityModel.setCurrentActivity(activityId, function() {});
+        }
+    }
+
+    function reAddActivityActions() {
+        plasmoid.removeAction("separator0")
+        for (var i = 0; i < activityActionCount; i++) {
+            plasmoid.removeAction('switchToActivity_' + i)
+        }
+        plasmoid.removeAction("separator1")
+
+        var runningActivities = activityInfo.runningActivities()
+        activityActionCount = runningActivities.length
+        if (activityActionCount === 0) {
+            return
+        }
+        plasmoid.setActionSeparator("separator0")
+        activityInfo.runningActivities().forEach(function (activityId, index) {
+            if (activityId === activityInfo.currentActivity) {
+                return;
+            }
+            var activityName = activityInfo.activityName(activityId)
+            plasmoid.setAction('switchToActivity_' + index, i18n('Switch to activity:') + ' ' + activityName, 'preferences-activities')
+        })
+        plasmoid.setActionSeparator("separator1")
+    }
+
     Component.onCompleted: {
         initializeControlButtonsModel()
         updateActiveWindowInfo()
@@ -533,6 +574,7 @@ Item {
         plasmoid.setAction('maximise', i18n('Toggle Maximise'), 'arrow-up-double');
         plasmoid.setAction('minimise', i18n('Minimise'), 'draw-arrow-down');
         plasmoid.setAction('pinToAllDesktops', i18n('Toggle Pin To All Desktops'), 'window-pin');
+        reAddActivityActions()
     }
 
     onShowMaximizeChanged: initializeControlButtonsModel()
