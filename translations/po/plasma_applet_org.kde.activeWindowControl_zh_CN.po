@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-06-04 16:12+0200\n"
+"POT-Creation-Date: 2017-07-06 02:12+0200\n"
 "PO-Revision-Date: 2017-06-08 14:44+0800\n"
 "Last-Translator: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language-Team: 吴相东 <wuxiangdong156@gmail.com>\n"
@@ -109,41 +109,45 @@ msgstr "不提示"
 msgid "No window text:"
 msgstr "无活动窗口时的标题:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:244
+#: ../package/contents/ui/config/ConfigAppearance.qml:247
+msgid "Use %activity% placeholder to show current activity name."
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:254
 msgid "No window icon:"
 msgstr "无活动窗口时的图标:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:255
+#: ../package/contents/ui/config/ConfigAppearance.qml:265
 msgid "Limit text width"
 msgstr "限制文本长度"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:265
+#: ../package/contents/ui/config/ConfigAppearance.qml:275
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:278
+#: ../package/contents/ui/config/ConfigAppearance.qml:288
 msgid "Show window icon"
 msgstr "显示窗口图标"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:284
+#: ../package/contents/ui/config/ConfigAppearance.qml:294
 msgid "Window icon on the right"
 msgstr "右侧显示图标"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:305
+#: ../package/contents/ui/config/ConfigAppearance.qml:315
 msgid "Bold text"
 msgstr "加粗字体"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:309
+#: ../package/contents/ui/config/ConfigAppearance.qml:319
 msgid "Text font:"
 msgstr "字体:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:330
+#: ../package/contents/ui/config/ConfigAppearance.qml:340
 msgid "Icon and text spacing:"
 msgstr "图标和文本的间距:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:342
+#: ../package/contents/ui/config/ConfigAppearance.qml:352
 msgid "Font size scale:"
 msgstr "字体大小:"
 
@@ -337,19 +341,23 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "清除图标"
 
-#: ../package/contents/ui/main.qml:511
+#: ../package/contents/ui/main.qml:565
+msgid "Switch to activity: %1"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:573
 msgid "Close"
 msgstr "关闭"
 
-#: ../package/contents/ui/main.qml:512
+#: ../package/contents/ui/main.qml:574
 msgid "Toggle Maximise"
 msgstr "最大化/取消最大化"
 
-#: ../package/contents/ui/main.qml:513
+#: ../package/contents/ui/main.qml:575
 msgid "Minimise"
 msgstr "最小化"
 
-#: ../package/contents/ui/main.qml:514
+#: ../package/contents/ui/main.qml:576
 msgid "Toggle Pin To All Desktops"
 msgstr "显示在全部桌面"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-window-control/issues\n"
-"POT-Creation-Date: 2017-06-04 16:12+0200\n"
+"POT-Creation-Date: 2017-07-06 02:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,41 +109,45 @@ msgstr ""
 msgid "No window text:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:244
+#: ../package/contents/ui/config/ConfigAppearance.qml:247
+msgid "Use %activity% placeholder to show current activity name."
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:254
 msgid "No window icon:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:255
+#: ../package/contents/ui/config/ConfigAppearance.qml:265
 msgid "Limit text width"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:265
+#: ../package/contents/ui/config/ConfigAppearance.qml:275
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:278
+#: ../package/contents/ui/config/ConfigAppearance.qml:288
 msgid "Show window icon"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:284
+#: ../package/contents/ui/config/ConfigAppearance.qml:294
 msgid "Window icon on the right"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:305
+#: ../package/contents/ui/config/ConfigAppearance.qml:315
 msgid "Bold text"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:309
+#: ../package/contents/ui/config/ConfigAppearance.qml:319
 msgid "Text font:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:330
+#: ../package/contents/ui/config/ConfigAppearance.qml:340
 msgid "Icon and text spacing:"
 msgstr ""
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:342
+#: ../package/contents/ui/config/ConfigAppearance.qml:352
 msgid "Font size scale:"
 msgstr ""
 
@@ -337,18 +341,22 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:511
+#: ../package/contents/ui/main.qml:565
+msgid "Switch to activity: %1"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:573
 msgid "Close"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:512
+#: ../package/contents/ui/main.qml:574
 msgid "Toggle Maximise"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:513
+#: ../package/contents/ui/main.qml:575
 msgid "Minimise"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:514
+#: ../package/contents/ui/main.qml:576
 msgid "Toggle Pin To All Desktops"
 msgstr ""

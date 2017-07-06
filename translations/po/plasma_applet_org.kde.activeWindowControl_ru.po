@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-06-04 16:12+0200\n"
+"POT-Creation-Date: 2017-07-06 02:12+0200\n"
 "PO-Revision-Date: 2017-05-28 01:04+0300\n"
 "Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
 "Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
@@ -109,41 +109,45 @@ msgstr "Отсутствует"
 msgid "No window text:"
 msgstr "Текст без окон:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:244
+#: ../package/contents/ui/config/ConfigAppearance.qml:247
+msgid "Use %activity% placeholder to show current activity name."
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigAppearance.qml:254
 msgid "No window icon:"
 msgstr "Значок без окон:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:255
+#: ../package/contents/ui/config/ConfigAppearance.qml:265
 msgid "Limit text width"
 msgstr "Ограничить ширину текста"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:265
+#: ../package/contents/ui/config/ConfigAppearance.qml:275
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr "пикс"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:278
+#: ../package/contents/ui/config/ConfigAppearance.qml:288
 msgid "Show window icon"
 msgstr "Показывать значки приложений"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:284
+#: ../package/contents/ui/config/ConfigAppearance.qml:294
 msgid "Window icon on the right"
 msgstr "Значки справа"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:305
+#: ../package/contents/ui/config/ConfigAppearance.qml:315
 msgid "Bold text"
 msgstr "Жирный"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:309
+#: ../package/contents/ui/config/ConfigAppearance.qml:319
 msgid "Text font:"
 msgstr "Шрифт:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:330
+#: ../package/contents/ui/config/ConfigAppearance.qml:340
 msgid "Icon and text spacing:"
 msgstr "Интервал значков и текста:"
 
-#: ../package/contents/ui/config/ConfigAppearance.qml:342
+#: ../package/contents/ui/config/ConfigAppearance.qml:352
 msgid "Font size scale:"
 msgstr "Размер шрифта:"
 
@@ -337,19 +341,23 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Очистить"
 
-#: ../package/contents/ui/main.qml:511
+#: ../package/contents/ui/main.qml:565
+msgid "Switch to activity: %1"
+msgstr ""
+
+#: ../package/contents/ui/main.qml:573
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../package/contents/ui/main.qml:512
+#: ../package/contents/ui/main.qml:574
 msgid "Toggle Maximise"
 msgstr "Развернуть"
 
-#: ../package/contents/ui/main.qml:513
+#: ../package/contents/ui/main.qml:575
 msgid "Minimise"
 msgstr "Свернуть"
 
-#: ../package/contents/ui/main.qml:514
+#: ../package/contents/ui/main.qml:576
 msgid "Toggle Pin To All Desktops"
 msgstr "Закрепить на всех рабочих столах"
 
