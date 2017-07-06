@@ -562,7 +562,7 @@ Item {
                 return;
             }
             var activityName = activityInfo.activityName(activityId)
-            plasmoid.setAction('switchToActivity_' + index, i18n('Switch to activity:') + ' ' + activityName, 'preferences-activities')
+            plasmoid.setAction('switchToActivity_' + index, i18n('Switch to activity: %1', activityName), 'preferences-activities')
         })
         plasmoid.setActionSeparator("separator1")
     }
