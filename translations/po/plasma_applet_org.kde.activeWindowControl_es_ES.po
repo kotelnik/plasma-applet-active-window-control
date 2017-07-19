@@ -9,105 +9,106 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
 "POT-Creation-Date: 2017-07-06 02:12+0200\n"
-"PO-Revision-Date: 2017-05-28 01:04+0300\n"
-"Last-Translator: Илья Остапенко <jacobtey@gmail.com>\n"
-"Language-Team: Илья Остапенко <jacobtey@gmail.com>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2017-06-10 12:00+0200\n"
+"Last-Translator: Kepa Badiola <badiol@yahoo.es>\n"
+"Language-Team: Spanish <LL@li.org>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../package/contents/config/config.qml:6
 msgid "Appearance"
-msgstr "Внешний вид"
+msgstr "Apariencia"
 
 #: ../package/contents/config/config.qml:11
 msgid "Behaviour"
-msgstr "Поведение"
+msgstr "Comportamiento"
 
 #: ../package/contents/config/config.qml:16
 msgid "Buttons"
-msgstr "Кнопки"
+msgstr "Botones"
 
 #: ../package/contents/config/config.qml:21
 msgid "Mouse Control"
-msgstr "Поведение мыши"
+msgstr "Control del Ratón"
 
 #: ../package/contents/config/config.qml:26
 msgid "Application Menu"
-msgstr "Меню приложений"
+msgstr "Menú de la Aplicación"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:73
 msgctxt "Use default font"
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "Predeterminado"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:90
 msgid "Plasmoid version: "
-msgstr "Версия виджета: "
+msgstr "Versión de Plasmoide: "
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:96
 msgid "Width in horizontal panel:"
-msgstr "Заполнение свободного пространства панели:"
+msgstr "Anchura en panel horizontal:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:103
 msgid "Fill width"
-msgstr "По всей ширине"
+msgstr "Rellenar ancho"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:122
 msgid "Fine tuning:"
-msgstr "Точно по размеру:"
+msgstr "Ajuste avanzado:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:142
 msgid "Hide titlebar for maximized windows (takes effect immediately)"
-msgstr "Скрыть рамки развернутых окон (срабатывает сразу)"
+msgstr ""
+"Ocultar barrade título para las ventanas maximizadas (tiene efecto inmediato)"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:158
 msgid "Show window title"
-msgstr "Показывать заголовки окон на панели"
+msgstr "Mostrar título de la ventana"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:173
 msgid "Text type:"
-msgstr "Отображаемый текст:"
+msgstr "Tipo de texto:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:178
 #: ../package/contents/ui/config/ConfigAppearance.qml:196
 #: ../package/contents/ui/config/ConfigAppearance.qml:201
 msgid "Window title"
-msgstr "Заголовки окон"
+msgstr "Título de ventana"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:178
 #: ../package/contents/ui/config/ConfigAppearance.qml:196
 msgid "Application name"
-msgstr "Названия приложений"
+msgstr "Nombre de aplicación"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:182
 msgid "Fit text:"
-msgstr "Способ заполнения:"
+msgstr "Ajustar texto:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Just elide"
-msgstr "Обрезать"
+msgstr "Simplemente prescindir"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Fit on hover"
-msgstr "Разворачивать при наведении"
+msgstr "Encajar al pasar el ratón "
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:187
 msgid "Always fit"
-msgstr "Показывать полностью"
+msgstr "Encajar siempre"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:191
 msgid "Tooltip text:"
-msgstr "Текст подсказки"
+msgstr "Texto del tooltip:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:196
 msgid "No tooltip"
-msgstr "Отсутствует"
+msgstr "Sin tooltip"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:233
 msgid "No window text:"
-msgstr "Текст без окон:"
+msgstr "Texto al no haber ventana:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:247
 msgid "Use %activity% placeholder to show current activity name."
@@ -115,231 +116,231 @@ msgstr ""
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:254
 msgid "No window icon:"
-msgstr "Значок без окон:"
+msgstr "Icono al no haber ventana:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:265
 msgid "Limit text width"
-msgstr "Ограничить ширину текста"
+msgstr "Limitar el ancho de texto"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:275
 #: ../package/contents/ui/config/ConfigAppMenu.qml:82
 msgctxt "Abbreviation for pixels"
 msgid "px"
-msgstr "пикс"
+msgstr "px"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:288
 msgid "Show window icon"
-msgstr "Показывать значки приложений"
+msgstr "Mostrar icono de ventana"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:294
 msgid "Window icon on the right"
-msgstr "Значки справа"
+msgstr "Icono de ventana a la derecha"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:315
 msgid "Bold text"
-msgstr "Жирный"
+msgstr "Texto en negrita"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:319
 msgid "Text font:"
-msgstr "Шрифт:"
+msgstr "Fuente del texto:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:340
 msgid "Icon and text spacing:"
-msgstr "Интервал значков и текста:"
+msgstr "Espaciado de icono y texto:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:352
 msgid "Font size scale:"
-msgstr "Размер шрифта:"
+msgstr "Escala de tamaño de fuente:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:21
 msgid "Enable application menu"
-msgstr "Активировать меню приложений"
+msgstr "Habilita el menú de la aplicación"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:36
 msgid "Fill height"
-msgstr "Заполнить по высоте"
+msgstr "Rellenar altura"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:42
 msgid "Show next to buttons"
-msgstr "Показывать после кнопок"
+msgstr "Mostrar al lado de los botones"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:48
 msgid "Show next to icon and text"
-msgstr "Показывать после значка и текста"
+msgstr "Mostrar al lado del icono y texto"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:54
 msgid "Switch sides with icon and text"
-msgstr "Поменять местами значок и текст"
+msgstr "Cambiar sitio con icono y texto"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Show separator"
-msgstr "Показать разделитель"
+msgstr "Mostar separador"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Make window title bold when menu is displayed"
-msgstr "Жирный заголовок окна, если отображается меню"
+msgstr "Hacer el título de la ventana en negrita cuando se muestre el menú"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:73
 msgid "Side margin:"
-msgstr "Отступ:"
+msgstr "Margen lateral:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:86
 msgid "Icon and text opacity:"
-msgstr "Непрозрачность значка и текста:"
+msgstr "Opacidad del icono y texto:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:98
 msgid "Menu button text size scale:"
-msgstr "Размер текста кнопок меню:"
+msgstr "Escala de tamaño del texto del botón de menú:"
 
 #: ../package/contents/ui/config/ConfigBehaviour.qml:14
 msgid "Show active window only for plasmoid's screen"
-msgstr "Показывать активное окно только экране плазмоида"
+msgstr "Mostrar la ventana activa solo para la pantalla del Plasmoide"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:92
 msgid "Enable Control Buttons"
-msgstr "Отображать кнопки"
+msgstr "Habilitar los Botones de Control"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:113
 msgid "Show minimize button"
-msgstr "Свернуть"
+msgstr "Mostrar el botón minimizar"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:118
 msgid "Show maximize button"
-msgstr "Развернуть"
+msgstr "Mostrar el botón maximizar"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:123
 msgid "Show pin to all desktops"
-msgstr "Закрепить"
+msgstr "Mostrar anclar a todos los escritorios"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:133
 msgid "Button order:"
-msgstr "Упорядочить кнопки:"
+msgstr "Orden de los botones:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:169
 msgid "Behaviour:"
-msgstr "Поведение:"
+msgstr "Comportamiento:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:175
 msgid "Do not hide on mouse out"
-msgstr "Не скрывать, даже если курсор не наведен"
+msgstr "No ocultar al alejar el ratón"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:186
 msgid "Show only when maximized"
-msgstr "Отображать только при развернутом окне"
+msgstr "Mostrar solo al estar maximizado"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:191
 msgid "Buttons next to icon and text"
-msgstr "Кнопки, значок и текст друг за другом"
+msgstr "Botones al lado del icono y texto"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:196
 msgid "Dynamic width"
-msgstr "Динамический интервал"
+msgstr "Anchura dinámica"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:202
 msgid "Sliding icon and text"
-msgstr "Смещать значки и текст"
+msgstr "Icono y texto deslizantes"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:214
 msgid "Position:"
-msgstr "Положение:"
+msgstr "Posición:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:220
 msgid "Upper left"
-msgstr "Вверху слева"
+msgstr "Superior izquierda"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:231
 msgid "Upper right"
-msgstr "Вверху справа"
+msgstr "Superior derecha "
 
 #: ../package/contents/ui/config/ConfigButtons.qml:237
 msgid "Bottom left"
-msgstr "Внизу слева"
+msgstr "Inferior izquierda"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:243
 msgid "Bottom right"
-msgstr "Внизу справа"
+msgstr "Inferior derecha"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:249
 msgid "Vertical center"
-msgstr "Центр по вертикали"
+msgstr "Centro vertical"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:259
 msgid "Button size:"
-msgstr "Размер кнопок:"
+msgstr "Tamaño del botón:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:271
 msgid "Buttons spacing:"
-msgstr "Интервал между кнопками:"
+msgstr "Espaciado de botones:"
 
 #: ../package/contents/ui/config/ConfigButtons.qml:290
 msgid "Path to aurorae theme:"
-msgstr "Путь к теме Aurorae:"
+msgstr "Ruta al tema de aurorae"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:84
 msgid "Mouse Buttons:"
-msgstr "Кнопки мыши:"
+msgstr "Botones del Ratón:"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:89
 msgid "Doubleclick to toggle maximizing"
-msgstr "Разворачивать двойным щелчком"
+msgstr "Doble click para activar maximizar"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:101
 msgid "Left click disabled"
-msgstr "Левая кнопка не задействована"
+msgstr "Click izquierdo deshabilitado"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:108
 msgid "Left click to present windows (Current Desktop)"
-msgstr "Левой кнопкой \"показать все окна\" (Текущий рабочий стол)"
+msgstr "Click izquierdo para presentar ventanas (Escritorio Actual)"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:115
 msgid "Left click to present windows (All Desktops)"
-msgstr "Левой кнопкой \"показать все окна\" (Все рабочие столы)"
+msgstr "Click izquierdo para presentar ventanas (Todos los Escritiorios)"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:122
 msgid "Left click to present windows (Window Class)"
-msgstr "Левой кнопкой \"показать все окна\" (Окна приложения)"
+msgstr "Click izquierdo para presentar ventanas (Clase de Ventana)"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:140
 msgid "Middle click disabled"
-msgstr "Средняя кнопка не задействована"
+msgstr "Click central deshabilitado"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:146
 msgid "Middle click to close active window"
-msgstr "Закрывать окно средней кнопкой"
+msgstr "Click central para cerrar ventana activa"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:152
 msgid "Middle click to toggle fullscreen"
-msgstr "Полноэкранный режим средней кнопкой"
+msgstr "Click central para activar pantalla completa"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:163
 msgid "Mouse Wheel:"
-msgstr "Колесо мыши:"
+msgstr "Rueda del Ratón:"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:168
 msgid "Mouse wheel up to maximize"
-msgstr "Прокрутить \"вверх\", чтобы развернуть"
+msgstr "Rueda del Ratón arriba para maximizar"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:178
 msgid "Mouse wheel down disabled"
-msgstr "Прокрутка \"вниз\" не задействована"
+msgstr "Rueda del Ratón deshabilitada"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:184
 msgid "Mouse wheel down to minimize"
-msgstr "Прокрутить \"вниз\", чтобы скрыть"
+msgstr "Rueda del Ratón para minimizar"
 
 #: ../package/contents/ui/config/ConfigMouseControl.qml:190
 msgid "Mouse wheel down to unmaximize"
-msgstr "Прокрутить \"вниз\", чтобы свернуть"
+msgstr "Rueda del Ratón abajo para desmaximizar"
 
 #: ../package/contents/ui/config/IconPicker.qml:84
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose..."
-msgstr "Выбрать..."
+msgstr "Elegir..."
 
 #: ../package/contents/ui/config/IconPicker.qml:89
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
-msgstr "Очистить"
+msgstr "Limpiar Icono"
 
 #: ../package/contents/ui/main.qml:565
 msgid "Switch to activity: %1"
@@ -347,19 +348,16 @@ msgstr ""
 
 #: ../package/contents/ui/main.qml:573
 msgid "Close"
-msgstr "Закрыть"
+msgstr "Cerrar"
 
 #: ../package/contents/ui/main.qml:574
 msgid "Toggle Maximise"
-msgstr "Развернуть"
+msgstr "Activar Maximizar"
 
 #: ../package/contents/ui/main.qml:575
 msgid "Minimise"
-msgstr "Свернуть"
+msgstr "Minimizar"
 
 #: ../package/contents/ui/main.qml:576
 msgid "Toggle Pin To All Desktops"
-msgstr "Закрепить на всех рабочих столах"
-
-#~ msgid "Plasma Desktop"
-#~ msgstr "Рабочий стол"
+msgstr "Activar anclar a Todos los Escritiorios"
