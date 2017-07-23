@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
 "POT-Creation-Date: 2017-07-06 02:12+0200\n"
-"PO-Revision-Date: 2017-06-08 14:44+0800\n"
+"PO-Revision-Date: 2017-07-19 17:47+0800\n"
 "Last-Translator: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language-Team: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language: zh_CN\n"
@@ -111,7 +111,7 @@ msgstr "无活动窗口时的标题:"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:247
 msgid "Use %activity% placeholder to show current activity name."
-msgstr ""
+msgstr "插入 %activity% 显示当前活动"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:254
 msgid "No window icon:"
@@ -169,7 +169,7 @@ msgstr "在图标和文本旁显示"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:54
 msgid "Switch sides with icon and text"
-msgstr "在图标和文本旁显示"
+msgstr "与图标和文本交换位置"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Show separator"
@@ -185,7 +185,7 @@ msgstr "边距:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:86
 msgid "Icon and text opacity:"
-msgstr "图标和文本的间距:"
+msgstr "图标和文本的不透明度:"
 
 #: ../package/contents/ui/config/ConfigAppMenu.qml:98
 msgid "Menu button text size scale:"
@@ -343,7 +343,7 @@ msgstr "清除图标"
 
 #: ../package/contents/ui/main.qml:565
 msgid "Switch to activity: %1"
-msgstr ""
+msgstr "切换活动至: %1"
 
 #: ../package/contents/ui/main.qml:573
 msgid "Close"
