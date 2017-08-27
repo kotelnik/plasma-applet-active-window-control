@@ -280,7 +280,7 @@ Item {
                 id: iconItem
 
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width + (!buttonsBetweenIconAndText ? controlButtonsAreaWidth + iconAndTextSpacing : 0) : 0
+                anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width : 0
 
                 width: parent.height
                 height: parent.height
