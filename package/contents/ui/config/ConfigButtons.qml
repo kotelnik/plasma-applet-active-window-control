@@ -10,6 +10,7 @@ Item {
     property int cfg_buttonsPosition
     property alias cfg_buttonsVerticalCenter: buttonsVerticalCenter.checked
     property alias cfg_buttonsStandalone: buttonsStandalone.checked
+    property alias cfg_buttonsBetweenIconAndText: buttonsBetweenIconAndText.checked
     property alias cfg_buttonsDynamicWidth: buttonsDynamicWidth.checked
     property alias cfg_slidingIconAndText: slidingIconAndText.checked
     property alias cfg_showButtonOnlyWhenMaximized: showButtonOnlyWhenMaximized.checked
@@ -178,7 +179,7 @@ Item {
             Item {
                 width: 2
                 height: 2
-                Layout.rowSpan: 4
+                Layout.rowSpan: 5
             }
 
             CheckBox {
@@ -189,6 +190,12 @@ Item {
             CheckBox {
                 id: buttonsStandalone
                 text: i18n("Buttons next to icon and text")
+            }
+
+            CheckBox {
+                id: buttonsBetweenIconAndText
+                text: i18n("Buttons between icon and text")
+                enabled: buttonsStandalone.checked
             }
 
             CheckBox {

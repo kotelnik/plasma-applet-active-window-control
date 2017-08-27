@@ -78,6 +78,7 @@ Item {
     property bool wheelDownUnmaximizes: plasmoid.configuration.wheelDownAction === 2
 
     property bool buttonsStandalone: showControlButtons && plasmoid.configuration.buttonsStandalone
+    property bool buttonsBetweenIconAndText: buttonsStandalone && plasmoid.configuration.buttonsBetweenIconAndText
     property bool doNotHideControlButtons: showControlButtons && plasmoid.configuration.doNotHideControlButtons
 
     property bool textColorLight: ((theme.textColor.r + theme.textColor.g + theme.textColor.b) / 3) > 0.5
@@ -245,11 +246,13 @@ Item {
         property double appmenuOffsetLeft: (bp === 0 || bp === 2) ? appmenu.appmenuOffsetWidth : 0
         property double appmenuOffsetRight: (bp === 1 || bp === 3) ? appmenu.appmenuOffsetWidth : 0
         property double controlButtonsAreaWidth: noWindowActive ? 0 : controlButtonsArea.width
+        property bool buttonsVisible: buttonsStandalone && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText)
+        property double buttonsBetweenAddition: buttonsVisible && buttonsBetweenIconAndText ? controlButtonsAreaWidth + iconAndTextSpacing : 0
 
         anchors.left: parent.left
-        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetLeft : 0 + appmenuOffsetLeft
+        anchors.leftMargin: buttonsVisible && (bp === 0 || bp === 2) && !buttonsBetweenIconAndText ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetLeft : 0 + appmenuOffsetLeft
         anchors.right: parent.right
-        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetRight : 0 + appmenuOffsetRight
+        anchors.rightMargin: buttonsVisible && (bp === 1 || bp === 3) && !buttonsBetweenIconAndText ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetRight : 0 + appmenuOffsetRight
 
         Behavior on anchors.leftMargin {
             NumberAnimation {
@@ -277,7 +280,7 @@ Item {
                 id: iconItem
 
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width : 0
+                anchors.leftMargin: windowIconOnTheRight ? parent.width - iconItem.width + (!buttonsBetweenIconAndText ? controlButtonsAreaWidth + iconAndTextSpacing : 0) : 0
 
                 width: parent.height
                 height: parent.height
@@ -299,10 +302,10 @@ Item {
                 property double iconMarginForAnchor: noWindowActive && plasmoid.configuration.noWindowIcon === '' ? 0 : iconMargin
                 property bool limitTextWidth: plasmoid.configuration.limitTextWidth
                 property int textWidthLimit: plasmoid.configuration.textWidthLimit
-                property double computedWidth: limitTextWidth ? (implicitWidth > textWidthLimit ? textWidthLimit : implicitWidth) : properWidth
+                property double computedWidth: (limitTextWidth ? (implicitWidth > textWidthLimit ? textWidthLimit : implicitWidth) : properWidth) - activeWindowListView.buttonsBetweenAddition
 
                 anchors.left: parent.left
-                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMarginForAnchor + iconAndTextSpacing
+                anchors.leftMargin: windowIconOnTheRight ? 0 : iconMarginForAnchor + iconAndTextSpacing + activeWindowListView.buttonsBetweenAddition
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 verticalAlignment: Text.AlignVCenter
@@ -435,6 +438,7 @@ Item {
 
             property bool mouseInWidget: false
             property double controlButtonsHeight: parent.height * buttonSize
+            property double buttonsBetweenMargin: buttonsBetweenIconAndText ? iconItem.width + iconAndTextSpacing : 0
 
             orientation: ListView.Horizontal
             visible: showControlButtons && (doNotHideControlButtons || mouseInWidget || appmenu.visible) && (currentWindowMaximized || !showButtonOnlyWhenMaximized) && !noWindowActive
@@ -447,7 +451,7 @@ Item {
             anchors.top: parent.top
             anchors.left: parent.left
 
-            anchors.leftMargin: (bp === 1 || bp === 3) ? parent.width - width : 0
+            anchors.leftMargin: buttonsBetweenIconAndText ? (windowIconOnTheRight ? parent.width - width - buttonsBetweenMargin : buttonsBetweenMargin) : ((bp === 1 || bp === 3) ? parent.width - width : 0)
             anchors.topMargin: (bp === 2 || bp === 3) ? parent.height - height : 0
 
             model: controlButtonsModel
