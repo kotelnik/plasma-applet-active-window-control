@@ -247,9 +247,9 @@ Item {
         property double controlButtonsAreaWidth: noWindowActive ? 0 : controlButtonsArea.width
 
         anchors.left: parent.left
-        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + appmenuOffsetLeft : 0 + appmenuOffsetLeft
+        anchors.leftMargin: buttonsStandalone && (bp === 0 || bp === 2) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetLeft : 0 + appmenuOffsetLeft
         anchors.right: parent.right
-        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + appmenuOffsetRight : 0 + appmenuOffsetRight
+        anchors.rightMargin: buttonsStandalone && (bp === 1 || bp === 3) && (!slidingIconAndText || controlButtonsArea.mouseInWidget || doNotHideControlButtons) && (canShowButtonsAccordingMaximized || !slidingIconAndText) ? controlButtonsAreaWidth + iconAndTextSpacing + appmenuOffsetRight : 0 + appmenuOffsetRight
 
         Behavior on anchors.leftMargin {
             NumberAnimation {
