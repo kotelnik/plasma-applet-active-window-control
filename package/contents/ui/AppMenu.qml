@@ -10,6 +10,7 @@ Item {
     property bool appmenuEnabled: plasmoid.configuration.appmenuEnabled
     property bool appmenuNextToButtons: plasmoid.configuration.appmenuNextToButtons
     property bool appmenuFillHeight: plasmoid.configuration.appmenuFillHeight
+    property bool appmenuFontBold: plasmoid.configuration.appmenuFontBold
     property bool appmenuEnabledAndNonEmpty: appmenuEnabled && appMenuModel !== null && appMenuModel.menuAvailable
     property bool appmenuOpened: appmenuEnabled && plasmoid.nativeInterface.currentIndex > -1
     property var appMenuModel: null
@@ -87,6 +88,7 @@ Item {
                     anchors.centerIn: appmenuButtonBackground
                     font.pixelSize: fontPixelSize * plasmoid.configuration.appmenuButtonTextSizeScale
                     text: activeMenu.replace('&', '')
+                    font.weight: appmenuFontBold ? Font.Bold : theme.defaultFont.weight
                 }
 
                 onClicked: {
