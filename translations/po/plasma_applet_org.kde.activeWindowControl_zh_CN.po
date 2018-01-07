@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-07-06 02:12+0200\n"
+"POT-Creation-Date: 2018-01-07 22:23+0100\n"
 "PO-Revision-Date: 2017-07-19 17:47+0800\n"
 "Last-Translator: 吴相东 <wuxiangdong156@gmail.com>\n"
 "Language-Team: 吴相东 <wuxiangdong156@gmail.com>\n"
@@ -122,7 +122,7 @@ msgid "Limit text width"
 msgstr "限制文本长度"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:275
-#: ../package/contents/ui/config/ConfigAppMenu.qml:82
+#: ../package/contents/ui/config/ConfigAppMenu.qml:89
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr ""
@@ -151,43 +151,47 @@ msgstr "图标和文本的间距:"
 msgid "Font size scale:"
 msgstr "字体大小:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:21
+#: ../package/contents/ui/config/ConfigAppMenu.qml:22
 msgid "Enable application menu"
 msgstr "启动全局菜单"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+#: ../package/contents/ui/config/ConfigAppMenu.qml:37
 msgid "Fill height"
 msgstr "填充面板高度"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+#: ../package/contents/ui/config/ConfigAppMenu.qml:43
+msgid "Bold font"
+msgstr "加粗字体"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:49
 msgid "Show next to buttons"
 msgstr "在按钮旁显示"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:48
+#: ../package/contents/ui/config/ConfigAppMenu.qml:55
 msgid "Show next to icon and text"
 msgstr "在图标和文本旁显示"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:54
+#: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Switch sides with icon and text"
 msgstr "与图标和文本交换位置"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:61
+#: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Show separator"
 msgstr "显示分割符"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:68
+#: ../package/contents/ui/config/ConfigAppMenu.qml:75
 msgid "Make window title bold when menu is displayed"
 msgstr "全局菜单显示时窗口标题加粗"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:73
+#: ../package/contents/ui/config/ConfigAppMenu.qml:80
 msgid "Side margin:"
 msgstr "边距:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:86
+#: ../package/contents/ui/config/ConfigAppMenu.qml:93
 msgid "Icon and text opacity:"
 msgstr "图标和文本的不透明度:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:98
+#: ../package/contents/ui/config/ConfigAppMenu.qml:105
 msgid "Menu button text size scale:"
 msgstr "字体大小:"
 
@@ -195,83 +199,87 @@ msgstr "字体大小:"
 msgid "Show active window only for plasmoid's screen"
 msgstr "仅显示当前屏幕的活动窗口"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:92
+#: ../package/contents/ui/config/ConfigButtons.qml:93
 msgid "Enable Control Buttons"
 msgstr "启动控制按钮"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:113
+#: ../package/contents/ui/config/ConfigButtons.qml:114
 msgid "Show minimize button"
 msgstr "最小化按钮"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:118
+#: ../package/contents/ui/config/ConfigButtons.qml:119
 msgid "Show maximize button"
 msgstr "最大化按钮"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:123
+#: ../package/contents/ui/config/ConfigButtons.qml:124
 msgid "Show pin to all desktops"
 msgstr "显示在全部桌面 按钮"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:133
+#: ../package/contents/ui/config/ConfigButtons.qml:134
 msgid "Button order:"
 msgstr "按钮顺序:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:169
+#: ../package/contents/ui/config/ConfigButtons.qml:170
 msgid "Behaviour:"
 msgstr "行为:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:175
+#: ../package/contents/ui/config/ConfigButtons.qml:176
 msgid "Do not hide on mouse out"
 msgstr "鼠标离开时依然显示"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:186
+#: ../package/contents/ui/config/ConfigButtons.qml:187
 msgid "Show only when maximized"
 msgstr "只在窗口最大化时显示"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:191
+#: ../package/contents/ui/config/ConfigButtons.qml:192
 msgid "Buttons next to icon and text"
 msgstr "在图标和文本旁显示"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:196
+#: ../package/contents/ui/config/ConfigButtons.qml:197
+msgid "Buttons between icon and text"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigButtons.qml:203
 msgid "Dynamic width"
 msgstr "动态宽度"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:202
+#: ../package/contents/ui/config/ConfigButtons.qml:209
 msgid "Sliding icon and text"
 msgstr "滑动图标和文本"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:214
+#: ../package/contents/ui/config/ConfigButtons.qml:221
 msgid "Position:"
 msgstr "位置:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:220
+#: ../package/contents/ui/config/ConfigButtons.qml:227
 msgid "Upper left"
 msgstr "左上"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:231
+#: ../package/contents/ui/config/ConfigButtons.qml:238
 msgid "Upper right"
 msgstr "右上"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:237
+#: ../package/contents/ui/config/ConfigButtons.qml:244
 msgid "Bottom left"
 msgstr "左下"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:243
+#: ../package/contents/ui/config/ConfigButtons.qml:250
 msgid "Bottom right"
 msgstr "右下"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:249
+#: ../package/contents/ui/config/ConfigButtons.qml:256
 msgid "Vertical center"
 msgstr "竖直中心"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:259
+#: ../package/contents/ui/config/ConfigButtons.qml:266
 msgid "Button size:"
 msgstr "按钮尺寸:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:271
+#: ../package/contents/ui/config/ConfigButtons.qml:278
 msgid "Buttons spacing:"
 msgstr "按钮间距:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:290
+#: ../package/contents/ui/config/ConfigButtons.qml:297
 msgid "Path to aurorae theme:"
 msgstr "Aurorae 主题路径"
 
@@ -341,23 +349,23 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "清除图标"
 
-#: ../package/contents/ui/main.qml:565
+#: ../package/contents/ui/main.qml:569
 msgid "Switch to activity: %1"
 msgstr "切换活动至: %1"
 
-#: ../package/contents/ui/main.qml:573
+#: ../package/contents/ui/main.qml:577
 msgid "Close"
 msgstr "关闭"
 
-#: ../package/contents/ui/main.qml:574
+#: ../package/contents/ui/main.qml:578
 msgid "Toggle Maximise"
 msgstr "最大化/取消最大化"
 
-#: ../package/contents/ui/main.qml:575
+#: ../package/contents/ui/main.qml:579
 msgid "Minimise"
 msgstr "最小化"
 
-#: ../package/contents/ui/main.qml:576
+#: ../package/contents/ui/main.qml:580
 msgid "Toggle Pin To All Desktops"
 msgstr "显示在全部桌面"
 

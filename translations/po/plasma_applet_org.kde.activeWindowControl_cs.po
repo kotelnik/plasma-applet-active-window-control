@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-07-06 02:12+0200\n"
+"POT-Creation-Date: 2018-01-07 22:23+0100\n"
 "PO-Revision-Date: 2017-02-12 23:08+0100\n"
 "Last-Translator: Martin Kotelnik <clearmartin@seznam.cz>\n"
 "Language-Team: Martin Kotelnik <clearmartin@seznam.cz>\n"
@@ -122,7 +122,7 @@ msgid "Limit text width"
 msgstr "Omezit šířku textu"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:275
-#: ../package/contents/ui/config/ConfigAppMenu.qml:82
+#: ../package/contents/ui/config/ConfigAppMenu.qml:89
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr "px"
@@ -151,43 +151,47 @@ msgstr "Mezera mezi ikonou a textem:"
 msgid "Font size scale:"
 msgstr "Velikost fontu:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:21
+#: ../package/contents/ui/config/ConfigAppMenu.qml:22
 msgid "Enable application menu"
 msgstr "Zobrazit aplikační menu"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+#: ../package/contents/ui/config/ConfigAppMenu.qml:37
 msgid "Fill height"
 msgstr "Na celou výšku panelu"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+#: ../package/contents/ui/config/ConfigAppMenu.qml:43
+msgid "Bold font"
+msgstr "Tučný text"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:49
 msgid "Show next to buttons"
 msgstr "Zobrazit vedle tlačítek"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:48
+#: ../package/contents/ui/config/ConfigAppMenu.qml:55
 msgid "Show next to icon and text"
 msgstr "Zobrazit vedle ikony a titulku okna"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:54
+#: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Switch sides with icon and text"
 msgstr "Prohodit s ikonou a titulkem okna"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:61
+#: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Show separator"
 msgstr "Zobrazit oddělovač"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:68
+#: ../package/contents/ui/config/ConfigAppMenu.qml:75
 msgid "Make window title bold when menu is displayed"
 msgstr "Vytučnit titulek okna při zobrazeném menu"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:73
+#: ../package/contents/ui/config/ConfigAppMenu.qml:80
 msgid "Side margin:"
 msgstr "Boční margin:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:86
+#: ../package/contents/ui/config/ConfigAppMenu.qml:93
 msgid "Icon and text opacity:"
 msgstr "Viditelnost ikony a textu:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:98
+#: ../package/contents/ui/config/ConfigAppMenu.qml:105
 msgid "Menu button text size scale:"
 msgstr "Velikost fontu pro menu:"
 
@@ -195,83 +199,87 @@ msgstr "Velikost fontu pro menu:"
 msgid "Show active window only for plasmoid's screen"
 msgstr "Zobrazit informace jen pro obrazovku s appletem"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:92
+#: ../package/contents/ui/config/ConfigButtons.qml:93
 msgid "Enable Control Buttons"
 msgstr "Zobrazovat tlačítka"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:113
+#: ../package/contents/ui/config/ConfigButtons.qml:114
 msgid "Show minimize button"
 msgstr "Zobrazit minifikaci"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:118
+#: ../package/contents/ui/config/ConfigButtons.qml:119
 msgid "Show maximize button"
 msgstr "Zobrazit maximalizaci"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:123
+#: ../package/contents/ui/config/ConfigButtons.qml:124
 msgid "Show pin to all desktops"
 msgstr "Zobrazit připnutí na všechny plochy"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:133
+#: ../package/contents/ui/config/ConfigButtons.qml:134
 msgid "Button order:"
 msgstr "Pořadí tlačítek:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:169
+#: ../package/contents/ui/config/ConfigButtons.qml:170
 msgid "Behaviour:"
 msgstr "Chování:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:175
+#: ../package/contents/ui/config/ConfigButtons.qml:176
 msgid "Do not hide on mouse out"
 msgstr "Neschovávat při odjetí myši"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:186
+#: ../package/contents/ui/config/ConfigButtons.qml:187
 msgid "Show only when maximized"
 msgstr "Zobrazovat jen když je okno maximalizované"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:191
+#: ../package/contents/ui/config/ConfigButtons.qml:192
 msgid "Buttons next to icon and text"
 msgstr "Tlačítka vedle ikony a textu"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:196
+#: ../package/contents/ui/config/ConfigButtons.qml:197
+msgid "Buttons between icon and text"
+msgstr "Tlačítka mezi ikonou a textem"
+
+#: ../package/contents/ui/config/ConfigButtons.qml:203
 msgid "Dynamic width"
 msgstr "Dynamická šířka"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:202
+#: ../package/contents/ui/config/ConfigButtons.qml:209
 msgid "Sliding icon and text"
 msgstr "Klouzající ikona a text"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:214
+#: ../package/contents/ui/config/ConfigButtons.qml:221
 msgid "Position:"
 msgstr "Pozice:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:220
+#: ../package/contents/ui/config/ConfigButtons.qml:227
 msgid "Upper left"
 msgstr "Vlevo nahoře"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:231
+#: ../package/contents/ui/config/ConfigButtons.qml:238
 msgid "Upper right"
 msgstr "Vpravo nahoře"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:237
+#: ../package/contents/ui/config/ConfigButtons.qml:244
 msgid "Bottom left"
 msgstr "Vlevo dole"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:243
+#: ../package/contents/ui/config/ConfigButtons.qml:250
 msgid "Bottom right"
 msgstr "Vpravo dole"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:249
+#: ../package/contents/ui/config/ConfigButtons.qml:256
 msgid "Vertical center"
 msgstr "Vertikálně vycentrovat"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:259
+#: ../package/contents/ui/config/ConfigButtons.qml:266
 msgid "Button size:"
 msgstr "Velikost tlačítek:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:271
+#: ../package/contents/ui/config/ConfigButtons.qml:278
 msgid "Buttons spacing:"
 msgstr "Mezery mezi tlačítky:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:290
+#: ../package/contents/ui/config/ConfigButtons.qml:297
 msgid "Path to aurorae theme:"
 msgstr "Umístění pro aurorae téma:"
 
@@ -341,22 +349,22 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Odebrat"
 
-#: ../package/contents/ui/main.qml:565
+#: ../package/contents/ui/main.qml:569
 msgid "Switch to activity: %1"
 msgstr "Přepnout na činnost: %1"
 
-#: ../package/contents/ui/main.qml:573
+#: ../package/contents/ui/main.qml:577
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../package/contents/ui/main.qml:574
+#: ../package/contents/ui/main.qml:578
 msgid "Toggle Maximise"
 msgstr "Přepnout maximalizaci"
 
-#: ../package/contents/ui/main.qml:575
+#: ../package/contents/ui/main.qml:579
 msgid "Minimise"
 msgstr "Minimalizovat"
 
-#: ../package/contents/ui/main.qml:576
+#: ../package/contents/ui/main.qml:580
 msgid "Toggle Pin To All Desktops"
 msgstr "Všechny plochy"

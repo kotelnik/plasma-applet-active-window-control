@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/kotelnik/plasma-applet-active-"
 "window-control/issues\n"
-"POT-Creation-Date: 2017-07-06 02:12+0200\n"
+"POT-Creation-Date: 2018-01-07 22:23+0100\n"
 "PO-Revision-Date: 2017-06-10 12:00+0200\n"
 "Last-Translator: Kepa Badiola <badiol@yahoo.es>\n"
 "Language-Team: Spanish <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgid "Limit text width"
 msgstr "Limitar el ancho de texto"
 
 #: ../package/contents/ui/config/ConfigAppearance.qml:275
-#: ../package/contents/ui/config/ConfigAppMenu.qml:82
+#: ../package/contents/ui/config/ConfigAppMenu.qml:89
 msgctxt "Abbreviation for pixels"
 msgid "px"
 msgstr "px"
@@ -152,43 +152,47 @@ msgstr "Espaciado de icono y texto:"
 msgid "Font size scale:"
 msgstr "Escala de tamaño de fuente:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:21
+#: ../package/contents/ui/config/ConfigAppMenu.qml:22
 msgid "Enable application menu"
 msgstr "Habilita el menú de la aplicación"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:36
+#: ../package/contents/ui/config/ConfigAppMenu.qml:37
 msgid "Fill height"
 msgstr "Rellenar altura"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:42
+#: ../package/contents/ui/config/ConfigAppMenu.qml:43
+msgid "Bold font"
+msgstr "Texto en negrita"
+
+#: ../package/contents/ui/config/ConfigAppMenu.qml:49
 msgid "Show next to buttons"
 msgstr "Mostrar al lado de los botones"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:48
+#: ../package/contents/ui/config/ConfigAppMenu.qml:55
 msgid "Show next to icon and text"
 msgstr "Mostrar al lado del icono y texto"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:54
+#: ../package/contents/ui/config/ConfigAppMenu.qml:61
 msgid "Switch sides with icon and text"
 msgstr "Cambiar sitio con icono y texto"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:61
+#: ../package/contents/ui/config/ConfigAppMenu.qml:68
 msgid "Show separator"
 msgstr "Mostar separador"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:68
+#: ../package/contents/ui/config/ConfigAppMenu.qml:75
 msgid "Make window title bold when menu is displayed"
 msgstr "Hacer el título de la ventana en negrita cuando se muestre el menú"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:73
+#: ../package/contents/ui/config/ConfigAppMenu.qml:80
 msgid "Side margin:"
 msgstr "Margen lateral:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:86
+#: ../package/contents/ui/config/ConfigAppMenu.qml:93
 msgid "Icon and text opacity:"
 msgstr "Opacidad del icono y texto:"
 
-#: ../package/contents/ui/config/ConfigAppMenu.qml:98
+#: ../package/contents/ui/config/ConfigAppMenu.qml:105
 msgid "Menu button text size scale:"
 msgstr "Escala de tamaño del texto del botón de menú:"
 
@@ -196,83 +200,87 @@ msgstr "Escala de tamaño del texto del botón de menú:"
 msgid "Show active window only for plasmoid's screen"
 msgstr "Mostrar la ventana activa solo para la pantalla del Plasmoide"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:92
+#: ../package/contents/ui/config/ConfigButtons.qml:93
 msgid "Enable Control Buttons"
 msgstr "Habilitar los Botones de Control"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:113
+#: ../package/contents/ui/config/ConfigButtons.qml:114
 msgid "Show minimize button"
 msgstr "Mostrar el botón minimizar"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:118
+#: ../package/contents/ui/config/ConfigButtons.qml:119
 msgid "Show maximize button"
 msgstr "Mostrar el botón maximizar"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:123
+#: ../package/contents/ui/config/ConfigButtons.qml:124
 msgid "Show pin to all desktops"
 msgstr "Mostrar anclar a todos los escritorios"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:133
+#: ../package/contents/ui/config/ConfigButtons.qml:134
 msgid "Button order:"
 msgstr "Orden de los botones:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:169
+#: ../package/contents/ui/config/ConfigButtons.qml:170
 msgid "Behaviour:"
 msgstr "Comportamiento:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:175
+#: ../package/contents/ui/config/ConfigButtons.qml:176
 msgid "Do not hide on mouse out"
 msgstr "No ocultar al alejar el ratón"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:186
+#: ../package/contents/ui/config/ConfigButtons.qml:187
 msgid "Show only when maximized"
 msgstr "Mostrar solo al estar maximizado"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:191
+#: ../package/contents/ui/config/ConfigButtons.qml:192
 msgid "Buttons next to icon and text"
 msgstr "Botones al lado del icono y texto"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:196
+#: ../package/contents/ui/config/ConfigButtons.qml:197
+msgid "Buttons between icon and text"
+msgstr ""
+
+#: ../package/contents/ui/config/ConfigButtons.qml:203
 msgid "Dynamic width"
 msgstr "Anchura dinámica"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:202
+#: ../package/contents/ui/config/ConfigButtons.qml:209
 msgid "Sliding icon and text"
 msgstr "Icono y texto deslizantes"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:214
+#: ../package/contents/ui/config/ConfigButtons.qml:221
 msgid "Position:"
 msgstr "Posición:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:220
+#: ../package/contents/ui/config/ConfigButtons.qml:227
 msgid "Upper left"
 msgstr "Superior izquierda"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:231
+#: ../package/contents/ui/config/ConfigButtons.qml:238
 msgid "Upper right"
 msgstr "Superior derecha "
 
-#: ../package/contents/ui/config/ConfigButtons.qml:237
+#: ../package/contents/ui/config/ConfigButtons.qml:244
 msgid "Bottom left"
 msgstr "Inferior izquierda"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:243
+#: ../package/contents/ui/config/ConfigButtons.qml:250
 msgid "Bottom right"
 msgstr "Inferior derecha"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:249
+#: ../package/contents/ui/config/ConfigButtons.qml:256
 msgid "Vertical center"
 msgstr "Centro vertical"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:259
+#: ../package/contents/ui/config/ConfigButtons.qml:266
 msgid "Button size:"
 msgstr "Tamaño del botón:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:271
+#: ../package/contents/ui/config/ConfigButtons.qml:278
 msgid "Buttons spacing:"
 msgstr "Espaciado de botones:"
 
-#: ../package/contents/ui/config/ConfigButtons.qml:290
+#: ../package/contents/ui/config/ConfigButtons.qml:297
 msgid "Path to aurorae theme:"
 msgstr "Ruta al tema de aurorae"
 
@@ -342,22 +350,22 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Limpiar Icono"
 
-#: ../package/contents/ui/main.qml:565
+#: ../package/contents/ui/main.qml:569
 msgid "Switch to activity: %1"
 msgstr ""
 
-#: ../package/contents/ui/main.qml:573
+#: ../package/contents/ui/main.qml:577
 msgid "Close"
 msgstr "Cerrar"
 
-#: ../package/contents/ui/main.qml:574
+#: ../package/contents/ui/main.qml:578
 msgid "Toggle Maximise"
 msgstr "Activar Maximizar"
 
-#: ../package/contents/ui/main.qml:575
+#: ../package/contents/ui/main.qml:579
 msgid "Minimise"
 msgstr "Minimizar"
 
-#: ../package/contents/ui/main.qml:576
+#: ../package/contents/ui/main.qml:580
 msgid "Toggle Pin To All Desktops"
 msgstr "Activar anclar a Todos los Escritiorios"
