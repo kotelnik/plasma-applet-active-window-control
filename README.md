@@ -2,7 +2,7 @@
 
 ----
 
-**PLEASE BE ADVISED, this project is being moved under KDE umbrella (https://phabricator.kde.org/source/plasma-redshift-control/). So please make further translations or pull requests in proper places:**
+**PLEASE BE ADVISED, this project is being moved under KDE umbrella (https://phabricator.kde.org/source/plasma-active-window-control/). So please make further translations or pull requests in proper places:**
 * https://l10n.kde.org/ (for translators)
 * TBD when review process is complete
 
